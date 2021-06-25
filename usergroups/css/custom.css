@@ -1,0 +1,27 @@
+#locate-an-r-user-group {
+  width: 90% !important;
+}
+
+table.dataTable {
+  width: 100% !important;
+}
+
+.flex-control {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 1400px) {
+  .col-xs-4 > .html-widget-static-bound {
+    width: 35em !important;
+    padding: 1em !important;
+  }
+}
+
+#twitter > .chart-stage {
+  overflow-y: scroll;
+}
+
+#rugs-map {
+  background: none;
+}

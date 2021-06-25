@@ -1,0 +1,456 @@
+,name,city,country,region,members,fullurl,created,past_events,upcoming_events,visibility,last_event
+1,Customer Data Science LA,Santa Monica,USA,US/Canada,620,https://www.meetup.com/Customer-Data-Science-LA/,20-06-2019,14,0,public_limited,01-10-2020
+2,ODSC Vancouver Data Science,Vancouver,Canada,US/Canada,357,https://www.meetup.com/ODSC-Vancouver-Data-Science/,22-11-2019,58,1,public,02-06-2021
+3,ODSC Denver Data Science,Denver,USA,US/Canada,167,https://www.meetup.com/ODSC-Denver-Data-Science/,22-11-2019,67,1,public,02-06-2021
+4,Ulmer Data Science Stammtisch,Ulm,Germany,Europe,405,https://www.meetup.com/Ulmer-Data-Science-Stammtisch/,06-12-2017,10,0,public,25-11-2019
+5,Western Mass Statistics and Data Science,Northampton,USA,US/Canada,529,https://www.meetup.com/Pioneer-Valley-and-Five-College-R-Statistical-Meetup/,02-01-2013,209,0,public,27-02-2020
+10,Mad Over Data | Mumbai,Mumbai,India,Asia,215,https://www.meetup.com/Mad-Over-Data/,02-01-2020,4,0,public,16-08-2020
+11,Mad Over Data | Delhi NCR,Delhi,India,Asia,419,https://www.meetup.com/Mad-Over-Data-Delhi-NCR/,07-01-2020,6,0,public,16-08-2020
+12,Mad Over Data | Bangalore,Bangalore,India,Asia,431,https://www.meetup.com/Mad-Over-Data-Bangalore/,23-01-2020,5,0,public,16-08-2020
+15,Master Cohorts,Nairobi,Kenya,Africa,262,https://www.meetup.com/Master-Data-Science/,03-04-2020,1,0,public,25-04-2020
+36,Bhavnagar Data Analysis Meetup,Bhavnagar,India,Asia,35,https://www.meetup.com/Bhavnagar-Data-Analysis-Meetup/,15-06-2014,0,0,public,01-01-1970
+40,Data Analytics GDL User Group,Guadalajara,Mexico,Latin America,320,https://www.meetup.com/Data-Analytics-GDL-User-Group/,13-04-2017,2,0,public,08-12-2017
+41,Vancouver Data Visualization,Vancouver,Canada,US/Canada,4374,https://www.meetup.com/Vancouver-Data-Visualization/,14-03-2011,44,0,public,04-02-2021
+45,Microsoft Advanced Analytics User Group,Mechelen,Belgium,Europe,764,https://www.meetup.com/Microsoft-Advanced-Analytics-User-Group/,17-11-2017,13,0,public,15-04-2019
+46,Chile Elastic User Group,Santiago,Chile,Latin America,38,https://www.meetup.com/chile-elastic-user-group/,18-02-2021,4,0,public,08-06-2021
+82,Indore Hadoop User Group,Indore,India,Asia,455,https://www.meetup.com/Indore-Hadoop-User-Group/,01-08-2014,0,0,public,01-01-1970
+91,Central Illinois SAS® User Group Meetup,Springfield,USA,US/Canada,107,https://www.meetup.com/Central-Illinois-SAS-User-Group-Meetup/,14-11-2014,31,0,public,13-05-2021
+94,Alteryx Meet and Greet Brisbane,Brisbane,Australia,Australia,19,https://www.meetup.com/Alteryx-User-Group-Brisbane/,24-04-2016,7,0,public,12-06-2019
+99,KNIME User Group UK,London,United Kingdom,Europe,414,https://www.meetup.com/KNIME-User-Group-UK/,29-11-2013,38,1,public,01-06-2021
+156,Collin County Data Science Education,Plano,USA,US/Canada,471,https://www.meetup.com/Collin-County-Data-Science-Education/,17-02-2019,14,0,public,23-04-2020
+157,Data Science Festival - London,London,United Kingdom,Europe,11329,https://www.meetup.com/Data-Science-Festival-London/,25-04-2016,125,1,public,10-06-2021
+158,ODSC Zurich Data Science,Zürich,Switzerland,Europe,1069,https://www.meetup.com/Zurich-Data-Sciece-ODSC/,02-08-2018,93,3,public,08-06-2021
+159,ODSC Dublin Data Science,Dublin,Ireland,Europe,1472,https://www.meetup.com/Dublin-Data-Science-ODSC/,02-08-2018,95,4,public,08-06-2021
+160,ODSC Austin Data Science,Austin,USA,US/Canada,738,https://www.meetup.com/Data-Science-ODSC-Austin/,21-12-2018,94,1,public,02-06-2021
+161,ODSC Manchester Data Science,Manchester,United Kingdom,Europe,684,https://www.meetup.com/Data-Science-ODSC-Manchester/,16-08-2018,78,5,public,08-06-2021
+162,Data Science Festival - Berlin,Berlin,Germany,Europe,476,https://www.meetup.com/meetup-group-Berlin/,16-10-2019,63,1,public,10-06-2021
+163,ODSC Stockholm Data Science,Stockholm,Sweden,Europe,732,https://www.meetup.com/Stockholm-Data-Sciece-ODSC/,02-08-2018,68,3,public,08-06-2021
+164,ODSC Birmingham Data Science,Birmingham,United Kingdom,Europe,412,https://www.meetup.com/data-science-ODSC-Birmingham/,14-08-2018,74,5,public,08-06-2021
+165,ODSC Lviv Data Science,L'viv,Ukraine,Europe,270,https://www.meetup.com/Data-Science-ODSC-Lviv/,13-08-2018,72,3,public,08-06-2021
+166,Data Science Hub,Mumbai,India,Asia,883,https://www.meetup.com/Data-Science-Hub/,04-05-2019,60,1,public,29-05-2021
+167,Lekki Data Science Meetup,Lagos,Nigeria,Africa,2714,https://www.meetup.com/Lekki-Data-Science-Meetup/,06-03-2017,9,0,public,27-06-2020
+168,Data Science Nantes,Nantes,France,Europe,582,https://www.meetup.com/Data-Science-Nantes/,03-12-2018,8,0,public,09-03-2021
+169,Newcastle Upon Tyne Data Science Meetup,Newcastle Upon Tyne,United Kingdom,Europe,948,https://www.meetup.com/Newcastle-Upon-Tyne-Data-Science-Meetup/,08-05-2017,18,0,public,16-03-2021
+170,Data Science Talks,São Paulo,Brazil,Latin America,1309,https://www.meetup.com/Data-Science-Talks/,19-04-2019,4,0,public,01-05-2020
+171,Data Science Curitiba,Curitiba,Brazil,Latin America,1483,https://www.meetup.com/Data-Science-Curitiba/,29-09-2017,14,0,public_limited,11-02-2020
+172,Data Science and Machine Learning Meet,Pune,India,Asia,1539,https://www.meetup.com/Data-Science-and-Machine-Learning/,06-12-2017,17,0,public,18-06-2020
+173,Python And Data Science For Freshers Training and Workshop,Bangalore,India,Asia,2292,https://www.meetup.com/Python-And-Data-Science-For-Freshers-Training-Workshop/,28-08-2018,5,0,public,30-03-2020
+174,New Haven Data Science,New Haven,USA,US/Canada,532,https://www.meetup.com/New-Haven-Data-Science-Meetup/,15-03-2015,12,0,public,04-06-2018
+175,Data Science After Dark,Springfield,USA,US/Canada,255,https://www.meetup.com/Data-Science-After-Dark/,22-03-2019,8,0,public,16-06-2020
+176,Winnipeg Data Science - Projects - Machine Learning with SQL,Winnipeg,Canada,US/Canada,110,https://www.meetup.com/Winnipeg-Data-Science-Projects/,05-11-2018,12,0,public,17-03-2019
+177,KL Data Science,Kuala Lumpur,Malaysia,Asia,150,https://www.meetup.com/KL-Data-Science/,31-05-2019,0,0,public,01-01-1970
+178,Data Science Case Studies and Interview Prep,Mountain View,USA,US/Canada,542,https://www.meetup.com/DSCaseStudies/,29-04-2019,25,0,public,05-07-2020
+179,San Francisco Data Science Leadership Meetup,San Francisco,USA,US/Canada,57,https://www.meetup.com/San-Francisco-Data-Science-Leadership-Meetup/,12-02-2020,1,0,public,27-02-2020
+180,SF - Bay Area Data Science Initiative,San Francisco,USA,US/Canada,796,https://www.meetup.com/SF-Bay-Area-Data-Science-Initiative/,10-02-2020,86,2,public,24-05-2021
+181,Bay Area Data Science Enthusiasts,Palo Alto,USA,US/Canada,2257,https://www.meetup.com/Bay-Area-Data-Science-Enthusiasts/,11-02-2019,163,2,public,24-05-2021
+182,ODSC Delhi Data Science,Delhi,India,Asia,2977,https://www.meetup.com/Delhi-Data-Science-ODSC/,23-05-2019,53,2,public,10-06-2021
+183,ODSC Lisbon Data Science,Lisbon,Portugal,Europe,400,https://www.meetup.com/Lisbon-Data-Science-ODSC/,24-07-2019,59,3,public,08-06-2021
+184,ODSC Cambridge Data Science,Cambridge,United Kingdom,Europe,422,https://www.meetup.com/data-science-odsc-cambridge/,14-08-2018,73,5,public,08-06-2021
+185,Data Science Festival - Lagos,Lagos,Nigeria,Africa,410,https://www.meetup.com/Data-Science-Festival-Lagos/,22-06-2020,55,1,public,10-06-2021
+186,ODSC Milano Data Science,Milano,Italy,Europe,1828,https://www.meetup.com/Milano-Data-Science-ODSC/,03-08-2018,95,3,public,08-06-2021
+187,ODSC Edinburgh Data Science,Edinburgh,United Kingdom,Europe,571,https://www.meetup.com/Edinburgh-ODSC-Data-Science/,10-08-2018,71,5,public,08-06-2021
+188,ODSC Madrid Data Science,Madrid,Spain,Europe,947,https://www.meetup.com/Madrid-Data-Science-ODSC/,02-08-2018,79,3,public,08-06-2021
+189,ODSC Amsterdam Data Science,Amsterdam,Netherlands,Europe,858,https://www.meetup.com/Amsterdam-Data-Science-ODSC/,02-08-2018,77,3,public,08-06-2021
+190,ODSC Copenhagen Data Science,Copenhagen,Denmark,Europe,674,https://www.meetup.com/Copenhagen-Data-Sciece-ODSC/,02-08-2018,70,3,public,08-06-2021
+191,Data Science - For Beginners (Hyderabad),Hyderabad,India,Asia,1055,https://www.meetup.com/Data-Science-For-Beginners-Hyderabad/,21-02-2020,70,0,public,12-06-2021
+192,ODSC Sao Paulo Data Science,São Paulo,Brazil,Latin America,2264,https://www.meetup.com/Sao-Paulo-Data-Science-ODSC/,14-12-2018,86,1,public,02-06-2021
+193,ODSC Berlin Data Science,Berlin,Germany,Europe,697,https://www.meetup.com/Berlin-Data-Science-ODSC/,02-08-2018,75,3,public,08-06-2021
+194,ODSC Kyiv Data Science,Kyiv,Ukraine,Europe,616,https://www.meetup.com/Data-Science-Kyiv-ODSC/,13-08-2018,66,3,public,08-06-2021
+195,Data Science Festival - Leeds,Leeds,United Kingdom,Europe,289,https://www.meetup.com/Data-Science-Festival-Leeds/,16-10-2019,64,1,public,10-06-2021
+196,ODSC Los Angeles Data Science,Los Angeles,USA,US/Canada,740,https://www.meetup.com/Data-Science-ODSC-Los-Angeles/,06-09-2018,94,1,public,02-06-2021
+197,AfterWork Data Science Lagos,Lagos,Nigeria,Africa,468,https://www.meetup.com/AfterWork-Data-Science-Lagos/,27-05-2020,16,1,public,10-06-2021
+198,ODSC Glasgow Data Science,Glasgow,United Kingdom,Europe,536,https://www.meetup.com/ODSC-Glasgow-Data-Science/,10-08-2018,75,5,public,08-06-2021
+199,ODSC Chicago Data Science,Chicago,USA,US/Canada,723,https://www.meetup.com/ODSC-Chicago-Data-Science/,21-12-2018,96,1,public,02-06-2021
+200,ODSC Singapore Data Science,Singapore,Singapore,Asia,739,https://www.meetup.com/Singapore-Data-Science-ODSC/,04-02-2019,22,1,public,19-12-2020
+201,Bamako Data Science,Bamako,Mali,Africa,297,https://www.meetup.com/Bamako-Data-Science/,02-07-2018,20,0,public,05-02-2021
+202,Data Science Unplugged,Lisbon,Portugal,Europe,423,https://www.meetup.com/Data-Science-Unplugged/,03-10-2017,7,0,public,13-04-2019
+203,Palestine Data Science Meetup,Ramallah,Palestine,Asia,168,https://www.meetup.com/Palestine-Data-Science-Meetup/,21-05-2017,0,0,public,01-01-1970
+204,L3 Data Science: A Space to Learn and Grow,London,United Kingdom,Europe,149,https://www.meetup.com/L3-Data-Science-A-Space-to-Learn-and-Grow/,18-06-2020,0,0,public,01-01-1970
+205,Data Science Rotterdam,Rotterdam,Netherlands,Europe,985,https://www.meetup.com/Data-Science-Rdm/,07-03-2015,9,0,public,23-09-2020
+206,Practical Data Science,Bangalore,India,Asia,4700,https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/,05-02-2016,23,0,public,01-03-2021
+207,"Practical ML, DL & Data Science Group -Webinars & discussion",Bangalore,India,Asia,225,https://www.meetup.com/practical-data-science-group/,06-04-2021,1,0,public,08-05-2021
+208,Data Science Study Group: South Florida,Miami,USA,US/Canada,1573,https://www.meetup.com/Data-Science-Study-Group-South-Florida/,06-07-2017,65,0,public,07-10-2020
+209,Fresno Data Science Meetup,Fresno,USA,US/Canada,450,https://www.meetup.com/Fresno-Data-Science-Meetup/,17-03-2019,27,0,public,23-04-2021
+210,Open Data Science - Christchurch,Christchurch,New Zealand,Australia,21,https://www.meetup.com/Christchurch-Data-Science-Group/,07-03-2019,3,0,public,18-05-2019
+211,London Data Science Journal Club,London,United Kingdom,Europe,3411,https://www.meetup.com/London-Data-Science-Journal-Club/,15-06-2015,55,0,public,25-05-2021
+212,Fort Collins Data Science,Fort Collins,USA,US/Canada,515,https://www.meetup.com/Fort-Collins-Data-Science/,02-09-2015,135,1,public,21-04-2021
+213,Berlin Real World Data Science/Machine Learning Group,Berlin,Germany,Europe,659,https://www.meetup.com/Berlin-Real-World-Data-Science-Machine-Learning-Group/,10-04-2016,0,0,public,01-01-1970
+214,"Charlotte Women of Data Science, Machine Learning and AI",Charlotte,USA,US/Canada,123,https://www.meetup.com/Charlotte-Women-of-Data-Science-Deep-Learning-ML-AI/,27-02-2019,1,0,public,20-03-2019
+215,Applied Data Science of Atlanta,Atlanta,USA,US/Canada,1200,https://www.meetup.com/Applied-Data-Science-of-Atlanta/,26-04-2015,25,0,public,03-12-2019
+216,Data Science Festival - Dublin,Dublin,Ireland,Europe,2168,https://www.meetup.com/Data-Science-Festival-Dublin/,10-05-2018,74,1,public,10-06-2021
+217,ODSC Data Science Bengaluru,Bangalore,India,Asia,3404,https://www.meetup.com/ODSC-Data-Science-Bengaluru/,25-08-2017,18,2,public,01-02-2020
+218,Data Science Nairobi,Nairobi,Kenya,Africa,1822,https://www.meetup.com/Data-Science-Nairobi/,24-01-2016,7,0,public,22-04-2017
+219,Data Science Den Haag,Den Haag,Netherlands,Europe,136,https://www.meetup.com/Data-Science-Den-Haag/,07-04-2017,0,0,public,01-01-1970
+220,Data Science Retreat,Berlin,Germany,Europe,2093,https://www.meetup.com/Data-Science-Retreat/,07-08-2017,26,0,public,06-04-2021
+221,Practical Data Science and Machine Learning,Århus,Denmark,Europe,548,https://www.meetup.com/datasciencedk/,29-03-2014,7,0,public,19-03-2020
+222,Data Science for Non-Profits,San Diego,USA,US/Canada,508,https://www.meetup.com/Data-Science-for-Non-Profits/,15-06-2019,23,0,public,13-01-2021
+223,Learn Data Science,Vancouver,Canada,US/Canada,5507,https://www.meetup.com/LearnDataScience/,04-04-2015,356,9,public,11-06-2021
+224,Data Science Lab,London,United Kingdom,Europe,3086,https://www.meetup.com/data-science-lab/,17-01-2013,48,1,public_limited,27-05-2021
+225,Data Science Dojo – Seattle,Redmond,USA,US/Canada,3460,https://www.meetup.com/data-science-dojo/,09-11-2013,67,2,public,12-05-2021
+226,Data Science Tbilisi,Tbilisi,Georgia,Asia,1526,https://www.meetup.com/Data-Science-Tbilisi/,05-09-2016,50,0,public,20-05-2021
+227,Open Data Science Group,London,United Kingdom,Europe,310,https://www.meetup.com/opendatascience/,07-12-2013,1,0,public,05-06-2017
+228,Data Science NL,Amsterdam,Netherlands,Europe,3070,https://www.meetup.com/DataScienceNL/,02-10-2012,13,0,public,28-11-2019
+229,Charlottesville Data Science,Charlottesville,USA,US/Canada,818,https://www.meetup.com/CharlottesvilleDataScience/,24-05-2016,19,0,public,27-02-2020
+230,Southern Data Science (BBDS),Atlanta,USA,US/Canada,2112,https://www.meetup.com/Southern-Data-science/,23-03-2017,45,0,public,29-11-2020
+231,Nara Data Science and Engineering,Jakarta,Indonesia,Asia,64,https://www.meetup.com/Nara-Data-Science-and-Engineering/,01-10-2018,0,0,public,01-01-1970
+232,Westlake Village Data Science Meetup,Westlake Village,USA,US/Canada,1269,https://www.meetup.com/Westlake-Village-Data-Science-Meetup/,14-11-2013,110,0,public,13-03-2020
+233,Data Science & Business Intelligence Society of Atlanta,Atlanta,USA,US/Canada,5074,https://www.meetup.com/Atlanta-Society-for-Business-Intelligence/,02-01-2010,116,0,public,08-06-2021
+234,Data Science Johannesburg,Johannesburg,South Africa,Africa,1855,https://www.meetup.com/Data-Science-Johannesburg/,26-04-2012,34,1,public,02-03-2021
+235,Big Data Science,Fremont,USA,US/Canada,5151,https://www.meetup.com/Big-Data-Science/,25-01-2012,120,25,public,14-02-2020
+236,Silicon Valley Data Science Predictive Analytics Meetup,Santa Clara,USA,US/Canada,1316,https://www.meetup.com/Silicon-Valley-Data-Science-Predictive-Analytics-Meetup/,16-06-2016,102,0,public,05-06-2021
+237,Data Science & Big Data - Izmir,Izmir,Turkey,Europe,2161,https://www.meetup.com/Data-Science-Big-Data-Izmir/,17-12-2017,9,0,public,14-10-2020
+238,London Data Science Workshop,London,United Kingdom,Europe,5086,https://www.meetup.com/London-Data-Science-Workshop/,07-06-2015,81,0,public,03-03-2020
+239,Data Science & Machine Learning Wroclaw,Wroclaw,Poland,Europe,1833,https://www.meetup.com/Data-Science-Wroclaw/,16-03-2015,23,0,public,25-04-2019
+240,Data Science Manchester,Sale,United Kingdom,Europe,361,https://www.meetup.com/Data-Science-Manchester/,28-11-2015,0,0,public,01-01-1970
+241,Leeds Data Science Meetup,Leeds,United Kingdom,Europe,749,https://www.meetup.com/Leeds-Data-Science-Meetup/,09-04-2018,14,0,public,28-01-2020
+242,Dubai Data Science,Dubai,U.A.E.,Asia,2396,https://www.meetup.com/Dubai-Data-Science-Meetup/,16-09-2016,35,0,public,22-01-2021
+243,Hyderabad BigData and Data Science Meetup,Hyderabad,India,Asia,521,https://www.meetup.com/Hyderabad-BigData-and-Data-Science-Meetup/,26-10-2014,0,0,public,01-01-1970
+244,ROC Data Science,Rochester,USA,US/Canada,786,https://www.meetup.com/ROC-Data-Science/,11-03-2015,17,0,public,12-03-2021
+245,Data Science KC,Kansas City,USA,US/Canada,2155,https://www.meetup.com/Data-Science-KC/,21-06-2013,54,0,public,05-11-2020
+246,Women in Data Science - ATX,Austin,USA,US/Canada,1200,https://www.meetup.com/Women-in-Data-Science-ATX/,16-07-2015,134,0,public,07-05-2021
+247,San Antonio Women in Machine Learning & Data Science,San Antonio,USA,US/Canada,182,https://www.meetup.com/San-Antonio-Women-in-Machine-Learning-and-Data-Science/,19-03-2019,9,0,public_limited,26-02-2020
+248,Salt Lake City Data Science,Salt Lake City,USA,US/Canada,1422,https://www.meetup.com/Salt-Lake-City-Data-Science/,21-02-2014,32,0,public,19-02-2020
+249,San Diego Women in Data Science,San Diego,USA,US/Canada,382,https://www.meetup.com/San-Diego-Women-in-Data-Science/,12-05-2016,57,0,public_limited,31-01-2019
+250,Palo Alto Data Science Association,Palo Alto,USA,US/Canada,3166,https://www.meetup.com/Palo-Alto-Data-Science-Association/,06-11-2013,109,8,public,28-12-2019
+251,Data Science Breakfast Meetup,Sydney,Australia,Australia,1843,https://www.meetup.com/The-Sydney-Data-Science-Breakfast-Meetup-Group/,16-09-2015,59,0,public,11-11-2019
+252,Honolulu Data Science Group,Honolulu,USA,US/Canada,141,https://www.meetup.com/Honolulu-Data-Science-Group/,30-01-2015,39,0,public_limited,24-04-2019
+253,Data.Science.London,London,United Kingdom,Europe,1322,https://www.meetup.com/DSLondon/,06-02-2016,24,5,public,03-06-2021
+254,Data Science Łódź,Łódź,Poland,Europe,713,https://www.meetup.com/data-science-lodz/,04-10-2015,18,0,public,13-01-2020
+255,Data Science Indy,Indianapolis,USA,US/Canada,1068,https://www.meetup.com/dsindy/,13-02-2013,73,0,public_limited,13-02-2020
+256,Data Science Workshop,Chicago,USA,US/Canada,799,https://www.meetup.com/Data-Science-Workshop/,10-09-2015,5,0,public,29-10-2016
+257,East Bay Data Science & Engineering,Oakland,USA,US/Canada,778,https://www.meetup.com/East-Bay-Data-Science/,13-05-2016,8,0,public,31-01-2019
+258,PhillyTalent Evaluation@AI - Leverage for Data Science,Philadelphia,USA,US/Canada,387,https://www.meetup.com/PhillyTalent/,05-09-2018,36,0,public,12-05-2020
+259,Skillspire - Bellevue Data Analytics Meetup,Bellevue,USA,US/Canada,536,https://www.meetup.com/meetup-group-Skillspire-Bellevue-Data-Analytics-Meetup/,27-06-2017,7,0,public,05-06-2021
+260,Computational Social Science  University of Maryland (CS2UM),Laurel,USA,US/Canada,374,https://www.meetup.com/Computational-Social-Science-University-of-Maryland-CS2UM/,28-01-2017,7,0,public,15-05-2019
+261,Diversity in Data,Gaithersburg,USA,US/Canada,321,https://www.meetup.com/Diversity-in-data/,08-02-2017,7,0,public,10-01-2019
+262,Open Data New York ODSC,New York,USA,US/Canada,2868,https://www.meetup.com/open-data-nyc-odsc/,06-02-2008,206,1,public,02-06-2021
+263,"Barcelona Science, Machine Learning, and AI Meetup Group",Barcelona,Spain,Europe,147,https://www.meetup.com/barcelona-science-machine-learning-and-ai-meetup-group/,14-01-2021,2,0,public,12-03-2021
+264,Data Science Silesia,Katowice,Poland,Europe,529,https://www.meetup.com/Data-Science-Silesia/,07-12-2017,7,0,public,07-05-2019
+265,Big Data NL,Amsterdam,Netherlands,Europe,137,https://www.meetup.com/Big-Data-NL/,21-07-2020,6,0,public,01-09-2020
+266,Data Analytics & Business Intelligence,Bangalore,India,Asia,259,https://www.meetup.com/Data_Science_ATMinds/,20-04-2017,0,0,public,01-01-1970
+267,NOVA Data School Meetup,Fairfax,USA,US/Canada,244,https://www.meetup.com/NOVA-Data-School-Meetup/,25-03-2019,9,0,public,12-10-2019
+268,"Women in Data Science, Power and Engineering. Nuevo León",Monterrey,Mexico,Latin America,468,https://www.meetup.com/Women-inData-Women-in-Data-Science-Meetup/,14-02-2018,25,0,public,05-03-2021
+269,Data Scientists Ireland,Dublin,Ireland,Europe,4585,https://www.meetup.com/DataScientistsIreland/,19-02-2014,216,4,public,07-04-2021
+270,Saudi Data,Riyadh,Saudi Arabia,Asia,2477,https://www.meetup.com/Saudi-Data-2030/,03-01-2019,23,0,public,23-11-2020
+271,Totta data lab,Amsterdam,Netherlands,Europe,162,https://www.meetup.com/Totta-data-lab/,09-08-2017,6,0,public,27-08-2020
+272,Colorado Big Data Enthusiasts,Denver,USA,US/Canada,355,https://www.meetup.com/Colorado-Big-Data-Enthusiasts/,27-05-2015,16,0,public,23-10-2018
+273,Ankara Data Science and Big Data Meetup,Ankara,Turkey,Europe,2169,https://www.meetup.com/Ankara-Data-Science-and-Big-Data-Meetup/,16-12-2015,4,0,public,09-05-2016
+274,Data Education DC,Washington,USA,US/Canada,2816,https://www.meetup.com/Data-Education-DC/,16-01-2014,81,0,public,28-01-2021
+275,Women in Data Calgary,Calgary,Canada,US/Canada,930,https://www.meetup.com/Women-in-Data-Calgary/,19-06-2018,34,2,public,21-05-2021
+276,Waterloo Data Science and Data Engineering,Waterloo,Canada,US/Canada,1840,https://www.meetup.com/Waterloo-Data-Science-and-Data-Engineering/,15-10-2015,28,1,public,09-03-2021
+277,Valence Data Science for Human Good,Valence,France,Europe,160,https://www.meetup.com/Valence-DataScience-for-Human-Good/,27-01-2017,4,0,public,30-01-2020
+278,Bristol Data Scientists,Bristol,United Kingdom,Europe,1623,https://www.meetup.com/Bristol-Data-Scientists/,26-08-2014,19,0,public,28-01-2020
+279,Moscow Data Fest,Moscow,Russia,Europe,1620,https://www.meetup.com/Moscow-Data-Fest/,24-08-2015,5,0,public,28-04-2018
+280,Bucks County Data Science (DataBucks),Chalfont,USA,US/Canada,127,https://www.meetup.com/DataBucks/,05-10-2013,3,0,public,06-11-2014
+281,Charleston Data Science,Charleston,USA,US/Canada,829,https://www.meetup.com/Charleston-Data-Science/,05-10-2014,32,0,public,10-02-2021
+282,The Data Scientist-Chicago,Northbrook,USA,US/Canada,704,https://www.meetup.com/The-Data-Scientist_Chicago/,18-07-2014,5,0,public,02-11-2016
+283,Seattle Data Geeks,Seattle,USA,US/Canada,2519,https://www.meetup.com/seattle-data-geeks/,24-06-2013,44,0,public,02-04-2021
+284,The Perth Data Science Meetup,Perth,Australia,Australia,660,https://www.meetup.com/Perth-Data-Science/,28-03-2012,32,0,public,15-05-2019
+285,Big Data Gods,Sunnyvale,USA,US/Canada,1114,https://www.meetup.com/Big-Data-Gods/,08-04-2013,43,0,public,04-06-2021
+286,Chiang Mai Data Analytics Meetup,Chiang Mai,Thailand,Asia,56,https://www.meetup.com/Chiang-Mai-Data-Analytics-Meetup/,27-12-2018,0,0,public,01-01-1970
+287,Open Data Science (Hosted by ODSC),Cambridge,USA,US/Canada,5120,https://www.meetup.com/open-data-odsc/,20-03-2013,235,1,public,02-06-2021
+288,Data Science & Business Analytics,Denver,USA,US/Canada,2301,https://www.meetup.com/Data-Science-Business-Analytics/,08-08-2012,120,0,public,03-03-2021
+289,Santa Barbara Data Science,Santa Barbara,USA,US/Canada,310,https://www.meetup.com/Santa-Barbara-Data-Science/,23-05-2012,12,0,public,17-04-2019
+290,Portland Data Science Group,Portland,USA,US/Canada,3686,https://www.meetup.com/Portland-Data-Science-Group/,10-11-2013,298,1,public,23-02-2020
+291,Data Science - Abu Dhabi,Abu Dhabi,U.A.E.,Asia,260,https://www.meetup.com/Data-Science-Abu-Dhabi/,24-11-2016,0,0,public,01-01-1970
+292,Kaggle Days Meetup DC Maryland Virginia,Washington,USA,US/Canada,598,https://www.meetup.com/Kaggle-Days/,11-04-2019,14,0,public,22-08-2020
+293,DSpark MeetUps,Sydney,Australia,Australia,151,https://www.meetup.com/DSpark/,28-03-2018,2,0,public,02-08-2018
+294,Advanced Analytics and Research Lab,Toronto,Canada,US/Canada,2028,https://www.meetup.com/Advanced-Analytics-and-Research-Lab/,08-07-2017,37,1,public,13-10-2020
+295,Eventos MBIT SCHOOL,Madrid,Spain,Europe,933,https://www.meetup.com/mbitschool/,02-02-2018,78,0,public,15-04-2021
+296,PyData Cairo,Cairo,Egypt,Africa,2398,https://www.meetup.com/PyData-Cairo/,27-02-2018,5,0,public,02-05-2019
+297,PyData Skopje,Skopje,Macedonia,Europe,115,https://www.meetup.com/PyData-Skopje/,19-10-2019,5,0,public,19-03-2020
+298,Data Science Antalya,Antalya,Turkey,Europe,418,https://www.meetup.com/Data-Science-Antalya/,27-08-2018,10,0,public,07-02-2020
+299,Amman Data Geeks,´Amman,Jordan,Asia,97,https://www.meetup.com/AmmanDataGeeks/,17-07-2019,0,0,public,01-01-1970
+300,Cluj Data Scientists & Machine Learners,Cluj-Napoca,Romania,Europe,251,https://www.meetup.com/Cluj-Data-Scientists/,27-01-2017,1,0,public_limited,10-08-2017
+301,Kaggle Days Meetup Cologne,Köln,Germany,Europe,284,https://www.meetup.com/Kaggle-Days-Meetup-Cologne/,30-04-2019,4,0,public,23-10-2019
+302,PyData Brasília,Brasília,Brazil,Latin America,2653,https://www.meetup.com/PyData-Brasilia/,03-11-2017,23,0,public,05-11-2019
+303,PyData Jalandhar,Jalandhar,India,Asia,496,https://www.meetup.com/PyData-Jalandhar/,30-10-2018,4,0,public,27-04-2019
+304,PyData Lima,Lima,Peru,Latin America,343,https://www.meetup.com/PyData-Lima/,25-09-2018,12,0,public,30-10-2019
+305,PyData Austin,Austin,USA,US/Canada,1211,https://www.meetup.com/PyData-Austin/,22-02-2017,15,0,public,23-10-2018
+306,Bozeman Data & Analytics,Bozeman,USA,US/Canada,79,https://www.meetup.com/meetup-group-oxiATbXu/,28-04-2018,0,0,public,01-01-1970
+307,PyData Spokane,Spokane,USA,US/Canada,190,https://www.meetup.com/PyData-Spokane/,27-02-2018,15,0,public,20-03-2020
+308,Data Analytics -  Community,Las Palmas,Spain,Atlantic/Canary,231,https://www.meetup.com/Data-Analytics-Canarias-Community/,02-08-2018,5,0,public,16-05-2019
+309,CH Kaggle Competitions,Basel,Switzerland,Europe,226,https://www.meetup.com/CH-Kaggle-Competitions/,22-02-2018,7,0,public,26-04-2019
+310,DataChangers - Open Your World With Data & AI,Amsterdam,Netherlands,Europe,1079,https://www.meetup.com/datachangers/,20-04-2017,95,0,public,29-10-2020
+311,PyData Vilnius,Vilnius,Lithuania,Europe,127,https://www.meetup.com/PyData-Vilnius/,03-06-2019,1,0,public,29-02-2020
+312,PyData Indy,Indianapolis,USA,US/Canada,204,https://www.meetup.com/PyData-Indianapolis/,25-01-2016,6,0,public,05-11-2016
+313,Data Latam Meetup,San Jose,Costa Rica,Latin America,592,https://www.meetup.com/DataLatam/,05-09-2017,8,0,public,05-02-2021
+314,#DataForGood - CorrelAid Berlin,Berlin,Germany,Europe,496,https://www.meetup.com/CorrelAid/,19-06-2019,3,0,public,26-03-2020
+315,Data gym,Hartford,USA,US/Canada,17,https://www.meetup.com/data-gym/,08-04-2021,1,0,public,11-04-2021
+316,HAN Data Driven,Nijmegen,Netherlands,Europe,3,https://www.meetup.com/HAN-Data-Driven/,12-05-2020,1,0,public_limited,29-06-2020
+318,Veri Bilimi Okulu,Istanbul,Turkey,Europe,4402,https://www.meetup.com/veribilimiokulu/,04-12-2016,16,0,public,22-05-2020
+319,Kaggle Paris Meetup,Paris,France,Europe,1173,https://www.meetup.com/Kaggle-Paris-Meetup/,07-03-2014,25,0,public,22-04-2021
+320,PyData Wroclaw,Wroclaw,Poland,Europe,694,https://www.meetup.com/PyData-Wroclaw/,23-09-2016,18,0,public,20-02-2020
+321,DataVis LA,Santa Monica,USA,US/Canada,903,https://www.meetup.com/Data-Visualization-Los-Angeles-Data-Science/,28-09-2013,40,0,public,10-11-2017
+322,Analytics Vidhya Bangalore,Bangalore,India,Asia,5969,https://www.meetup.com/analytics-vidhya-bangalore/,03-11-2016,51,1,public,08-06-2021
+323,PyData Chicago,Chicago,USA,US/Canada,4562,https://www.meetup.com/PyDataChi/,04-01-2016,67,1,public,27-05-2021
+325,Data and Analytics Ho Chi Minh City,Ho Chi Minh City,Vietnam,Asia,46,https://www.meetup.com/data-and-analytics-ho-chi-minh-city/,07-04-2021,10,3,public,08-06-2021
+326,PyData Mallorca,Palma,Spain,Europe,978,https://www.meetup.com/PyData-Mallorca/,12-09-2016,23,0,public,22-01-2020
+328,Hacking Machine Learning,München,Germany,Europe,2235,https://www.meetup.com/Hacking-Machine-Learning/,23-02-2017,39,0,public,11-05-2021
+329,Data science & analytics Brno,Brno,Czech Republic,Europe,658,https://www.meetup.com/dataheads/,27-04-2015,13,0,public,12-12-2018
+331,The Data Scientist,Cambridge,USA,US/Canada,5253,https://www.meetup.com/The-Data-Scientist/,22-02-2012,42,0,public,21-08-2018
+332,"Data, Cloud and AI in Montreal",Montréal,Canada,US/Canada,3534,https://www.meetup.com/Big-Data-Developers-in-Montreal/,27-01-2015,28,0,public,01-08-2020
+333,AI + Marketing,Montréal,Canada,US/Canada,821,https://www.meetup.com/MAIC-marketing/,01-03-2016,4,5,public,27-10-2016
+334,PyData Bogotá,Bogotá,Colombia,Latin America,628,https://www.meetup.com/PyData-Bogota/,05-02-2016,5,0,public,11-11-2020
+335,Divergence Academy Meetup,Addison,USA,US/Canada,558,https://www.meetup.com/Divergence-Academy-Meetup/,22-01-2015,80,0,public,15-08-2019
+336,The Data Science Interview,México City,Mexico,Latin America,96,https://www.meetup.com/The-Data-Science-Interview/,09-06-2016,0,0,public,01-01-1970
+340,Data and Analytics Madrid,Madrid,Spain,Europe,83,https://www.meetup.com/data-and-analytics-madrid/,07-04-2021,15,4,public,10-06-2021
+341,"Data, Cloud and AI in Tokyo",Tokyo,Japan,Asia,1669,https://www.meetup.com/Big-Data-Developers-in-Tokyo/,22-10-2014,59,0,public,21-05-2021
+342,Barcelona Data Science and Machine Learning Meetup,Barcelona,Spain,Europe,2218,https://www.meetup.com/barcelona-data-science-machine-learning/,11-04-2014,57,0,public,12-05-2021
+343,"Data, Cloud and AI in Zagreb",Zagreb,Croatia,Europe,708,https://www.meetup.com/Big-Data-Developers-in-Zagreb/,11-12-2014,23,0,public,31-07-2020
+344,Data Visualization in Munich Meetup,München,Germany,Europe,2867,https://www.meetup.com/Data-Visualization-Meetup-Munich/,09-04-2016,17,0,public,23-03-2021
+345,Budapest Data & Pizza,Budapest,Hungary,Europe,234,https://www.meetup.com/Budapest-Data-Pizza/,02-09-2019,3,0,public,29-07-2020
+346,"Data, Cloud and AI in Vienna",Vienna,Austria,Europe,1674,https://www.meetup.com/Big-Data-Developers-in-Vienna/,16-05-2014,46,0,public,18-03-2021
+348,Data Scientist,London,United Kingdom,Europe,735,https://www.meetup.com/Data-Scientist/,14-07-2015,3,0,public,08-10-2016
+350,"Data, Cloud and AI in Moscow",Moscow,Russia,Europe,2892,https://www.meetup.com/Big-Data-Developers-in-Moscow/,20-05-2014,28,0,public,31-07-2020
+351,Inteligencia Artificial Argentina,Buenos Aires,Argentina,Latin America,1570,https://www.meetup.com/InteligenciaArtificialArgentina/,22-02-2016,38,0,public,12-12-2019
+352,Big Data Women,Boston,USA,US/Canada,617,https://www.meetup.com/Big-Data-Women/,27-08-2014,4,0,public,11-05-2017
+353,Data Viz Jam Sessions - MTL,Montréal,Canada,US/Canada,779,https://www.meetup.com/Data-Viz-Jam-Sessions-MTL/,02-08-2017,32,0,public,29-02-2020
+354,NY Data Wizards,New York,USA,US/Canada,1784,https://www.meetup.com/NYData/,08-04-2013,19,0,public,03-04-2019
+355,"Data, Cloud and AI in Ottawa",Ottawa,Canada,US/Canada,1748,https://www.meetup.com/Big-Data-Developers-in-Ottawa/,28-11-2014,34,0,public,01-08-2020
+356,Mississauga Big Data Analytics Meetup,Mississauga,Canada,US/Canada,625,https://www.meetup.com/Mississauga-Big-Data-Analytics-Meetup/,12-02-2014,31,0,public,13-12-2019
+357,Upstate Data Analytics,Spartanburg,USA,US/Canada,209,https://www.meetup.com/Upstate-Data-Analytics/,01-10-2014,8,0,public,20-03-2018
+358,Data+Visualization Detroit,Detroit,USA,US/Canada,821,https://www.meetup.com/Data-Visualization-Detroit/,28-07-2013,18,0,public,26-01-2017
+359,"Data, Cloud and AI in Tucson",Tucson,USA,US/Canada,376,https://www.meetup.com/Big-Data-Developers-in-Tucson/,27-01-2015,26,0,public,01-08-2020
+360,"Future Chief Data Scientists in Orange County, CA",Orange,USA,US/Canada,808,https://www.meetup.com/Future-Chief-Data-Scientists-in-Orange-County-CA/,03-02-2013,32,0,public,21-01-2018
+361,The Data Scientist - San Francisco,San Francisco,USA,US/Canada,1011,https://www.meetup.com/The-Data-Scientist_San-Francisco/,22-07-2014,6,1,public,16-11-2018
+362,Big Data Visualization Tokyo,Tokyo,Japan,Asia,327,https://www.meetup.com/Big-Data-Visualization-Tokyo/,21-02-2014,1,0,public,20-01-2016
+363,Data + AI Online Meetup,San Francisco,USA,US/Canada,6581,https://www.meetup.com/data-ai-online/,07-06-2015,78,1,public,10-06-2021
+364,NYC Data Wranglers,New York,USA,US/Canada,2973,https://www.meetup.com/NYC-Data-Wranglers/,03-01-2014,49,0,public,18-04-2017
+365,Citizen Data Scientists - Melbourne,Melbourne,Australia,Australia,4665,https://www.meetup.com/Citizen/,29-08-2015,30,0,public,26-11-2020
+366,Christchurch Big Data,Christchurch,New Zealand,Australia,377,https://www.meetup.com/Christchurch-Big-Data-Meetup/,28-02-2016,18,0,public,19-02-2018
+367,Analytics Vidhya Delhi,Delhi,India,Asia,1916,https://www.meetup.com/Analytics-Vidhya-Delhi/,10-08-2013,89,1,public,08-06-2021
+368,South Florida Business Intelligence Meetup Group,Miami,USA,US/Canada,40,https://www.meetup.com/South-Florida-Business-Intelligence-Meetup-Group/,23-07-2019,0,0,public,01-01-1970
+369,Cork Big Data & Analytics Group,Cork,Ireland,Europe,1157,https://www.meetup.com/Cork-Big-Data-Analytics-Group/,24-06-2013,26,0,public_limited,27-02-2019
+370,HKBI - Hong Kong Business Intelligence Meetup,Hong Kong,Hong Kong,Asia,369,https://www.meetup.com/HKBI-Hong-Kong-Business-Intelligence-Meetup/,18-04-2016,3,0,public,18-07-2019
+371,DataBeers Milano,Milano,Italy,Europe,721,https://www.meetup.com/DataBeers-Milano/,20-12-2017,5,0,public,21-02-2019
+372,FrenchData,Paris,France,Europe,3841,https://www.meetup.com/FrenchData/,31-01-2016,11,0,public,17-12-2019
+373,"Open Source Programming, Analytics, Automation, and More!",New York,USA,US/Canada,1121,https://www.meetup.com/Open-Source-Programming-Analytics-Automation-and-More/,16-10-2018,7,0,public,19-08-2020
+374,Life Sciences Data Scientists Meetup,Bangalore,India,Asia,186,https://www.meetup.com/Life-Sciences-Data-Scientists-Meetup/,15-11-2014,1,0,public,28-02-2015
+375,Istanbul KNIME Users,Istanbul,Turkey,Europe,773,https://www.meetup.com/Istanbul-KNIME-Users/,17-03-2014,37,1,public,01-06-2021
+376,Berlin KNIME Users,Berlin,Germany,Europe,494,https://www.meetup.com/Berlin-KNIME-Users/,04-10-2013,47,1,public,01-06-2021
+378,Boston Predictive Analytics,Cambridge,USA,US/Canada,3378,https://www.meetup.com/Boston-Predictive-Analytics/,16-07-2010,53,0,public,17-07-2016
+382,New York Open Statistical Programming Meetup,New York,USA,US/Canada,12284,https://www.meetup.com/nyhackr/,12-03-2009,132,1,public,17-05-2021
+383,Statistical Programming DC,Washington,USA,US/Canada,6312,https://www.meetup.com/stats-prog-dc/,10-08-2009,80,1,public,29-04-2020
+384,DataViz Nantes,Nantes,France,Europe,1038,https://www.meetup.com/DataViz-Nantes/,15-09-2016,14,3,public,05-05-2021
+387,Mulhouse Machine Learning Meetup,Mulhouse,France,Europe,147,https://www.meetup.com/Mulhouse-Machine-Learning-Meetup/,25-07-2014,4,0,public,26-04-2017
+388,"Stuttgart Predictive Analytics, Predictive Maintenance, AI",Stuttgart,Germany,Europe,363,https://www.meetup.com/Stuttgart-Predictive-Analytics-Predictive-Maintenance-AI/,30-01-2016,2,0,public_limited,08-11-2016
+392,Idaho Business Analytics,Boise,USA,US/Canada,38,https://www.meetup.com/Idaho-Business-Analytics/,09-01-2018,0,0,public,01-01-1970
+397,Trojmiasto Spark Meetup,Gdansk,Poland,Europe,186,https://www.meetup.com/Trojmiasto-Spark-Meetup/,27-11-2017,3,0,public,25-02-2021
+398,United Arab Emirates (UAE) Data Scientists Meetup,Abu Dhabi,U.A.E.,Asia,903,https://www.meetup.com/United-Arab-Emirates-UAE-Data-Scientists-Meetup/,13-06-2015,18,1,public_limited,14-07-2020
+401,The Virtual Business Intelligence and Analytics User Group,Smithfield,USA,US/Canada,583,https://www.meetup.com/The-RI-Microsoft-BIUG/,03-05-2012,151,0,public,24-03-2021
+402,Greater Nashville Healthcare Analytics,Nashville,USA,US/Canada,1663,https://www.meetup.com/Greater-Nashville-Healthcare-Analytics/,17-12-2015,44,0,public,17-11-2020
+408,Stamford BIT: Business Intelligence and Technologies Meetup,Stamford,USA,US/Canada,376,https://www.meetup.com/Stamford-BIT-Business-Intelligence-Technologies/,03-01-2019,8,0,public,23-09-2020
+409,"Statistical Society of Australia, Victorian Branch",Melbourne,Australia,Australia,2770,https://www.meetup.com/Statistical-Society-of-Australia-Victorian-Branch/,29-07-2013,90,1,public,18-05-2021
+411,Analytics Para Todos - Mexico Group,México City,Mexico,Latin America,117,https://www.meetup.com/analytics-mexico-group/,02-02-2021,2,0,public,19-02-2021
+412,Poznański Horyzont Danych,Poznan,Poland,Europe,190,https://www.meetup.com/Poznański-Horyzont-Danych/,04-03-2019,1,0,public,04-04-2019
+413,Analytics Para Todos - Argentina Group,Buenos Aires,Argentina,Latin America,66,https://www.meetup.com/analytics-para-todos-argentina-group/,02-02-2021,2,0,public,18-02-2021
+414,AI Guild - Delhi NCR,Delhi,India,Asia,2743,https://www.meetup.com/ai-conclave-delhi-ncr/,12-01-2017,35,0,public,19-12-2020
+415,PyData Guatemala,Guatemala,Guatemala,Latin America,272,https://www.meetup.com/PyData-Guatemala/,13-03-2018,1,0,public,21-04-2018
+416,AI & Machine Learning,Brussels,Belgium,Europe,617,https://www.meetup.com/AI-Machine-Learning/,05-01-2018,4,0,public,24-04-2020
+423,Predictive Modellers - Workshop,Hyderabad,India,Asia,314,https://www.meetup.com/Predictive-Modellers-Meetup/,21-07-2014,3,0,public,06-09-2014
+432,Machine Learning Spain,Madrid,Spain,Europe,5059,https://www.meetup.com/MachineLearningSpain/,20-08-2014,45,0,public,20-02-2020
+438,Dr. Stats,Belo Horizonte,Brazil,Latin America,50,https://www.meetup.com/Dr-Stats/,15-10-2016,1,0,public,27-10-2016
+442,GURU::mvd,Montevideo,Uruguay,Latin America,349,https://www.meetup.com/GURU-mvd/,04-10-2018,5,0,public,29-01-2020
+443,NYC Julia User Group,New York,USA,US/Canada,732,https://www.meetup.com/julia-nyc/,08-08-2013,14,0,public,17-04-2020
+446,Statistical Seminars,Washington,USA,US/Canada,1345,https://www.meetup.com/Statistical-seminars/,24-12-2015,63,0,public_limited,02-02-2019
+453,México City Business Analytics Users Group,México City,Mexico,Latin America,1518,https://www.meetup.com/Mexico-City-Business-Analytics-Users/,08-12-2014,21,0,public,17-05-2019
+454,Querétaro Business Analytics Users Group,Querétaro,Mexico,Latin America,404,https://www.meetup.com/Queretaro-Business-Analytics-Users-Group/,10-11-2015,5,0,public,02-02-2018
+457,Machine Learning Milan,Milano,Italy,Europe,3288,https://www.meetup.com/Machine-Learning-Milan/,31-05-2017,38,0,public,10-06-2021
+472,Campinas Julia Language Meetup,Campinas,Brazil,Latin America,115,https://www.meetup.com/Campinas-Julia-Language-Meetup/,06-11-2014,0,0,public,01-01-1970
+474,NYC Deep Learning Research Meetup,New York,USA,US/Canada,312,https://www.meetup.com/Deep-Learning-Research-NYC/,08-05-2018,2,0,public,24-05-2018
+475,NYC Stats Programming Master Classes,New York,USA,US/Canada,709,https://www.meetup.com/datascienceclasses/,25-01-2013,5,0,public,24-02-2014
+478,Manassas Machine Learning 101 and Beyond,Manassas,USA,US/Canada,81,https://www.meetup.com/Manassas-Machine-Learning-101-and-Beyond-Meetup-Group/,03-08-2019,1,0,public,05-10-2019
+493,Spain Quantum Computing,Madrid,Spain,Europe,226,https://www.meetup.com/Madrid-Quantum-Computing-Meetup/,29-08-2017,2,0,public,19-12-2017
+499,"Bots,AR,PWeb-Mobile,ServerlessCC & BChain  Codeseeker's",Bangalore,India,Asia,796,https://www.meetup.com/Bots-AR-PWeb-Mobile-ServerlessCC-BChain-Codeseekers/,15-12-2016,35,0,public,02-01-2021
+502,American Statistical Association - Philadelphia (ASA-P),Philadelphia,USA,US/Canada,85,https://www.meetup.com/amstatphilly/,11-08-2018,1,0,public,05-12-2019
+503,Bay Area entrepreneurs in statistics,Oakland,USA,US/Canada,1274,https://www.meetup.com/Bay-Area-entrepreneur-in-statistics/,21-07-2014,27,0,public,04-04-2020
+504,MLGeek Brussels,Brussels,Belgium,Europe,699,https://www.meetup.com/MLGeek-Brussels/,14-03-2013,24,0,public,09-05-2017
+505,Chicago Chapter American Statistical Association,Chicago,USA,US/Canada,574,https://www.meetup.com/Chicago-Chapter-American-Statistical-Association/,17-09-2012,47,0,public,20-11-2020
+506,"NYC Data Science, ML, AI Platform",New York,USA,US/Canada,690,https://www.meetup.com/NYC-Data-Science-ML-AI-Platform/,22-03-2020,84,2,public,24-05-2021
+507,ODSC Hyderabad Data Science,Hyderabad,India,Asia,1219,https://www.meetup.com/ODSC-Hyderabad-Data-Science/,19-08-2019,41,2,public,10-06-2021
+508,Data Science Alliance,Melbourne,Australia,Australia,189,https://www.meetup.com/data-science-alliance/,16-12-2020,4,0,public,04-05-2021
+509,Data Science Raleigh,Raleigh,USA,US/Canada,611,https://www.meetup.com/Data-Science-NC/,01-07-2019,10,3,public,22-04-2021
+510,ODSC Pune Data Science,Pune,India,Asia,484,https://www.meetup.com/ODSC-Pune-Data-Science/,14-02-2020,35,2,public,10-06-2021
+511,Orlando Machine Learning and Data Science,Orlando,USA,US/Canada,1488,https://www.meetup.com/Orlando-MLDS/,09-11-2016,44,0,public,29-05-2021
+512,"Chicago Data Science, ML, AI Platform",Chicago,USA,US/Canada,459,https://www.meetup.com/Chicago-Data-Science-ML-AI-Platform/,22-03-2020,84,2,public,24-05-2021
+513,ODSC Tel Aviv Data Science,Tel Aviv-Yafo,Israel,Asia,607,https://www.meetup.com/Tel-Aviv-Data-Science-ODSC/,02-08-2019,47,3,public,08-06-2021
+514,ODSC Kolkata Data Science,Kolkata,India,Asia,1253,https://www.meetup.com/ODSC-Kolkata-Data-Science/,19-08-2019,43,2,public,10-06-2021
+515,"Los Angeles Data Science,Machine Learning, AI",Los Angeles,USA,US/Canada,336,https://www.meetup.com/Los-Angeles-Data-Science-Machine-Learning-AI/,20-04-2020,66,2,public,24-05-2021
+516,ODSC Toronto Data Science,Toronto,Canada,US/Canada,625,https://www.meetup.com/ODSC-Toronto-Data-Science/,22-11-2019,65,1,public,02-06-2021
+517,ODSC Lagos Data Science,Lagos,Nigeria,Africa,1250,https://www.meetup.com/ODSC-Data-Science-Lagos/,20-09-2019,54,3,public,08-06-2021
+518,ODSC Dallas Data Science,Dallas,USA,US/Canada,368,https://www.meetup.com/ODSC-Dallas-Data-Science/,22-11-2019,62,1,public,02-06-2021
+519,Ouagadougou Data Science Meetup Group,Ouagadougou,Burkina Faso,Africa,104,https://www.meetup.com/ouagadougou-data-science/,06-02-2021,5,0,public,01-06-2021
+520,ODSC Montréal Data Science,Montréal,Canada,US/Canada,315,https://www.meetup.com/ODSC-Montreal-Data-Science/,28-11-2019,62,1,public,02-06-2021
+521,ODSC Houston Data Science,Houston,USA,US/Canada,249,https://www.meetup.com/ODSC-Houston-Data-Science/,28-11-2019,65,1,public,02-06-2021
+522,ODSC Hong Kong Data Science,Hong Kong,Hong Kong,Asia,196,https://www.meetup.com/ODSC-Hong-Kong-Data-Science/,19-08-2019,14,1,public,19-12-2020
+523,Heilbronn Data Science Gruppe,Heilbronn,Germany,Europe,18,https://www.meetup.com/Heilbronn-Data-Science-Gruppe/,19-09-2019,0,0,public,01-01-1970
+524,Copenhagen Women in Machine Learning & Data Science,Copenhagen,Denmark,Europe,176,https://www.meetup.com/Copenhagen-Women-in-Machine-Learning-and-Data-Science/,26-06-2019,1,0,public,16-12-2019
+525,Data Science MIA,Miami,USA,US/Canada,222,https://www.meetup.com/Miami-Artificial-Intelligence-Meetup-Group/,13-10-2019,9,3,public,21-04-2021
+526,Seattle Data Science in Action,Seattle,USA,US/Canada,1438,https://www.meetup.com/meetup-datascience/,12-10-2017,14,0,public,21-08-2019
+527,Data Science Philippines - Cebu Chapter,Cebu,Philippines,Asia,180,https://www.meetup.com/Data-Science-Philippines-Cebu-Chapter/,03-02-2018,0,0,public,01-01-1970
+528,Data Science Festival - Melbourne,Melbourne,Australia,Australia,387,https://www.meetup.com/Data-Science-Festival-Melbourne/,22-06-2020,37,0,public,18-12-2020
+529,BCG GAMMA Data Science Group,São Paulo,Brazil,Latin America,1012,https://www.meetup.com/BCG-GAMMA-Data-Science-Group/,13-05-2020,4,0,public,10-06-2021
+530,European Data Science Community,Paris,France,Europe,1005,https://www.meetup.com/European-data-science-community/,07-07-2019,453,19,public,11-06-2021
+531,"London Data Science, ML, AI Platform",London,United Kingdom,Europe,831,https://www.meetup.com/London-Data-Science-ML-AI-Platform/,14-09-2020,42,2,public,24-05-2021
+532,The Assembly: Data Science,Dubai,U.A.E.,Asia,605,https://www.meetup.com/The-Assembly-Data-Science/,10-11-2019,21,0,public,12-06-2021
+533,Romania Data Science 360 Think Tank Meetup Group,Bucharest,Romania,Europe,15,https://www.meetup.com/bucharest-data-science-360-think-tank-meetup-group/,05-05-2021,1,0,public,22-05-2021
+534,Learnbay : Data Science Meetup Bangalore,Bangalore,India,Asia,5441,https://www.meetup.com/Bangalore-Data-Science-Meetup-Learnbay/,19-06-2017,41,0,public,17-05-2021
+535,Aachen Data Science Meetup (OSTHUS),Aachen,Germany,Europe,98,https://www.meetup.com/Osthus-Data-Science-Meetup-Group/,19-05-2020,2,1,public,27-11-2020
+536,WiDS TLV - Women in Data Science,Tel Aviv-Yafo,Israel,Asia,20,https://www.meetup.com/WIDSxTLV/,23-05-2021,0,0,public,01-01-1970
+537,Data Science Strasbourg,Strasbourg,France,Europe,829,https://www.meetup.com/data-science-strasbourg/,03-07-2014,27,0,public,04-11-2020
+538,Psychology in Data Science,London,United Kingdom,Europe,110,https://www.meetup.com/Psychology-in-Data-Science/,07-03-2020,0,0,public,01-01-1970
+539,Norrköping Data Science Community,Norrköping,Sweden,Europe,163,https://www.meetup.com/Norrkoping-Data-Science-Community/,03-05-2019,6,0,public,03-11-2020
+541,Women in Data Science (WiDS) Cambridge,Cambridge,USA,US/Canada,109,https://www.meetup.com/Women-in-Data-Science-WiDS-Cambridge/,12-03-2020,0,0,public,01-01-1970
+542,Bronx Data Science Meetup,Bronx,USA,US/Canada,130,https://www.meetup.com/Bronx-Big-Data-Meetup/,07-11-2017,1,0,public,05-03-2018
+543,Spatial Data Science NYC,New York,USA,US/Canada,97,https://www.meetup.com/Spatial-Data-Science-NYC/,24-01-2020,2,1,public,24-03-2021
+544,Data Science and Analytics - Southern Oregon,Medford,USA,US/Canada,22,https://www.meetup.com/meetup-group-dpxhbtmz/,26-11-2020,1,0,public,05-01-2021
+545,"CREWES - Seismic, Machine Learning and Data Science Research",Calgary,Canada,US/Canada,51,https://www.meetup.com/crewes/,06-05-2021,3,0,public,10-06-2021
+546,Nürnberg Data Science,Nürnberg,Germany,Europe,101,https://www.meetup.com/Nuernberg-Data-Science/,05-02-2020,1,0,public,06-03-2020
+547,Data Science Exeter,Exeter,United Kingdom,Europe,448,https://www.meetup.com/Data-Science-Exeter/,02-03-2016,14,0,public,14-03-2018
+548,Istanbul - Quematics Data Science & Machine Learning,Istanbul,Turkey,Europe,387,https://www.meetup.com/Istanbul-Quematics-Data-Science-Machine-Learning/,04-03-2020,6,0,public,07-12-2020
+549,Southern California Data Science and Datapreneurship,Rancho Cucamonga,USA,US/Canada,204,https://www.meetup.com/Southern-California-Data-Science-and-Datapreneurship/,09-03-2019,26,0,public,21-03-2021
+551,Data Science Minneapolis,Minneapolis,USA,US/Canada,1720,https://www.meetup.com/Data-Science-Minneapolis/,05-02-2019,18,0,public,06-04-2021
+552,Data Science Malmö,Malmö,Sweden,Europe,330,https://www.meetup.com/Data-Science-Malmo/,21-05-2018,13,0,public,10-09-2019
+553,Data Science Mumbai,Mumbai,India,Asia,1192,https://www.meetup.com/ik2analytics/,23-10-2018,46,0,public,15-05-2021
+554,Eblocks Data Analytics Group (E-DAG),Johannesburg,South Africa,Africa,69,https://www.meetup.com/eblocks-data-science-group-e-dag/,12-02-2020,0,0,public,01-01-1970
+555,Data Council London Data Engineering & Science,London,United Kingdom,Europe,682,https://www.meetup.com/DataCouncil-AI-London-Data-Engineering-and-Science/,15-11-2018,10,0,public,15-12-2020
+556,Los Angeles Data Career Coaching,Los Angeles,USA,US/Canada,183,https://www.meetup.com/meetup-group-fmWRlnaK/,29-09-2018,4,0,public,21-11-2018
+557,Applied Data Science Sydney,Sydney,Australia,Australia,512,https://www.meetup.com/Applied-Data-Science-Sydney/,07-09-2019,3,0,public,06-02-2020
+558,DFW Full Stack Data Science,Plano,USA,US/Canada,109,https://www.meetup.com/DFW-Full-Stack-Data-Science/,28-06-2019,0,0,public,01-01-1970
+559,Talk Data to MX,México City,Mexico,Latin America,208,https://www.meetup.com/Learn-Data-Science-Analyitics-ML-AI-and-talk-data-to-me/,06-11-2018,2,0,public,30-11-2018
+560,SF Data Meetup,San Francisco,USA,US/Canada,571,https://www.meetup.com/SF-Data-Meetup/,26-05-2018,1,0,public,29-08-2018
+561,Decision Science,London,United Kingdom,Europe,105,https://www.meetup.com/DecisionIntelligence/,02-03-2020,0,0,public,01-01-1970
+562,Early Career & Graduate Data Scientists,London,United Kingdom,Europe,59,https://www.meetup.com/early-career-graduate-data-scientists/,19-03-2021,1,0,public,23-03-2021
+563,Data Umbrella India,Bangalore,India,Asia,33,https://www.meetup.com/data-umbrella-india/,01-12-2020,0,0,public,01-01-1970
+564,Boston Area Pharmaceutical Statistics and Data Science Group,Boston,USA,US/Canada,645,https://www.meetup.com/Boston-Area-Pharmaceutical-Statistics-and-Data-Science-Group/,09-05-2019,4,0,public,25-02-2020
+565,PGH Data Science,Pittsburgh,USA,US/Canada,1923,https://www.meetup.com/PGH-Data-Science/,02-02-2017,25,0,public,16-11-2020
+566,Silicon Valley Data Visualization Meetup,Palo Alto,USA,US/Canada,704,https://www.meetup.com/SVDataVizMeetup/,26-11-2017,24,0,public,29-02-2020
+567,"NJ Data Science - Spark, TensorFlow",Princeton,USA,US/Canada,856,https://www.meetup.com/nj-datascience/,12-04-2014,25,1,public,14-05-2019
+568,Moffitt Cancer Center Bio-Data Club,Tampa,USA,US/Canada,64,https://www.meetup.com/biodataclub/,30-05-2019,8,1,public,16-04-2021
+569,CAAG: Charlotte Area Analytics Group,Charlotte,USA,US/Canada,193,https://www.meetup.com/Charlotte-Area-Analytics-Group-CAAG-Meetup/,17-06-2019,6,0,public,03-12-2020
+570,PyData Kaduna,Kaduna,Nigeria,Africa,240,https://www.meetup.com/PyData-Kaduna/,01-03-2019,2,0,public,22-12-2019
+571,Datascrum,London,United Kingdom,Europe,676,https://www.meetup.com/Datascrum/,02-05-2019,9,0,public,23-11-2020
+572,DataSciMT,Cuiabá,Brazil,Latin America,334,https://www.meetup.com/DataSciMT/,30-09-2019,7,0,public,20-08-2020
+573,NeuralMinds Delhi Chapter,Delhi,India,Asia,1763,https://www.meetup.com/neuralminds-delhi/,17-03-2017,3,0,public,27-11-2018
+574,DataCan Meetup Group,Vancouver,Canada,US/Canada,24,https://www.meetup.com/datacan-meetup-group/,07-05-2021,0,0,public,01-01-1970
+575,Kaggle Days Meetup Sevilla,Sevilla,Spain,Europe,164,https://www.meetup.com/Kaggle-Days-Meetup-Sevilla/,20-09-2019,1,0,public,23-11-2019
+576,PyData Bulawayo,Bulawayo,Zimbabwe,Africa,23,https://www.meetup.com/PyData-Bulawayo/,07-03-2019,0,0,public,01-01-1970
+577,Workshop in Data Science,Milano,Italy,Europe,130,https://www.meetup.com/Workshop-in-Data-Science/,31-05-2019,1,0,public,08-07-2019
+578,BigNumber Copenhagen,Copenhagen,Denmark,Europe,145,https://www.meetup.com/bignumber-copenhagen/,14-08-2020,11,0,public,05-03-2021
+579,Ribeirão Preto Artificial Intelligence & Machine Learning,Ribeirão Preto,Brazil,Latin America,355,https://www.meetup.com/Ribeirao-Preto-Artificial-Intelligence-Machine-Learning/,25-08-2018,10,0,public,03-07-2019
+580,PyData Mysore,Mysore,India,Asia,448,https://www.meetup.com/PyData-Mysore/,12-11-2018,2,0,public,13-08-2019
+581,Long Island Data Analytics Meetups,Old Westbury,USA,US/Canada,338,https://www.meetup.com/Long-Island-Data-Analytics-Meetup-Group/,20-06-2019,11,0,public,05-05-2021
+582,Port City Analytics,Wilmington,USA,US/Canada,117,https://www.meetup.com/PortCityAnalytics/,07-02-2018,6,0,public,12-12-2019
+583,Artificial Intelligence Meetup (AIM) of Bloomington-Normal,Bloomington,USA,US/Canada,156,https://www.meetup.com/AIM-of-Bloomington-Normal/,06-05-2019,6,0,public,06-10-2020
+584,Aspiring Data Scientist Community,Austin,USA,US/Canada,1242,https://www.meetup.com/Aspiring-Data-Scientist-Community/,30-06-2017,26,0,public,10-03-2020
+585,QuantUniversity Meetup Group - London,London,United Kingdom,Europe,96,https://www.meetup.com/QuantUniversity-Meetup-Group/,21-07-2020,36,6,public,01-06-2021
+586,BigNumber Berlin,Berlin,Germany,Europe,193,https://www.meetup.com/bignumber-berlin/,11-08-2020,11,0,public,05-03-2021
+587,Cheminformatics and Computational biology,Rockville,USA,US/Canada,1,https://www.meetup.com/meetup-group-jebqvilo/,11-06-2021,0,0,public,01-01-1970
+588,BigNumber Stockholm,Stockholm,Sweden,Europe,193,https://www.meetup.com/bignumber-stockholm/,14-08-2020,11,0,public,05-03-2021
+589,Datapanthy@DeveLearn,Mumbai,India,Asia,37,https://www.meetup.com/Mumbai-Data-Science-Meetup-Group-Datapanthy-DeveLearn/,30-01-2020,0,0,public,01-01-1970
+591,PyData Atlanta,Atlanta,USA,US/Canada,3519,https://www.meetup.com/PyData-Atlanta/,04-01-2016,65,0,public,11-11-2020
+592,PyData Boston - Cambridge,Boston,USA,US/Canada,2199,https://www.meetup.com/PyData-Boston-Cambridge/,20-10-2014,29,0,public,27-05-2021
+593,Kaggle Days Meetup Madrid,Madrid,Spain,Europe,908,https://www.meetup.com/kaggle-days-meetup-madrid/,13-10-2018,5,0,public,04-03-2021
+594,Accenture Data Meetup,Warsaw,Poland,Europe,186,https://www.meetup.com/meetup-group-GJrQIpUu/,10-02-2018,1,0,public,15-02-2018
+596,DataMeet Pune,Pune,India,Asia,860,https://www.meetup.com/DataMeet-Pune/,14-07-2015,31,0,public,13-04-2019
+598,Hyderabad Machine Learning Foundation Meetup,Hyderabad,India,Asia,1153,https://www.meetup.com/Hyderabad-Machine-Learning-Foundation-Meetup/,02-10-2018,27,0,public,07-06-2021
+599,Data Visualization RTP,Raleigh,USA,US/Canada,319,https://www.meetup.com/Data-Visualization-RTP/,04-08-2019,10,3,public,21-04-2021
+600,GigBuzz Zürich,Zürich,Switzerland,Europe,459,https://www.meetup.com/GigBuzz-Zurich/,23-04-2018,15,0,public,27-05-2020
+601,Boston Dataquest Group,Boston,USA,US/Canada,842,https://www.meetup.com/Boston-Dataquest-Group/,27-10-2016,39,0,public,03-02-2021
+602,Arlington Statistical Computing Meetup,Arlington,USA,US/Canada,239,https://www.meetup.com/Arlington-Statistical-Computing-Meetup/,26-02-2017,3,0,public,05-07-2017
+604,Data Viz Jam Sessions,Seattle,USA,US/Canada,1418,https://www.meetup.com/Data-Viz-Jam-Sessions/,25-06-2016,64,0,public,22-02-2020
+605,IndyML,Carmel,USA,US/Canada,302,https://www.meetup.com/IndyML/,30-07-2015,19,0,public,12-05-2020
+606,Matrixian Group,Amsterdam,Netherlands,Europe,25,https://www.meetup.com/Matrixian-Group/,15-10-2018,1,0,public,20-10-2018
+607,Mu Sigma,Berlin,Germany,Europe,79,https://www.meetup.com/Mu-Sigma/,31-01-2020,1,0,public,21-10-2020
+608,Artificial Intelligence for Medical Technology,Amsterdam,Netherlands,Europe,1129,https://www.meetup.com/Artificial-Intelligence-for-Medical-Technology/,26-02-2019,7,0,public,09-12-2020
+609,Informs DFW Chapter,Dallas,USA,US/Canada,145,https://www.meetup.com/informs-dfw-chapter/,11-01-2021,2,0,public,21-04-2021
+610,Angat Tech,Manila,Philippines,Asia,141,https://www.meetup.com/Angat-Tech/,30-01-2020,2,0,public,19-03-2020
+611,Bioinformatics London,London,United Kingdom,Europe,816,https://www.meetup.com/Bioinformatics-London/,05-09-2015,41,7,public,27-05-2021
+618,IBM Power Systems Users,Southfield,USA,US/Canada,129,https://www.meetup.com/IBM-Power-Systems-Users/,19-02-2018,7,0,public,29-07-2020
+619,DataViz Wellington,Wellington,New Zealand,Australia,765,https://www.meetup.com/DataViz-Wellington/,30-08-2018,19,0,public,25-11-2020
+622,Bangalore Programmer Group - C/Data Structures and Algo,Bangalore,India,Asia,168,https://www.meetup.com/bangalore-cprogramming/,27-11-2019,2,0,public,08-12-2019
+623,The Project Management Group- Hyderabad Chapter,Hyderabad,India,Asia,33,https://www.meetup.com/the-data-discussion/,23-12-2020,1,0,public,03-01-2021
+624,Analytics Para Todos - Panama Group,Panamá,Panama,Latin America,69,https://www.meetup.com/analytics-en-espanol/,01-02-2021,2,0,public,18-02-2021
+625,RASA Community  Chapter Madrid - Spain,Madrid,Spain,Europe,61,https://www.meetup.com/RASA-Chatbots-Community-Spain/,02-03-2020,2,0,public,21-10-2020
+626,Israel Tech Challenge,Tel Aviv-Yafo,Israel,Asia,155,https://www.meetup.com/Itc-tech/,16-07-2018,15,0,public,14-01-2020
+627,Fairness in AI,Amsterdam,Netherlands,Europe,111,https://www.meetup.com/Fairness-in-AI/,19-02-2020,0,0,public,01-01-1970
+633,Triangle Julia Users,Raleigh,USA,US/Canada,153,https://www.meetup.com/Triangle-Julia-Users/,26-01-2014,14,0,public,13-12-2016
+639,CoderGirls Aarhus,Århus,Denmark,Europe,106,https://www.meetup.com/codergirls_aarhus/,03-06-2016,59,0,public,30-04-2021
+640,Digital India,Noida,India,Asia,423,https://www.meetup.com/Digital-India/,27-09-2015,0,0,public,01-01-1970
+655,Rock Solid Computer Programming,New York,USA,US/Canada,202,https://www.meetup.com/Rock-Solid-Computer-Programming/,02-07-2020,16,0,public,24-09-2020
+665,Chicago Big Data Analytics Meetup,Chicago,USA,US/Canada,1527,https://www.meetup.com/Chicago-Big-Data-Analytics-Meetup/,13-10-2013,102,6,public,29-11-2017
+666,"Big Data Analytics: Mobile, Social and Web",San Jose,USA,US/Canada,3075,https://www.meetup.com/Big-Data-Analytics-Mobile-Social-and-Web/,21-06-2011,59,0,public,22-06-2017
+667,Scotland Data Science & Technology Meetup,Edinburgh,United Kingdom,Europe,4840,https://www.meetup.com/Scotland-Data-Science-Technology-Meetup/,07-04-2015,128,1,public,12-05-2021
+671,Hannover Data Science,Hannover,Germany,Europe,497,https://www.meetup.com/Hannover-R-User-Group/,19-10-2016,17,0,public,19-09-2018
+676,SageMaker User Group Chicago,Chicago,USA,US/Canada,187,https://www.meetup.com/SageMaker-User-Group-Chicago/,03-01-2020,2,0,public,08-04-2020
+677,SageMaker User Group Columbus,Columbus,USA,US/Canada,13,https://www.meetup.com/SageMaker-User-Group-Columbus/,29-04-2020,0,0,public,01-01-1970
+678,"Video Analytics, Edge to Data Center by C.R.G & NVIDIA",Petakh Tiqwa,Israel,Asia,120,https://www.meetup.com/Video-Analytics-Edge-to-Data-Center-by-C-R-G-NVIDIA/,01-01-2019,1,0,public,22-01-2019
+683,Sisense R&D Meetup,Tel Aviv-Yafo,Israel,Asia,846,https://www.meetup.com/Sisense-R-D-Meetup/,29-11-2018,4,0,public,17-12-2019
+684,Intelligence of Things at CoE Gurugram,Gurgaon,India,Asia,46,https://www.meetup.com/Intelligence-of-Things-CoE_Gurugram/,21-11-2018,12,0,public,10-10-2020
+691,Dubai Computer programming Meetup Group,Dubai,U.A.E.,Asia,18,https://www.meetup.com/Dubai-Computer-programming-Meetup-Group/,05-06-2020,1,0,public,08-07-2020
+704,Statistical Seminars DC,Washington,USA,US/Canada,1943,https://www.meetup.com/Statistical-Seminars-DC/,07-07-2018,106,3,public,08-06-2021
+706,Applied Math and Statistics,New York,USA,US/Canada,322,https://www.meetup.com/applied-math-and-statistics/,06-02-2020,4,0,public,10-04-2021
+707,Statistics Meet n’ Greet,New York,USA,US/Canada,70,https://www.meetup.com/New-York-Applied-Statistics-Meetup-Group/,14-03-2020,0,0,public,01-01-1970
+713,EPIC Centre for Quantum Computing,Kozhikode,India,Asia,693,https://www.meetup.com/EPICCenterforQuantumComputing/,29-11-2017,54,0,public,10-06-2021
+733,Kolkata Data Science Meetup,Kolkata,India,Asia,977,https://www.meetup.com/Kolkata-Data-Science-Meetup/,03-12-2014,1,0,public,16-12-2014
+735,London Probability Theory Meetup,London,United Kingdom,Europe,127,https://www.meetup.com/London-Probability-Theory-Meetup/,09-04-2017,0,0,public,01-01-1970
+736,Stan Users - Boston/Camberville,Cambridge,USA,US/Canada,402,https://www.meetup.com/Stan-Users-Boston-Camberville/,02-09-2015,17,0,public,23-01-2019
+737,Bayesian Data Analysis,New York,USA,US/Canada,1802,https://www.meetup.com/bda-group/,22-04-2014,37,1,public,19-05-2021
+739,Brooklyn Advanced Marketing Methods,Brooklyn,USA,US/Canada,16,https://www.meetup.com/Brooklyn-Advanced-Marketing-Methods/,12-02-2019,0,0,public,01-01-1970
+741,Meetup: Bayesian Econometrics,Medellín,Colombia,Latin America,50,https://www.meetup.com/Meetup-Bayesian-Econometrics/,23-06-2016,0,0,public,01-01-1970
+742,St. Louis Machine Learning & Data Science,Saint Louis,USA,US/Canada,2351,https://www.meetup.com/St-Louis-Machine-Learning/,17-07-2012,93,0,public,11-05-2021
+743,ODSC London Data Science,London,United Kingdom,Europe,6679,https://www.meetup.com/London-Data-Science-ODSC/,29-06-2015,149,5,public,08-06-2021
+744,San Francisco Data Science ODSC,San Francisco,USA,US/Canada,4104,https://www.meetup.com/San-Francisco-ODSC/,26-06-2015,177,1,public,02-06-2021
+745,France KNIME Users,Paris,France,Europe,335,https://www.meetup.com/Paris-KNIME-Users/,27-04-2015,32,1,public,01-06-2021
+747,ODSC Data Science Boston,Cambridge,USA,US/Canada,2838,https://www.meetup.com/odsc-open-source-data-science/,09-09-2013,205,1,public,02-06-2021
+749,PyData Athens,Athens,Greece,Europe,1179,https://www.meetup.com/PyData-Athens/,13-04-2018,15,0,public,11-11-2020
+750,Quants for good,New York,USA,US/Canada,3612,https://www.meetup.com/quantsforgood/,01-11-2013,15,0,public,23-08-2017
+751,Silicon Valley Data Science Journal Club,Mountain View,USA,US/Canada,941,https://www.meetup.com/Silicon-Valley-Data-Science-Journal-Club/,01-07-2013,46,0,public,31-10-2017
+752,PyData Istanbul,Istanbul,Turkey,Europe,1448,https://www.meetup.com/PyData-Istanbul/,07-11-2016,8,0,public,11-11-2017
+754,BigNumber Austin,Austin,USA,US/Canada,160,https://www.meetup.com/bignumber-austin/,26-08-2020,9,0,public,05-03-2021
+755,Boston-area Women in Bioinformatics,Cambridge,USA,US/Canada,989,https://www.meetup.com/boston-area-womens-bioinformatics/,27-03-2015,41,1,public_limited,21-04-2021
+756,MiraiLabs | Data Science Workshops,Zürich,Switzerland,Europe,168,https://www.meetup.com/MiraiLabs-Data-Science-Workshops/,24-06-2019,1,0,public,24-09-2019
+757,PyData Cardiff Meetup,Cardiff,United Kingdom,Europe,938,https://www.meetup.com/PyData-Cardiff-Meetup/,06-02-2018,12,0,public,11-02-2020
+758,Data Science Floripa,Florianópolis,Brazil,Latin America,1935,https://www.meetup.com/dsfloripa/,16-04-2015,17,0,public,18-02-2020
+759,Colchester Scientific Programming Meetup Group,Colchester,United Kingdom,Europe,33,https://www.meetup.com/colchester-scientific-programming-meetup-group/,08-03-2021,15,0,public,11-06-2021
+760,Alpine Data Lovers,Garmisch-Partenkirchen,Germany,Europe,62,https://www.meetup.com/alpine-data-lovers/,18-12-2019,8,0,public,09-02-2021
+762,"Toronto - Cognitive, AI & Data Science Meetup",Toronto,Canada,US/Canada,12724,https://www.meetup.com/Cognitive-Toronto/,17-03-2014,133,0,public,25-02-2021
+763,"Datascience in Finance, Paris",Paris,France,Europe,556,https://www.meetup.com/Datascience-in-Finance-Paris/,23-06-2015,4,0,public,12-07-2017
+764,Find a Tech Job,London,United Kingdom,Europe,4919,https://www.meetup.com/Find-A-tech-Job-In-London/,24-05-2012,53,0,public,03-11-2020
+765,Bath Machine Learning Meetup,Bath,United Kingdom,Europe,726,https://www.meetup.com/BathML/,03-10-2016,34,0,public,23-04-2020
+766,NYCFinance,New York,USA,US/Canada,301,https://www.meetup.com/NYCFinance/,17-02-2018,181,3,public,08-06-2021
+767,Seacoast (ME/NH) Data Science Meetup,Portsmouth,USA,US/Canada,129,https://www.meetup.com/Seacoast-ME-NH-Data-Science-Meetup/,15-01-2016,1,0,public,09-02-2016
+768,Chicago Indie Hackers,Chicago,USA,US/Canada,355,https://www.meetup.com/Chicago-Indie-Hackers/,28-03-2018,13,0,public,29-07-2020
+769,LABDATA - FIA,São Paulo,Brazil,Latin America,1391,https://www.meetup.com/labdata-fia/,05-02-2020,24,0,public,01-06-2021
+770,Dutch Data Science Meetup Group,Delft,Netherlands,Europe,1093,https://www.meetup.com/Dutch-Data-Science-Meetup-Group/,09-03-2015,6,0,public,25-05-2018
+771,Timeseries Forecasting and Event Analytics Melbourne Meetup,Melbourne,Australia,Australia,1164,https://www.meetup.com/Timeseries-Forecasting-and-Event-Analytics-Melbourne-Meetup/,23-05-2018,14,0,public,05-11-2020
+772,ODSC New York Accelerate AI (AIx),New York,USA,US/Canada,3104,https://www.meetup.com/New-York-ODSC/,29-06-2015,173,1,public,02-06-2021
+773,Lyon Data Science,Lyon,France,Europe,3292,https://www.meetup.com/Lyon-Data-Science/,24-08-2015,53,0,public,01-06-2021
+774,Hitchin Data Science Meetup Group,Hitchin,United Kingdom,Europe,58,https://www.meetup.com/Hitchin-Data-Science-Meetup-Group/,23-08-2019,5,0,public,19-02-2020
+775,Burlington Data Scientists,Burlington,USA,US/Canada,788,https://www.meetup.com/Burlington-Data-Scientists/,31-07-2013,75,0,public,04-03-2020
+776,Code•It! Little Rock Dev Meetup,Little Rock,USA,US/Canada,270,https://www.meetup.com/Code-It-Little-Rock-Dev-Meetup/,09-03-2016,6,0,public,02-05-2017
+777,Colombo Haskell Meetup,Dehiwala-Mount Lavinia,Sri Lanka,Asia,377,https://www.meetup.com/Colombo-Haskell-Meetup/,30-03-2017,0,0,public,01-01-1970
+778,Chicago Cloud Foundry User Group,Chicago,USA,US/Canada,1530,https://www.meetup.com/Chicago-Cloud-Foundry-User-Group/,30-06-2014,17,0,public,07-05-2019
+779,Singapore Apache Druid® Meetup by Imply,Singapore,Singapore,Asia,53,https://www.meetup.com/Singapore-Apache-Druid-Meetup-by-Imply/,07-01-2020,5,0,public,15-12-2020
+780,Scala for Startups is merged into SF Scala,San Francisco,USA,US/Canada,249,https://www.meetup.com/Scala-for-Startups/,10-09-2011,18,0,public,28-03-2013
+781,Bay Area Apache Druid® Meetup by Imply,Burlingame,USA,US/Canada,2218,https://www.meetup.com/druidio/,05-03-2013,45,1,public,27-05-2021
+782,Applied Machine Learning by Cubonacci,Amsterdam,Netherlands,Europe,307,https://www.meetup.com/Applied-Machine-Learning-by-Cubonacci/,18-11-2019,3,0,public,21-05-2020
+783,Bay Area Chromatin and Epigenomics Group,San Francisco,USA,US/Canada,428,https://www.meetup.com/bay-area-chromatin-and-epigenomics-group/,21-12-2019,15,0,public,26-05-2021
+784,Pune Big Data Analytics Meetup,Pune,India,Asia,5724,https://www.meetup.com/meetup-group-mBrnrixQ/,22-03-2017,305,0,public,28-04-2020
+785,Kaohsiung Python Meetup,Kaohsiung,Taiwan,Asia,655,https://www.meetup.com/Kaohsiung-Python-Meetup/,09-10-2015,48,0,public,03-01-2020
+786,ATLytiCS: Analytics For Good,Atlanta,USA,US/Canada,1826,https://www.meetup.com/ATLytiCS-Analytics-For-Good/,23-06-2018,18,0,public,24-05-2021
+787,San Diego Data Science Learners,San Diego,USA,US/Canada,64,https://www.meetup.com/san-diego-data-science-learners/,13-04-2021,1,0,public,28-05-2021
+788,SwissAI Geneva Meetup,Genève,Switzerland,Europe,505,https://www.meetup.com/SwissAI-Geneva/,12-01-2011,9,0,public,23-09-2020
+789,Open Cities Lab,Durban,South Africa,Africa,568,https://www.meetup.com/Open-Cities-Lab/,18-05-2015,56,0,public,03-03-2018
+790,Greenville Data Science & Analytics Meetup,Greenville,USA,US/Canada,560,https://www.meetup.com/Greenville-Data-Science-Analytics-Meetup/,16-09-2015,23,0,public_limited,03-12-2019
+791,Chicago Big Data,Chicago,USA,US/Canada,3205,https://www.meetup.com/Chicago-Big-Data/,31-01-2011,92,0,public,02-11-2017
+792,Data Visualization Group in the Bay Area,San Francisco,USA,US/Canada,8076,https://www.meetup.com/visualizemydata/,16-08-2010,95,0,public,09-06-2021
+793,Data Science Brest,Brest,France,Europe,694,https://www.meetup.com/Data-Science-Brest/,10-11-2016,37,0,public,29-04-2021
+795,Midwest Julia Users,Chicago,USA,US/Canada,152,https://www.meetup.com/Midwest-Julia-Users/,13-10-2016,3,1,public,24-07-2020
+796,Julia User Group Munich,München,Germany,Europe,287,https://www.meetup.com/Julia-User-Group-Munich/,08-01-2020,14,0,public,03-05-2021
+797,Milwaukee Data Science,Milwaukee,USA,US/Canada,516,https://www.meetup.com/Milwaukee-Data-Science/,30-10-2013,12,0,public,10-10-2019
+798,Data Science Women,Denver,USA,US/Canada,669,https://www.meetup.com/data-science-women/,03-11-2018,7,0,public,01-02-2020
+799,AI in Financial Services,Frankfurt,Germany,Europe,302,https://www.meetup.com/AI-Big-Data-and-Network-Analysis-in-Financial-Services/,26-01-2018,4,0,public,25-05-2021
+800,Newbury AI Meetup,Newbury,United Kingdom,Europe,407,https://www.meetup.com/Newbury-AI-Meetup/,24-08-2018,34,0,public_limited,15-04-2021
+801,Argentina Data Science Meetup,Buenos Aires,Argentina,Latin America,4047,https://www.meetup.com/Argentina-Data-Science-Meetup/,26-01-2016,11,0,public,03-10-2019

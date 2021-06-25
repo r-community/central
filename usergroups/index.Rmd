@@ -1,0 +1,422 @@
+---
+title: "R User Groups | Meetup.com"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "../fragments/afterInit.html"
+    css: ["../fragments/custom.css", "css/custom.css"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(stringr)
+library(dplyr)
+library(lubridate)
+library(echarts4r)
+library(DT)
+library(leaflet)
+library(sp)
+devtools::load_all()
+```
+
+```{r read_data, include=FALSE}
+rugs_full <- read_rugs()
+rugs_cumul <- read_cumulative()
+rugs_stats <- read_summary()[[1]]
+rugs_locations <- read_summary()[[2]] %>% 
+  tidyr::pivot_longer(everything(), names_to = "location")
+
+mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+```
+
+```{r process, include=FALSE, cache=TRUE}
+location_translation <- c(
+  us_can = "US/Canada",
+  eur = "Europe",
+  latinAm = "Latin America",
+  asia = "Asia",
+  aus = "Australia",
+  afr = "Africa"
+)
+
+by_year <- rugs_cumul %>% 
+  mutate(year = floor_date(datecreated, "year")) %>% 
+  count(year)
+
+years <- by_year %>% 
+  pull(year) %>% 
+  length()
+
+per_city_region <- rugs_full %>% 
+  group_by(city, region) %>% 
+  summarise(users = sum(members)) %>% 
+  ungroup()
+
+rugs_per_country <- rugs_full %>% 
+  group_by(country) %>% 
+  summarise(group = n()) %>% 
+  ungroup()
+```
+
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../fragments/sidebar.html')
+```
+
+Home
+=====================================
+
+Row
+-------------------------------------
+
+### R User Groups
+
+```{r}
+valueBox(rugs_full %>% pull(n_distinct(name)) %>% length(), icon = "fa-users", color = "#435f9c")
+```
+
+### Members
+
+```{r}
+valueBox(rugs_full %>% pull(members) %>% sum(), icon = "fa-user", color = "#0586c4")
+```
+
+### Countries
+
+```{r}
+valueBox(rugs_full %>% pull(country) %>% unique() %>% length(), icon = "fa-globe", color = "#435f9c")
+```
+
+### Cities
+
+```{r}
+valueBox(rugs_full %>% pull(city) %>% unique() %>% length(), icon = "fa-map-marker", color = "#0586c4")
+```
+
+
+Row
+-----------------------------------------------------------------------
+
+### R User Groups | <small> Worldwide </small> {data-height=700}
+
+```{r}
+srcURL <-
+  "https://cdn.rawgit.com/turban/Leaflet.Graticule/master/examples/lib/countries-110m.js"
+v8 <- V8::v8()
+v8$source(srcURL)
+geoJSON <- geojsonio::as.json(v8$get("countries"))
+spdf <- geojsonio::geojson_sp(geoJSON)
+
+crs_wintri <-
+  "+proj=wintri +lon_0=0 +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +datum=WGS84 +no_defs +over"
+
+#laea projection
+
+leaflet(
+  rugs_full,
+  elementId = "rugs-map",
+  options =
+    leafletOptions(
+      minZoom = 1.5,
+      maxZoom = 6,
+      crs = leafletCRS(
+        crsClass = "L.Proj.CRS",
+        code = "EPSG:2163",
+        proj4def = "+proj=laea +lat_0=0 +lon_0=0 +lat_ts=300 +x_0=0 +y_0=0 +a=6370000 +b=6370000 +units=m +no_defs",
+        resolutions = c(131072, 65536, 32768, 16384, 8192, 4096, 2048)
+      )
+    )
+) %>%
+  addGraticule(style = list(
+    color = "#727171",
+    weight = 1.5,
+    opacity = 0.5
+  )) %>%
+  addPolygons(data = spdf,
+              weight = 1.2,
+              color = "#2165b6")  %>%
+  addMarkers(
+    popup = ~ paste0(
+      '<a href =',
+      fullurl,
+      '>',
+      name,
+      '</a> <br>', country, 
+      '<br> Created: ',
+      created,
+      '<br>',
+      'Members: ',
+      members,
+      '<br> Past Events: ',
+      past_events,
+      '<br> Upcoming Events: ',
+      upcoming_events,
+      '<br>Last Event Date: ',
+      last_event
+    ),
+    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = FALSE)
+  ) %>%
+  setView(10, 10, 1.5)
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Past Events
+
+```{r}
+valueBox(rugs_full %>% pull(past_events) %>% sum(), icon = "fa-calendar-minus-o", color = "#435f9c")
+```
+
+### Upcoming Events
+
+```{r}
+valueBox(rugs_full %>% pull(upcoming_events) %>% sum(), icon = "fa-calendar-plus-o", color = "#0586c4")
+```
+
+### Years
+
+```{r}
+valueBox(years, icon = "fa-calendar", color = "#435f9c")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### R User Groups Across Regions
+
+```{r}
+rugs_locations %>%
+  filter(!str_detect(location, "_m")) %>% 
+  arrange(desc(value)) %>% 
+  mutate(location = recode(location, !!!location_translation)) %>%
+  e_charts(location) %>%
+  e_bar(value, legend = FALSE, name = "Number of Groups") %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(
+      show = FALSE,
+      lineStyle = list(
+        color = "#9978ad",
+        width = 0.75,
+        type = "dotted"
+      )
+    )
+  ) %>%
+  e_x_axis(
+    splitArea = list(show = TRUE),
+    splitLine = list(show = TRUE),
+    axisLabel = list(interval = 0)
+  ) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% 
+  e_color(color = "#80bbd6") 
+```
+
+### R Users Across Regions
+
+```{r}
+rugs_locations %>%
+  filter(str_detect(location, "_m")) %>%
+  arrange(desc(value)) %>%
+  mutate(
+    location = str_remove(location, "_m"),
+    location = recode(location,!!!location_translation)
+  ) %>%
+  e_charts(location) %>%
+  e_pie(value, radius = c("20%", "70%"), name = "Number of R Users") %>%
+  e_tooltip() %>%
+  e_color(c(
+    "#4ca0c6",
+    "#34495E",
+    "#BDC3C7",
+    "#c6d6dd",
+    "#a9a9a9",
+    "#3498DB",
+    "#025376"
+  ))
+```
+
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Top Groups by Events
+
+```{r}
+rugs_full %>%
+  select(name, past_events) %>%
+  slice_max(past_events, n = 20, with_ties = FALSE) %>% 
+  arrange(desc(past_events)) %>%
+  datatable(
+    .,
+    class = 'cell-border stripe',
+    colnames = c("Name of User Group", "Events"),
+    rownames = FALSE,
+    options = list(
+      lengthMenu = c(5, 10, 20),
+      pageLength = 10,
+      scrollY = 300,
+      dom = 'ltp'
+    )
+  )
+```
+
+### Top Groups by Members
+
+```{r}
+rugs_full %>%
+  select(name, members) %>%
+  slice_max(members, n = 20, with_ties = FALSE) %>% 
+  arrange(desc(members)) %>%
+  datatable(
+    .,
+    class = 'cell-border stripe',
+    colnames = c("Name of User Group", "Members"),
+    rownames = FALSE,
+    options = list(
+      lengthMenu = c(5, 10, 20),
+      pageLength = 10,
+      scrollY = 300,
+      dom = 'ltp'
+    )
+  )
+```
+
+Row {data-height=800}
+-----------------------------------------------------------------------
+
+### Growth of User Groups
+
+```{r}
+rugs_cumul %>%
+  e_charts(datecreated) %>%
+  e_area(Freq, name = "Cumulative Group Count", legend = FALSE) %>%
+  e_datazoom(type = "slider") %>%
+  e_zoom(dataZoomIndex = 0,
+         start = 50,
+         end = 100) %>% 
+  e_tooltip(trigger = "axis") %>%
+  e_toolbox_feature("saveAsImage") %>% 
+  e_color("#6D98C3")
+```
+
+### Top 40 Destinations for R Users | <small> Users per Country </small>
+
+```{r}
+rugs_full %>% 
+  group_by(country) %>% 
+  summarise(users = sum(members)) %>% 
+  slice_max(users, n = 40, with_ties = FALSE) %>% 
+  mutate(country = str_wrap(country, 10)) %>% 
+  arrange(users) %>% 
+  e_charts(country) %>% 
+  e_bar(users, name = "Number of R Users", legend = FALSE) %>% 
+  e_tooltip(trigger = "axis") %>% 
+  e_x_axis(
+    type = "category",
+    boundaryGap = TRUE,
+    axisLabel = list(interval = 0, fontSize = 10)
+  ) %>% 
+  e_flip_coords() %>% 
+  e_color("red")
+```
+
+Row {data-height=1000}
+-----------------------------------------------------------------------
+
+### Top Destionations for R Users | <small>Users per City per Region</small>
+
+```{r}
+uscan <- plot_top_destination(per_city_region, "US/Canada")
+europe <- plot_top_destination(per_city_region, "Europe")
+latinam <- plot_top_destination(per_city_region, "Latin America")
+asia <- plot_top_destination(per_city_region, "Asia")
+australia <- plot_top_destination(per_city_region, "Australia", top_n = 10)
+africa <- plot_top_destination(per_city_region, "Africa", top_n = 10)
+
+e_arrange(uscan, europe, latinam, asia, australia, africa, rows = 2, cols = 3)
+```
+
+Row {data-height=500}
+-----------------------------------------------------------------------
+
+### R User Groups by Country {data-width=700}
+
+```{r}
+rugs_per_country %>%
+  e_charts(country) %>%
+  e_bar(group, name = "Number of Groups", legend = FALSE) %>%
+  e_tooltip(trigger = "axis") %>%
+  e_x_axis(
+    type = "category",
+    axisLabel = list(
+      interval = 0,
+      rotate = 55,
+      fontSize = 9
+    )
+  ) %>%
+  e_mark_line(data = list(type = "average",
+                          name = "AVG")) %>%
+  e_color("#0586c4") %>% 
+  e_datazoom(type = "slider", top = 1) %>%
+  e_zoom(dataZoomIndex = 0,
+         start = 0,
+         end = 50) %>%
+  e_datazoom(y_index = 0, type = "slider") %>%
+  e_toolbox(bottom = 1) %>% 
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000)
+```
+
+### Twitter {data-width=300}
+
+<a class="twitter-timeline" href="https://twitter.com/rstatstweet?ref_src=twsrc%5Etfw">Tweets by rstatstweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+Row
+-----------------------------------------------------------------------
+
+### Locate an R User Group
+
+```{r}
+rugs_full %>% 
+  arrange(desc(created)) %>% 
+  datatable(
+    .,
+    class = 'cell-border stripe',
+    caption = "Ordered by the Newest Groups",
+    extensions = "Buttons",
+    rownames = FALSE,
+    escape = FALSE,
+    filter = 'top',
+    options = list(
+      scrollY = 600,
+      lengthMenu = c(5, 10, 25, 50, 100),
+      pageLength = 10,
+      dom = '<"flex-control"lBf>tip',
+      buttons = list('copy', list(
+        extend = 'collection',
+        buttons = c('csv', 'excel'),
+        text = 'Download'
+      ))
+    )
+  )
+```
+

@@ -1,0 +1,220 @@
+---
+title: "RStudio Community"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    source_code: embed
+    self_contained: false
+    includes:
+      after_body: "../fragments/afterInit.html"
+    css: ["../fragments/custom.css", "css/custom.css"]
+---
+
+```{r load_proj, include=FALSE}
+devtools::load_all()
+```
+
+```{r load_packages, include=FALSE, cache=TRUE}
+library(flexdashboard)
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(reactable)
+library(htmltools)
+```
+
+```{r read_data, include=FALSE, cache=TRUE}
+base_url <- "https://community.rstudio.com"
+
+community_stats <- get_community_stats()
+
+top_users <- get_top_users()
+
+top_users_yearly <- get_top_users(period = "yearly")
+
+top_users_monthly <- get_top_users(period = "monthly")
+
+categories <- get_categories() %>%
+  select(
+    id,
+    name,
+    topic_url,
+    topic_count,
+    post_count,
+    topics_day,
+    topics_week,
+    topics_month,
+    topics_year,
+    topics_all_time,
+    color
+  ) %>% 
+  mutate(
+    topic_url = ifelse(is.na(topic_url), base_url, paste0(base_url, topic_url))
+  )
+```
+
+```{r proc_data, include=FALSE, cache=TRUE}
+top_users_pictured <- top_users %>%
+  make_user_links(., base_url)
+
+top_users_ypic <- top_users_yearly %>%
+  make_user_links(., base_url)
+
+top_users_mpic <- top_users_monthly %>%
+  make_user_links(., base_url)
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../fragments/sidebar.html')
+```
+
+Home
+=====================================
+Row
+-----------------------------------------------------------------------
+
+### Total Posts
+
+```{r tweets_today}
+valueBox(community_stats$total_posts, icon = "fa-comment-alt")
+```
+
+### Total Topics
+
+```{r tweeters_today}
+valueBox(community_stats$total_topics, icon = "fa-list-ul", color = "info")
+```
+
+### Total Tags
+
+```{r unique_tweets}
+valueBox(community_stats$total_tags, icon = "fa-tags")
+```
+
+### Total Users
+
+```{r likes}
+valueBox(community_stats$total_users, icon = "fa-user", color = "info")
+```
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Top 100 Users | <small> All Time </small>
+
+```{r}
+top_users_pictured %>%
+  make_user_reactable(.)
+```
+
+### Top 100 Users | <small> Yearly </small>
+
+```{r}
+top_users_ypic %>%
+  make_user_reactable(.)
+```
+
+### Top 100 Users | <small> Monthly </small>
+
+```{r}
+top_users_mpic %>%
+  make_user_reactable(.)
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Categories {data-height=500}
+
+```{r}
+categories %>% 
+  select(
+    name,
+    topic_count,
+    post_count,
+    topics_day,
+    topics_week,
+    topics_month,
+    topics_year,
+    topics_all_time
+  ) %>% 
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultSorted = "post_count",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      name = colDef(
+        name = "Name",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        cell = function(value, index) {
+          color <- categories[index, "color"]
+          
+           a(
+             href = categories[index, "topic_url"],
+             class = "category-link btn btn-xs",
+             style = str_glue('background-color: #{color};'),
+             target = "_blank",
+             value
+            )
+          
+        }
+      ),
+      topic_count = colDef(
+        name = "Topic Count",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          build_bar_col(value, categories$topic_count, "#fc5185")
+        }
+      ),
+      post_count = colDef(
+        name = "Post Count",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          build_bar_col(value, categories$post_count, "#3fc1c9")
+        }
+      ),
+      topics_day = colDef(
+        name = "Topics/Day",
+        cell = function(value) {
+          build_bar_col(value, categories$topics_day, "#fc5185")
+        }
+      ),
+      topics_week = colDef(
+        name = "Topics/Week",
+        cell = function(value) {
+          build_bar_col(value, categories$topics_week, "#3fc1c9")
+        }
+      ),
+      topics_month = colDef(
+        name = "Topics/Month",
+        cell = function(value) {
+          build_bar_col(value, categories$topics_month, "#fc5185")
+        }
+      ),
+      topics_year = colDef(
+        name = "Topics/Year",
+        cell = function(value) {
+          build_bar_col(value, categories$topics_year, "#3fc1c9")
+        }
+      ),
+      topics_all_time = colDef(
+        name = "Topics - All Time",
+        cell = function(value) {
+          build_bar_col(value, categories$topics_all_time, "#241327")
+        }
+      )
+    ),
+    compact = TRUE,
+    class = "categories-tbl"
+  )
+```
+

@@ -1,0 +1,81 @@
+.twitter-followers {
+  /* Center the table */
+  margin: 0 auto;
+  /* Reduce the table width */
+  width: 575px;
+  font-family: Karla, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.followers-header {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.followers-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Styles for the table */
+.topusers-tbl {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.topusers-tbl a {
+  color: inherit;
+}
+
+/* Styles for the column headers */
+.header {
+  border-bottom: 2px solid #555;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.header:hover {
+  background-color: #eee;
+}
+
+/* Styles for the bar charts */
+.bar-cell {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  font-family: "Fira Mono", Consolas, Monaco, monospace;
+  font-size: 13.5px;
+  white-space: pre;
+}
+
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 6px;
+  height: 14px;
+}
+
+.bar {
+  height: 100%;
+}
+
+.mr-2 {
+  margin-right: 0.8em;
+}
+
+.pa-1 {
+  padding: 0.5em;
+}
+
+.category-link.btn {
+  color: inherit;
+  border: 1px solid lightgray;
+  border-radius: 0.5em;
+}
+
+.category-link.btn:hover, .category-link.btn:focus {
+  color: inherit;
+  text-decoration: underline;
+  border-color: darkgray;
+}
