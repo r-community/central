@@ -1,0 +1,286 @@
+---
+title: "CRAN Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "../fragments/afterInit.html"
+    css: ["../../fragments/custom.css", "css/custom.css"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(rmarkdown)
+library(reactable)
+library(htmltools)
+library(tools)
+library(stringr)
+library(jsonlite)
+library(rvest)
+library(tidyr)
+library(cranlogs)
+library(ctv)
+library(dplyr)
+library(tm)
+library(lubridate)
+library(echarts4r)
+source("cran_global.R")
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../fragments/sidebar.html')
+```
+
+CRAN Statistics
+=====================================
+
+Row
+-------------------------------------
+
+### Total CRAN packages
+
+```{r}
+
+valueBox(total_pkgs, icon = "fa-project-diagram", color = "#1F51FF")
+
+```
+
+### Total count of authors
+
+```{r}
+
+valueBox(total_authors, icon = "fa-user-edit", color = "#1F51FF")
+
+```
+
+### Total Package Downloads 
+
+```{r}
+valueBox(total_dwnld, icon = "fa-download", color = "#1F51FF")
+```
+
+### Number of CRAN Task Views
+
+```{r}
+valueBox(total_cran_taskviews, icon = "fa-tasks", color = "#1F51FF")
+```
+
+Row {data-height=500}
+-----------------------------------------------------------------------
+
+### Yearly chart of total downloads
+
+```{r}
+mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+
+rownames(yearly_dwnld) <- yearly_dwnld$year
+yearly_dwnld %>% 
+  mutate(
+    Year = row.names(.)
+  ) %>%
+  e_charts(Year) %>%
+  e_bar(serie = count) %>% 
+  e_title(text = "CRAN Packages Yearly Downloads", 
+          subtext = "Frequency of Downloads", 
+          sublink = "#",
+          left = "left", top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(      show = FALSE, 
+                             lineStyle = list(
+                               color = "#999999",
+                               width = 0.75,
+                               type = "dotted"
+                             ))
+  ) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+### Word Cloud of Package Keywords | <small> CRAN Packages </small>
+
+```{r}
+d %>% 
+  head(100) %>%
+  e_color_range(freq, color, colors = "#1F51FF") %>% 
+  e_charts() %>% 
+  e_cloud(word, freq, color, shape = "circle")
+```
+
+Row {data-height=500}
+-----------------------------------------------------------------------
+
+### Most popular packages downloaded | <small> Last Month </small>
+```{r}
+mp_pkg_month <- cran_top_downloads(when = "last-month", count = 20)
+
+mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mp_pkg_month <- mp_pkg_month %>%
+  arrange(count)
+mp_pkg_month %>%
+  e_charts(x = package) %>%
+  e_bar(count, legend = FALSE, name = "Download Count") %>% 
+  e_labels(position = "right") %>% 
+  e_title("Top 20 CRAN Package Downloads - Last Month", "Package") %>% 
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(      show = FALSE, 
+                             lineStyle = list(
+                               color = "#999999",
+                               width = 0.75,
+                               type = "dotted"
+                             ))
+  ) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_flip_coords() %>% 
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+### Top 50 Keywords | <small> CRAN Packages </small>
+
+```{r}
+keyword_df %>%
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultSorted = "freq",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      word = colDef(
+        name = "Word",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+      ),
+      freq = colDef(
+        name = "Word Count",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / sum(keyword_df$freq), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
+          )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
+```
+
+Row {data-height=500}
+-----------------------------------------------------------------------
+
+### Licenses Types
+
+```{r}
+license_df %>%
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultSorted = "Frequency",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      License = colDef(
+        name = "License Name",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+      ),
+      Frequency = colDef(
+        name = "Frequency of Packages",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / sum(license_df$Frequency), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
+          )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
+```
+
+### CRAN Task Views
+
+```{r}
+taskview_df %>% 
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultSorted = "NumberOfPackages",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      TaskViews = colDef(
+        name = "Topic Name",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        cell = function(value) {
+          url <- paste0("https://cran.r-project.org/web/views/",value,".html")
+          tags$a(href = url, target = "_blank", value)
+        }
+      ),
+      NumberOfPackages = colDef(
+        name = "Number of Packages",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / sum(taskview_df$NumberOfPackages), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
+          )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
+```
+
