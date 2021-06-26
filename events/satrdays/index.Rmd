@@ -5,8 +5,8 @@ output:
     orientation: rows
     vertical_layout: scroll
     self_contained: false
-i    includes:
-      after_body: "../../../fragments/afterInit.html"
+    includes:
+      after_body: "../../fragments/afterInit.html"
     css: ["../../../fragments/custom.css", "css/custom.css"]
 ---
 

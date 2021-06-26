@@ -1,0 +1,32 @@
+---
+title: "R Calendar"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    self_contained: false
+    includes:
+      after_body: "../../fragments/afterInit.html"
+    css: ["../../fragments/custom.css", "custom.css"]
+---
+
+```{r setup, include=FALSE}
+library(htmltools)
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+includeHTML('../../fragments/sidebar.html')
+```
+
+Calendar
+=====================================
+
+Row {.data-width=1000}
+-------------------------------------
+
+```{r, echo=FALSE, results='asis'}
+includeHTML("./docs/base_calendar.html")
+```
+
