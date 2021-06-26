@@ -1,0 +1,400 @@
+---
+title: "#rstats"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "../fragments/afterInit.html"
+    css: ["../fragments/custom.css", "css/custom.css"]
+---
+
+```{r libs, include=FALSE}
+library(flexdashboard)
+library(htmltools)
+library(rtweet)
+library(dplyr)
+library(vroom)
+library(purrr)
+library(stringr)
+library(tidytext)
+library(lubridate)
+library(echarts4r)
+
+get_tweet_embed <- function(user, status_id, popularity) {
+  url <-
+    str_glue(
+      "https://publish.twitter.com/oembed?url=https://twitter.com/{user}/status/{status_id}&partner=&hide_thread=false"
+    )
+  
+  response <- httr::GET(url) %>%
+    httr::content()
+  
+  return(toString(tagList(
+    div(h4(
+      paste("Popularity:", popularity), class = "text-center"
+    ), style = "display: inline-block;border: 1px solid rgba(0, 0, 0, 0.2);border-radius: 1em;",
+    HTML(response$html))
+  )[[1]]))
+}
+```
+
+
+```{r setup, include=FALSE, cache=TRUE}
+rstats_tweets <- vroom("data/full_data.csv.gz", col_types = c(status_id = "c")) %>% 
+  filter(is_retweet == FALSE) %>% 
+  filter(str_detect(user_id, "^\\d"))
+
+tweets_timeline <- rstats_tweets %>% 
+  ts_data(by = "months")
+
+likes_timeline <- rstats_tweets %>% 
+  select(created_at, favorite_count) %>% 
+  group_by(floor_date(created_at, "month")) %>% 
+  summarise(n = sum(favorite_count, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  setNames(c("time", "n")) %>% 
+  filter(!is.na(time))
+
+n_tweets <- rstats_tweets %>% 
+  pull(status_id) %>% 
+  unique() %>% 
+  length()
+
+n_likes <- rstats_tweets %>% 
+  pull(favorite_count) %>% 
+  sum(., na.rm = TRUE)
+
+rstats_retweets <- vroom("data/full_data.csv.gz", col_select = c(user_id, created_at, status_id, is_retweet)) %>% 
+  filter(is_retweet == TRUE)
+
+retweets_timeline <- rstats_retweets %>% 
+  ts_data(by = "months")
+
+n_retweets <- rstats_retweets %>% 
+  pull(status_id) %>% 
+  unique() %>% 
+  length()
+
+users_1 <- rstats_tweets %>% 
+  pull(user_id)
+users_2 <- rstats_retweets %>% 
+  pull(user_id)
+
+n_users <- length(unique(c(users_1, users_2)))
+
+active_users <- rstats_tweets %>%
+  count(user_id, screen_name) %>%
+  slice_max(n, n = 25, with_ties = FALSE) %>%
+  mutate(
+    profile_url = str_glue("https://twitter.com/{screen_name}"),
+    screen_name = str_glue('<a href="{profile_url}" target="_blank">@{screen_name}</a>'),
+    n_tweets = formattable::color_bar("#a3c1e0", formattable::proportion)(n)
+  ) %>%
+  select(screen_name, n_tweets)
+
+mycolor <- c("#2780e3", "#003636", "#a9a9a9", "#91c8c8")
+
+top_tweets <- rstats_tweets %>%
+  mutate(popularity = favorite_count + (retweet_count * 2)) %>% 
+  slice_max(popularity, n = 10)
+```
+
+```{r text_proc, include=FALSE, cache=TRUE}
+top_words <- rstats_tweets %>% 
+  unnest_tweets(word, text) %>% 
+  anti_join(stop_words) %>% 
+  count(word, sort = TRUE) %>%
+  filter(!str_starts(word, "#|@|http")) %>% 
+  slice_max(n, n = 500)
+
+top_hashtags <- rstats_tweets %>%
+  tidyr::separate_rows(hashtags, sep = " ") %>%
+  count(hashtags) %>%
+  filter(!(hashtags %in% c("rstats", "RStats"))) %>%
+  slice_max(n, n = 50, with_ties = FALSE)
+
+emoji_regex <- "[\\uD83C-\\uDBFF\\uDC00-\\uDFFF\u2600-\u27ff]+"
+top_emojis <- rstats_tweets %>% 
+  unnest_tweets(text, text) %>% 
+  filter(str_detect(text, emoji_regex)) %>% 
+  mutate(text = str_remove_all(text, "\\w")) %>% 
+  unnest_characters(text, text) %>% 
+  count(text, sort = TRUE) %>% 
+  slice_max(n, n = 25, with_ties = FALSE) %>% 
+  mutate(
+    n_occurrences = formattable::color_bar("#99c794", formattable::proportion)(n)
+  )
+```
+
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../fragments/sidebar.html')
+```
+
+Home
+=====================================
+
+Row
+-------------------------------------
+
+### #rstats Tweets
+
+```{r}
+valueBox(n_tweets, icon = "fa-comments")
+```
+
+### #rstats Retweets
+
+```{r}
+valueBox(n_retweets, icon = "fa-retweet")
+```
+
+### Users
+
+```{r}
+valueBox(n_users, icon = "fa-user")
+```
+
+### Favorites
+
+```{r}
+valueBox(n_likes, icon = "fa-heart")
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Timeline of Tweets Per Month
+
+```{r}
+tweets_timeline %>%
+  e_charts(time) %>%
+  e_bar(n, legend = FALSE) %>%
+  e_title(
+    text = "Tweets",
+    subtext = "Timeline",
+    sublink = "#",
+    left = "left",
+    top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(
+      show = FALSE,
+      lineStyle = list(
+        color = "#999999",
+        width = 0.75,
+        type = "dotted"
+      )
+    )
+  ) %>%
+  e_x_axis(
+    splitArea = list(show = TRUE),
+    splitLine = list(show = TRUE),
+    axisLabel = list(rotate = 30, interval = 0)
+  ) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(
+    trigger = "axis",
+    formatter = htmlwidgets::JS(
+      "
+    function(params) {
+      let date = new Date(params[0].value[0])
+      let options = { year: 'numeric', month: 'short'}
+      let title = `<strong>${date.toLocaleDateString('en-US', options=options)}</strong>`
+      let num = `${params[0].value[1]} tweets`
+      return(`${title}</br>${num}`);
+    }"
+    )
+  ) %>%
+  e_color(mycolor)
+```
+
+### Timeline of Retweets per Month
+
+```{r}
+retweets_timeline %>%
+  e_charts(time) %>%
+  e_bar(n, legend = FALSE) %>%
+  e_title(
+    text = "Retweets",
+    subtext = "Timeline",
+    sublink = "#",
+    left = "left",
+    top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(
+      show = FALSE,
+      lineStyle = list(
+        color = "#999999",
+        width = 0.75,
+        type = "dotted"
+      )
+    )
+  ) %>%
+  e_x_axis(
+    splitArea = list(show = TRUE),
+    splitLine = list(show = TRUE),
+    axisLabel = list(rotate = 30, interval = 0)
+  ) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(
+    trigger = "axis",
+    formatter = htmlwidgets::JS(
+      "
+    function(params) {
+      let date = new Date(params[0].value[0])
+      let options = { year: 'numeric', month: 'short'}
+      let title = `<strong>${date.toLocaleDateString('en-US', options=options)}</strong>`
+      let num = `${params[0].value[1]} retweets`
+      return(`${title}</br>${num}`);
+    }"
+    )
+  ) %>%
+  e_color(mycolor)
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Timeline of Favorites per Month
+
+```{r}
+likes_timeline %>%
+  e_charts(time) %>%
+  e_bar(n, legend = FALSE) %>%
+  e_title(
+    text = "Favorites",
+    subtext = "Timeline",
+    sublink = "#",
+    left = "left",
+    top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(
+      show = FALSE,
+      lineStyle = list(
+        color = "#999999",
+        width = 0.75,
+        type = "dotted"
+      )
+    )
+  ) %>%
+  e_x_axis(
+    splitArea = list(show = TRUE),
+    splitLine = list(show = TRUE),
+    axisLabel = list(rotate = 30, interval = 0)
+  ) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(
+    trigger = "axis",
+    formatter = htmlwidgets::JS(
+      "
+    function(params) {
+      let date = params[0].value[0]
+      let num = `${params[0].value[1]} Favorites`
+      return(`${date}</br><b>${num}</b>`);
+    }"
+    )
+  ) %>%
+  e_color(mycolor) 
+```
+
+### Wordcloud of Tweets
+
+```{r}
+top_words %>% 
+  filter(nchar(word) >= 4) %>% 
+  e_color_range(n, color) %>% 
+  e_charts() %>% 
+  e_cloud(word, n, color, shape = "circle")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Popular Hashtags
+
+```{r}
+top_hashtags %>%
+  e_chart(hashtags) %>%
+  e_bar(n, legend = FALSE) %>%
+  e_title(
+    text = "Top 50 Hashtags",
+    sublink = "#",
+    left = "left",
+    top = 4
+  ) %>% 
+  e_x_axis(axisLabel = list(rotate = 45, interval = 0)) %>%
+  e_axis_labels(y = "Number of occurrences")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Most Popular Emojis
+
+```{r}
+top_emojis %>% 
+  select(text, n_occurrences) %>% 
+  knitr::kable(
+    format = "html",
+    escape = FALSE,
+    align = "cl",
+    col.names = c("Emoji", "# of occurrences"),
+    table.attr = 'class = "table"'
+  )
+```
+
+### Most Active Users
+
+```{r}
+active_users %>%
+  knitr::kable(
+    format = "html",
+    escape = FALSE,
+    align = "ll",
+    col.names = c("User", "# of tweets"),
+    table.attr = 'class = "table"'
+  )
+```
+
+Row
+-----------------------------------------------------------------------
+
+### 10 Most Popular Tweets {.tweet-wall}
+
+Popularity = `Number of Favorites + Number of RT * 2`
+
+```{r}
+top_tweets_html <- pmap_chr(list(top_tweets$screen_name, top_tweets$status_id, top_tweets$popularity), get_tweet_embed)
+
+shiny::HTML(str_glue("{top_tweets_html}"))
+```
+

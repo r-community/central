@@ -1,0 +1,274 @@
+---
+title: "R-Google Summer of Code | Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "../fragments/afterInit.html"
+    css: ["../fragments/custom.css", "css/custom.css"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(stringr)
+library(dplyr)
+library(lubridate)
+library(echarts4r)
+library(tidytext)
+library(DT)
+devtools::load_all()
+```
+
+```{r read_data, include=FALSE}
+gsoc_full <- read_gsoc()
+gsoc_summary <- read_summary()
+
+mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+```
+
+
+```{r proc_data, include=FALSE, cache=TRUE}
+tidy_gsoc <- gsoc_full %>%
+  tidyr::separate_rows(Mentors, sep = ',') %>%
+  mutate(Mentors = stringr::str_trim(Mentors))
+  
+
+summarised_gsoc <- tidy_gsoc %>% 
+  group_by(Year) %>% 
+  summarise(Projects = n_distinct(Project),
+            Students = n_distinct(Student),
+            Mentors = n_distinct(Mentors))
+
+word_counts <- gsoc_full %>% 
+  unnest_tokens(word, Project) %>% 
+  anti_join(stop_words) %>% 
+  count(word) %>% 
+  filter(nchar(word)>3)
+
+top_words <- word_counts %>% 
+  slice_max(n, n = 50, with_ties = FALSE)
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../fragments/sidebar.html')
+```
+
+Home
+=====================================
+
+Row
+-------------------------------------
+
+### Projects
+
+```{r}
+valueBox(gsoc_summary$summary$total_projects, icon = "fa-tasks", color = "#435f9c")
+```
+
+### Students
+
+```{r}
+valueBox(gsoc_summary$summary$total_students, icon = "fa-user", color = "#0586c4")
+```
+
+### Mentors
+
+```{r}
+valueBox(gsoc_summary$summary$total_mentors, icon = "fa-user", color = "#435f9c")
+```
+
+### Years
+
+```{r}
+valueBox(gsoc_full %>% pull(Year) %>% unique() %>% length(), icon = "fa-calendar", color = "#0586c4")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### R-GSoC Projects | <small>All-Time</small>
+
+```{r}
+max <- list(
+  name = "Max",
+  type = "max"
+)
+
+min <- list(
+  name = "Min",
+  type = "min"
+)
+
+avg <- list(
+  type = "average",
+  name = "AVG"
+)
+
+summarised_gsoc %>% 
+  mutate(Year = as.character(Year)) %>% 
+  e_charts(Year) %>% 
+  e_area(Projects, smooth = TRUE) %>% 
+  e_bar(Students) %>% 
+  e_bar(Mentors) %>% 
+  e_mark_line(data = avg) %>% 
+  e_mark_point(data = max) %>% 
+  e_mark_point(data = min) %>% 
+  e_color(c("#4ca0c6",
+    "#34495E",
+    "#BDC3C7")) %>% 
+  e_tooltip(trigger = "axis")
+
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Students Returned as Mentors
+
+```{r}
+valueBox(gsoc_summary$summary$student_mentors, icon = "fa-user-plus", color = "#435f9c")
+```
+
+### Students Returned for Another GSoC
+
+```{r}
+valueBox(gsoc_summary$summary$numberOfReturningStudents, icon = "fa-user-plus", color = "#0586c4")
+```
+
+### Projects Co-Mentored by Past Students
+
+```{r}
+valueBox(gsoc_summary$summary$numberOfMentoredProjectsByPastStudents, icon = "fa-tasks", color = "#435f9c")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Work-Product Distribution of Projects
+
+```{r}
+gsoc_full %>% 
+  count(WorkProduct) %>% 
+  e_charts() %>% 
+  e_funnel(n, WorkProduct, name = "Number of Projects") %>% 
+  e_legend(bottom = 0) %>% 
+  e_tooltip() %>% 
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("saveAsImage") %>% 
+  e_color(c(
+    "#4ca0c6",
+    "#34495E",
+    "#BDC3C7",
+    "#c6d6dd",
+    "#a9a9a9",
+    "#3498DB",
+    "#025376"
+  ))
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Word Cloud of Project Titles
+
+```{r}
+top_words %>% 
+  e_color_range(n, color) %>% 
+  e_charts() %>% 
+  e_cloud(word, n, color, shape = "circle")
+```
+
+### Word Count
+
+```{r}
+top_words %>% 
+  slice_max(n, n = 20, with_ties = FALSE) %>%
+  arrange(n) %>% 
+  e_chart(word) %>% 
+  e_bar(n, legend = FALSE, name = "Word Count") %>% 
+  e_x_axis(
+    type = "category",
+    axisLabel = list(
+      interval = 0,
+      fontSize = 10 
+    )) %>% 
+  e_tooltip(trigger = "axis") %>% 
+  e_flip_coords() %>% 
+  e_title(
+    text = "Top 20 Words"
+  )
+```
+
+
+Row
+-----------------------------------------------------------------------
+
+### Top Student-Mentors
+
+```{r}
+gsoc_summary$top5_student_mentors %>% 
+  datatable(
+    .,
+    class = 'cell-border stripe',
+    colnames = c("Students Returning as Mentors", "Projects Mentored"),
+    rownames = FALSE,
+    options = list(
+      pageLength = 5,
+      scrollY = FALSE,
+      dom = 't'
+    )
+  )
+```
+
+### Most Active Mentors
+
+```{r}
+gsoc_summary$top15_active_mentors %>%
+  datatable(
+    .,
+    class = 'cell-border stripe',
+    colnames = c("Name of Mentor", "Projects"),
+    rownames = FALSE,
+    options = list(
+      pageLength = 15,
+      scrollY = 300,
+      dom = 't'
+    )
+  )
+```
+
+
+Row
+-----------------------------------------------------------------------
+
+### Find a Project
+
+```{r}
+gsoc_full %>%
+  arrange(desc(Year)) %>% 
+  datatable(
+    .,
+    class = 'cell-border stripe',
+    extensions = "Buttons",
+    rownames = FALSE,
+    escape = FALSE,
+    filter = 'top',
+    options = list(
+      scrollY = 600,
+      lengthMenu = c(20, 25, 50, 100),
+      pageLength = 20,
+      dom = '<"flex-control"lBf>tip',
+      buttons = list('copy', list(
+        extend = 'collection',
+        buttons = c('csv', 'excel'),
+        text = 'Download'
+      ))
+    )
+  )
+```

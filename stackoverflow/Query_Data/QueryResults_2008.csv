@@ -1,0 +1,113 @@
+Id,PostTypeId,AcceptedAnswerId,ParentId,CreationDate,DeletionDate,Score,ViewCount,Body,OwnerUserId,OwnerDisplayName,LastEditorUserId,LastEditorDisplayName,LastEditDate,LastActivityDate,Title,Tags,AnswerCount,CommentCount,FavoriteCount,ClosedDate,CommunityOwnedDate,ContentLicense,PostId,TagId,Id,TagName,Count,ExcerptPostId,WikiPostId,IsModeratorOnly,IsRequired
+"77434","1","","","2008-09-16 21:40:29","","324","375256","<p>Suppose I have a vector that is nested in a dataframe one or two levels.  Is there a quick and dirty way to access the last value, without using the <code>length()</code> function?  Something ala PERL's <code>$#</code> special var?</p>
+
+<p>So I would like something like:</p>
+
+<pre><code>dat$vec1$vec2[$#]
+</code></pre>
+
+<p>instead of</p>
+
+<pre><code>dat$vec1$vec2[length(dat$vec1$vec2)]
+</code></pre>
+","14008","","3768871","","2019-04-29 03:29:16","2019-07-31 05:17:56","How to access the last value in a vector?","<r><dataframe><vector>","11","3","64","","","CC BY-SA 3.0","77434","4452","4452","r","404559","3625322","3607736","",""
+"79709","1","","","2008-09-17 03:39:16","","5","948","<p>I have a function inside a loop inside a function. The inner function acquires and stores a large vector of data in memory (as a global variable... I'm using ""R"" which is like ""S-Plus""). The loop loops through a long list of data to be acquired. The outer function starts the process and passes in the list of datasets to be acquired.</p>
+
+<pre><code>for (dataset in list_of_datasets) {
+  for (datachunk in dataset) {
+    &lt;process datachunk&gt;
+    &lt;store result? as vector? where?&gt;
+  }
+}
+</code></pre>
+
+<p>I programmed the inner function to store each dataset before moving to the next, so all the work of the outer function occurs as side effects on global variables... a big no-no. Is this better or worse than collecting and returning a giant, memory-hogging vector of vectors? Is there a superior third approach?</p>
+
+<p>Would the answer change if I were storing the data vectors in a database rather than in memory? Ideally, I'd like to be able to terminate the function (or have it fail due to network timeouts) without losing all the information processed prior to termination.</p>
+","","James Lavin","202229","","2016-04-28 13:21:33","2016-04-28 13:21:33","Worse sin: side effects or passing massive objects?","<memory><r><function><global-variables><side-effects>","7","2","2","","","CC BY-SA 3.0","79709","4452","4452","r","404559","3625322","3607736","",""
+"102056","1","","","2008-09-19 14:03:25","","133","15207","<p>""The Google"" is very helpful... unless your language is called ""R,"" in which case it spits out tons of irrelevant stuff.</p>
+
+<p>Anyone have any search engine tricks for ""R""? There are some specialized websites, like those below, but how can you tell Google you mean ""R"" the language? If I'm searching for something specific, I'll use an R-specific term, like ""cbind."" Are there other such tricks?</p>
+
+<ul>
+<li><a href=""http://rweb.stat.umn.edu/R/doc/html/search/SearchEngine.html"" rel=""noreferrer"">rweb.stat.umn.edu</a></li>
+<li><a href=""http://www.rseek.org/"" rel=""noreferrer"">www.rseek.org</a></li>
+<li><a href=""http://search.r-project.org/"" rel=""noreferrer"">search.r-project.org</a>   </li>
+<li><a href=""http://www.dangoldstein.com/search_r.html"" rel=""noreferrer"">www.dangoldstein.com/search_r.html</a></li>
+</ul>
+","","James Lavin","428790","","2012-05-21 09:57:35","2014-07-10 18:16:29","How to search for ""R"" materials?","<r><search><r-faq>","21","2","61","2013-01-05 06:45:02","","CC BY-SA 2.5","102056","4452","4452","r","404559","3625322","3607736","",""
+"103312","1","","","2008-09-19 16:09:26","","5","4624","<p>How can I test for the <code>EOF</code> flag in R? </p>
+
+<p>For example:</p>
+
+<pre><code>f &lt;- file(fname, ""rb"")
+while (???) {
+    a &lt;- readBin(f, ""int"", n=1)
+}
+</code></pre>
+","","Liu Chang","2227834","Nils","2015-04-23 05:16:26","2015-04-23 05:16:26","How to test for the EOF flag in R?","<r><file><file-io><eof>","2","0","","","","CC BY-SA 3.0","103312","4452","4452","r","404559","3625322","3607736","",""
+"359438","1","","","2008-12-11 14:02:06","","10","21325","<p>Does anyone know of any optimization packages out there for R (similar to NUOPT for S+)?</p>
+","2173","wcm","1315767","","2014-01-01 17:20:25","2019-06-20 13:44:55","Optimization packages for R","<r><mathematical-optimization>","7","4","9","","","CC BY-SA 3.0","359438","4452","4452","r","404559","3625322","3607736","",""
+"255697","1","255992","","2008-11-01 15:48:30","","4","1491","<p>I'm looking for a an <code>R</code> package which can be used to train a Dirichlet prior from counts data.  I'm asking for a colleague who's using <code>R</code>, and don't use it myself, so I'm not too sure how to look for packages.  It's a bit hard to search for, because ""R"" is such a nonspecific search string.  There doesn't seem to be anything on <a href=""http://cran.r-project.org/web/packages/index.html"" rel=""nofollow noreferrer"">CRAN</a>, but are there any other places to look?</p>
+","1941213","Alex Coventry","","","","2008-11-01 19:29:54","Is there an R package for learning a Dirichlet prior from counts data","<math><r><statistics><bayesian><dirichlet>","1","0","1","","","CC BY-SA 2.5","255697","4452","4452","r","404559","3625322","3607736","",""
+"127137","1","314391","","2008-09-24 13:31:07","","24","25039","<p>Does anyone know a good online resource for example of R code?</p>
+
+<p>The programs do not have to be written for illustrative purposes, I am really just looking for some places where a bunch of R code has been written to give me a sense of the syntax and capabilities of the language?</p>
+
+<p><strong>Edit:</strong> I have read the basic documentation on the main site, but was wondering if there was some code samples or even programs that show how R is used by different people.</p>
+","277","kaybenleroll","","user1131435","2013-04-12 00:18:57","2013-04-12 00:18:57","Sample Code for R?","<r>","15","0","11","2012-03-31 23:40:40","","CC BY-SA 2.5","127137","4452","4452","r","404559","3625322","3607736","",""
+"95007","1","1463249","","2008-09-18 17:59:19","","74","31991","<p>I've been mystified by the R quantile function all day.  </p>
+
+<p>I have an intuitive notion of how quantiles work, and an M.S. in stats, but boy oh boy, the documentation for it is confusing to me.  </p>
+
+<p>From the docs:</p>
+
+<blockquote>
+  <p>Q[i](p) = (1 - gamma) x[j] + gamma
+  x[j+1],</p>
+</blockquote>
+
+<p>I'm with it so far.  For a type <em>i</em> quantile, it's an interpolation between x[j] and x [j+1], based on some mysterious constant <em>gamma</em></p>
+
+<blockquote>
+  <p>where 1 &lt;= i &lt;= 9, (j-m)/n &lt;= p &lt;
+  (j-m+1)/ n, x[j] is the jth order
+  statistic, n is the sample size, and m
+  is a constant determined by the sample
+  quantile type. Here gamma depends on
+  the fractional part of g = np+m-j. </p>
+</blockquote>
+
+<p>So, how calculate j?   m?</p>
+
+<blockquote>
+  <p>For the continuous sample quantile
+  types (4 through 9), the sample
+  quantiles can be obtained by linear
+  interpolation between the kth order
+  statistic and p(k): </p>
+  
+  <p>p(k) = (k - alpha) / (n - alpha - beta
+  + 1),
+  where α and β are constants determined
+  by the type. Further, m = alpha + p(1
+  - alpha - beta), and gamma = g.</p>
+</blockquote>
+
+<p>Now I'm really lost.  p, which was a constant before, is now apparently a function.  </p>
+
+<p>So for Type 7 quantiles, the default...</p>
+
+<blockquote>
+  <p>Type 7</p>
+  
+  <p>p(k) = (k - 1) / (n - 1). In this case, p(k) = mode[F(x[k])]. This is used by S. </p>
+</blockquote>
+
+<p>Anyone want to help me out?  In particular I'm confused by the notation of p being a function and a constant, what the heck <em>m</em> is, and now to calculate j for some particular <em>p</em>.  </p>
+
+<p>I hope that based on the answers here, we can submit some revised documentation that better explains what is going on here.  </p>
+
+<p><a href=""https://svn.r-project.org/R/trunk/src/library/stats/R/quantile.R"" rel=""noreferrer"">quantile.R source code</a>
+or type:  quantile.default</p>
+","15842","Gregg Lind","56338","dreeves","2009-08-03 04:56:08","2019-11-07 22:29:19","Explain the quantile() function in R","<math><r><statistics>","3","0","26","","","CC BY-SA 2.5","95007","4452","4452","r","404559","3625322","3607736","",""

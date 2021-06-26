@@ -1,0 +1,280 @@
+---
+title: "SatRdays Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "../../fragments/afterInit.html"
+    css: ["../../../fragments/custom.css", "css/custom.css"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(dplyr)
+library(DT)
+options(DT.options = list(scrollY="250px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
+library(echarts4r)
+source("satRdays.R")
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../../fragments/sidebar.html')
+```
+
+
+SatRdays
+=====================================
+
+Row
+-------------------------------------
+
+### Total Events
+
+```{r}
+
+valueBox(total_events, icon = "fa-calendar", color = "darkblue")
+
+```
+
+### Total Speakers
+
+```{r}
+
+valueBox(number_of_speakers, icon = "fa-users", color = "darkblue")
+
+```
+
+### Sponsors Gained
+
+```{r}
+valueBox(number_of_sponsors, icon = "fa-hand-holding-usd", color = "darkblue")
+```
+
+### Events - Cities
+
+```{r}
+valueBox(length(satrday_city$City), icon = "fa-building", color = "darkblue")
+```
+
+### Events - Countries
+
+```{r}
+valueBox(length(satrday_country$Country), icon = "fa-globe", color = "darkblue")
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Timeline of Events Per Year
+
+```{r}
+mycolor <- c("#00008B","#003636","#a9a9a9", "#91c8c8")
+rownames(satrday_year) <- satrday_year$Year
+satrday_year %>% 
+  mutate(
+    Year = row.names(.)
+  ) %>%
+  e_charts(Year) %>%
+  e_bar(serie = count) %>% 
+  e_title(text = "satRdays Events", 
+          subtext = "Timeline", 
+          sublink = "#",
+          left = "left", top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(      show = FALSE, 
+                             lineStyle = list(
+                               color = "#999999",
+                               width = 0.75,
+                               type = "dotted"
+                             ))
+  ) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Continent-wise Events Distribution
+
+```{r}
+satrday_continent <- satrday_continent[with(satrday_continent, order(count)), ]
+mycolor <- c("#00008B","#003636","#a9a9a9", "#91c8c8")
+satrday_continent %>%
+  e_charts(x = Continent) %>%
+  e_bar(count, legend = FALSE, name = "Events Count") %>% 
+  e_labels(position = "right") %>% 
+  e_title("satRdays Events from 2016-2020", "Continents") %>% 
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(      show = FALSE, 
+                             lineStyle = list(
+                               color = "#999999",
+                               width = 0.75,
+                               type = "dotted"
+                             ))
+  ) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_flip_coords() %>% 
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Quarterwise Events Distribution
+
+```{r}
+mycolor <- c("#00008B","#003636","#a9a9a9", "#91c8c8")
+
+satrday_quarter %>%
+  e_charts(Quarter) %>%
+  e_line(serie = count) %>%
+  e_title(text = "Quarter-wise satRdays Events from 2016-2020", 
+          subtext = "Q1: Jan-Mar || Q2: Apr-Jun || Q3: Jul-Sep || Q4: Oct-Dec", 
+          sublink = "#",
+          left = "left", top = 4) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list( show = FALSE, 
+                        lineStyle = list(
+                          color = "#999999",
+                          width = 0.75,
+                          type = "dotted"))) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+
+```
+
+
+Row {data-height=500}
+-----------------------------------------------------------------------
+
+### Top Cities for satRdays Events
+
+```{r}
+satrday_city <- satrday_city[with(satrday_city, order(-count)), ]
+
+datatable(satrday_city, filter = "top",
+          extensions = c(
+            "Buttons","Scroller"),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            buttons = list(
+              "csv",
+              "excel")),
+          colnames = c(
+            "Frequency" = "count"
+          ))
+```
+
+### Top Countries for satRdays Events
+
+```{r}
+satrday_country <- satrday_country[with(satrday_country, order(-count)), ]
+
+datatable(satrday_country, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            buttons = list(
+              "csv",
+              "excel")),
+          colnames = c(
+            "Frequency" = "count"
+          ))
+```
+
+Row {data-height=500}
+-----------------------------------------------------------------------
+
+### Top Most Active Sponsors
+
+```{r}
+datatable(sponsordf, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            buttons = list(
+              "csv",
+              "excel")),
+          colnames = c(
+            "Sponsors" = "sponsor_name",
+            "Frequency of Sponsorship" = "Freq"
+          ))
+```
+
+### Top Events Speakers
+
+```{r}
+datatable(speakerdf, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            buttons = list(
+              "csv",
+              "excel")),
+          colnames = c(
+            "Frequency of Participations" = "Freq"
+          ))
+```
