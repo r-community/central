@@ -27,6 +27,6 @@ Row {.data-width=1000}
 -------------------------------------
 
 ```{r, echo=FALSE, results='asis'}
-includeHTML("./docs/base_calendar.html")
+includeHTML("https://r-community.github.io/event-explorer/base_calendar.html")
 ```
 
