@@ -1,0 +1,267 @@
+---
+title: "Upcoming R Events Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "../../fragments/afterInit.html"
+    css: ["../../../fragments/custom.css", "css/custom.css"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(dplyr)
+library(DT)
+library(countrycode)
+options(DT.options = list(scrollY="300px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
+library(echarts4r)
+library(leaflet)
+library(sp)
+library(V8)
+library(geojsonio)
+source("upcoming_events.R")
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../../fragments/sidebar.html')
+```
+
+
+Upcoming R Events
+=====================================
+
+Row
+-------------------------------------
+
+### Upcoming Events
+
+```{r}
+
+valueBox(total_events, icon = "fa-calendar", color = "#1F51FF")
+
+```
+
+### Registered Attendees - Till Now
+
+```{r}
+
+valueBox(total_rsvp, icon = "fa-users", color = "#1F51FF")
+
+```
+
+### Events - Cities
+
+```{r}
+valueBox(total_cities, icon = "fa-building", color = "#1F51FF")
+```
+
+### Events - Countries
+
+```{r}
+valueBox(total_countries, icon = "fa-globe", color = "#1F51FF")
+```
+
+Row {data-height=800}
+-------------------------------------
+
+### Mapping of Upcoming Events | <small> Worlwide </small>
+
+```{r}
+srcURL <- "https://cdn.rawgit.com/turban/Leaflet.Graticule/master/examples/lib/countries-110m.js"
+v8 <- V8::v8()
+v8$source(srcURL)
+
+geoJSON <- geojsonio::as.json(v8$get("countries"))
+spdf <- geojsonio::geojson_sp(geoJSON)
+
+crs_wintri <- "+proj=wintri +lon_0=0 +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +datum=WGS84 +no_defs +over"
+
+leaflet(upcoming_event, 
+        elementId = "rugs-map",
+        options =
+          leafletOptions(minZoom = 1.5,maxZoom = 6,
+                         crs = leafletCRS(crsClass = "L.Proj.CRS",
+                                          code = "EPSG:2163",
+                                          proj4def = "+proj=laea +lat_0=0 +lon_0=0 +lat_ts=300 +x_0=0 +y_0=0 +a=6370000 +b=6370000 +units=m +no_defs",
+                                          resolutions = c(131072,65536, 32768, 16384, 8192, 4096, 2048)
+                                          
+                         )))%>%
+  addGraticule(style = list(color = "#727171", weight = 1.5, opacity = 0.5)) %>%
+  addPolygons(data = spdf, weight = 1.2, color = "#2165b6")  %>% 
+  addMarkers(popup = ~paste0('<a href =',link,'>', name, '</a><br> Event Date & Time: ', time, 
+                             '<br> Country:', venue_country_name, '<br>',
+                             '<br> Organizing Group: ',group_name,
+                             '<br> RSVP Count: ',yes_rsvp_count, '<br> Venue: ', venue_name
+  ),
+  clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = FALSE)
+  ) %>% setView(10,10,1.5)
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Upcoming R Events across Countries
+
+```{r}
+mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+
+events_by_country %>% 
+  arrange(desc(Events_freq)) %>%
+  e_charts(venue_country_name) %>%
+  e_bar(serie = Events_freq) %>% 
+  e_title(text = "R Events Distribution Country Wise", 
+          subtext = "Frequency of Events", 
+          sublink = "#",
+          left = "left", top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(      show = FALSE, 
+                             lineStyle = list(
+                               color = "#999999",
+                               width = 0.75,
+                               type = "dotted"
+                             ))
+  ) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Upcoming R Events across Regions
+
+```{r}
+mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+
+region_df %>% 
+  arrange(desc(Events_freq)) %>%
+  e_charts(group_region) %>%
+  e_bar(serie = Events_freq) %>% 
+  e_title(text = "R Events Frequencies Region Wise", 
+          subtext = "Frequency of Events", 
+          sublink = "#",
+          left = "left", top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(      show = FALSE, 
+                             lineStyle = list(
+                               color = "#999999",
+                               width = 0.75,
+                               type = "dotted"
+                             ))
+  ) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row {data-height=590}
+-----------------------------------------------------------------------
+
+### Top R events by attendance
+
+```{r}
+datatable(top_events, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            buttons = list(
+              "csv",
+              "excel")),
+          colnames = c(
+            "Event Name" = "name",
+            "Frequency of Participations" = "attendees"
+          )
+          )
+```
+
+### Types of Events 
+
+```{r}
+mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+
+event_type %>% 
+  arrange(desc(Count)) %>%
+  e_charts(EventType) %>%
+  e_bar(serie = Count) %>% 
+  e_title(text = "Online Vs In-person Events", 
+          subtext = "Frequency of Events", 
+          sublink = "#",
+          left = "left", top = 4
+  ) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(      show = FALSE, 
+                             lineStyle = list(
+                               color = "#999999",
+                               width = 0.75,
+                               type = "dotted"
+                             ))
+  ) %>%
+  e_x_axis(splitArea = list(show = TRUE),
+           splitLine = list(show = TRUE),
+           axisLabel= list(rotate = 30,interval = 0)) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("dataView") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row {data-height=550}
+-----------------------------------------------------------------------
+
+### Data-table
+
+```{r}
+datatable(display_df, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            buttons = list(
+              "csv",
+              "excel"))
+          )
+```
