@@ -26,7 +26,11 @@ Calendar
 Row {.data-width=1000}
 -------------------------------------
 
-```{r, echo=FALSE, results='asis'}
-includeHTML("https://r-community.github.io/event-explorer/base_calendar.html")
-```
+<iframe
+    src="https://r-community.github.io/event-explorer/base_calendar.html" 
+    frameborder="0"
+    style="overflow:hidden;height:100%;width:100%" 
+    height="100%" 
+    width="100%">
+</iframe>
 
