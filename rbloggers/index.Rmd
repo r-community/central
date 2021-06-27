@@ -1,0 +1,218 @@
+---
+title: "R-bloggers"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "../fragments/afterInit.html"
+    css: ["../fragments/custom.css", "css/custom.css"]
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(rvest)
+library(stringr)
+library(dplyr)
+library(echarts4r)
+source("global.R")
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../fragments/sidebar.html')
+```
+
+Home
+=====================================
+
+Row
+-------------------------------------
+
+### Blog Posts
+
+```{r}
+valueBox(total_posts, icon = "fa-comments", color = "white")
+```
+
+
+### Contributing Blogs
+
+```{r}
+
+valueBox(contributing_blogs, icon = "fa-comments", color = "white")
+
+```
+
+### Years of blogging
+
+```{r}
+valueBox(length(yearly_blog_count), icon = "fa-calendar", color = "white")
+```
+
+### Twitter Followers
+
+```{r}
+valueBox("92800", icon = "fa-twitter", color = "white")
+```
+
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Timeline of Posts Per Month
+
+```{r}
+
+mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+
+Rbloggers_df %>% 
+  filter(Year != 2005 & Year != 2006 & Year !=2007) %>%
+  group_by(Year) %>% 
+  e_charts(Month,timeline = TRUE) %>% 
+  e_area(Blog_Count) %>%
+    e_title(text = "R-Bloggers", 
+            subtext = "Timeline", 
+            sublink = "#",
+            left = "left", top = 4
+    ) %>%
+    e_y_axis(
+      splitArea = list(show = TRUE),
+      axisPointer = list(      show = FALSE, 
+                               lineStyle = list(
+                                 color = "#999999",
+                                 width = 0.75,
+                                 type = "dotted"
+                               ))
+    ) %>%
+    e_x_axis(splitArea = list(show = TRUE),
+             splitLine = list(show = TRUE),
+             axisLabel= list(rotate = 30,interval = 0)) %>%
+    e_toolbox_feature(feature = "magicType",
+                      type = list("area", "line", "bar")) %>%
+    e_toolbox_feature("restore") %>%
+    e_toolbox_feature(feature = "reset") %>%
+    e_toolbox_feature("dataView") %>%
+    e_toolbox_feature("saveAsImage") %>%
+    e_animation(duration = 1000) %>%
+    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+
+```
+
+### 
+<div class="chart-title" style="margin-top:-10px">Blog Posts Per Year</div>
+<ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+				<li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gear"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Map 1</a>
+                        </li>
+                        <li><a href="#">Map 2</a>
+                        </li>
+                      </ul>
+                    </li>
+      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    
+
+
+```{r}
+
+mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+  
+  yearly_df %>% e_charts(Year) %>% 
+    e_bar(serie = Count) %>% 
+    e_title(text = "R-Bloggers", 
+            subtext = "Blog count", 
+            sublink = "#",
+            left = "left", top = 4
+    ) %>%
+    e_y_axis(
+      splitArea = list(show = TRUE),
+      axisPointer = list(      show = FALSE, 
+                               lineStyle = list(
+                                 color = "#999999",
+                                 width = 0.75,
+                                 type = "dotted"
+                               ))
+    ) %>%
+    e_x_axis(splitArea = list(show = TRUE),
+             splitLine = list(show = TRUE),
+             axisLabel= list(rotate = 30,interval = 0)) %>%
+    e_toolbox_feature(feature = "magicType",
+                      type = list("area", "line", "bar")) %>%
+    e_toolbox_feature("restore") %>%
+    e_toolbox_feature(feature = "reset") %>%
+    e_toolbox_feature("dataView") %>%
+    e_toolbox_feature("saveAsImage") %>%
+    e_animation(duration = 1000) %>%
+    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+# creating a combined bar-plot using ggplot2
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+### Monthly Count of Blog Posts 2005 - 2020
+
+```{r}
+avg <- list(
+  type = "average",
+  name = "AVG",
+  title = "Average"
+)
+Rbloggers_df <- Rbloggers_df %>% filter(Year != format(Sys.Date() ,"%Y"))
+x <- factor(Rbloggers_df$Month, levels = month.name)
+monthly_blog_count <- tapply(Rbloggers_df$Blog_Count, x, FUN=sum)
+monthly_df <- data.frame(Month=names(monthly_blog_count), Count=monthly_blog_count)
+monthly_df$Month <- factor(monthly_df$Month, levels = unique(monthly_df$Month))
+
+mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+  
+  monthly_df %>% e_charts(Month) %>% 
+    e_bar(serie = Count) %>% 
+    e_title(text = "R-Bloggers", 
+            subtext = "Blog count", 
+            sublink = "#",
+            left = "left", top = 4
+    ) %>%
+    e_y_axis(
+      splitArea = list(show = TRUE),
+      axisPointer = list(      show = FALSE, 
+                               lineStyle = list(
+                                 color = "#999999",
+                                 width = 0.75,
+                                 type = "dotted"
+                               ))
+    ) %>%
+    e_x_axis(splitArea = list(show = TRUE),
+             splitLine = list(show = TRUE),
+             axisLabel= list(rotate = 30,interval = 0)) %>%
+     e_mark_line(data = avg) %>% 
+    e_labels(show = TRUE) %>%
+    e_toolbox_feature(feature = "magicType",
+                      type = list("area", "line", "bar")) %>%
+    e_toolbox_feature("restore") %>%
+    e_toolbox_feature(feature = "reset") %>%
+    e_toolbox_feature("dataView") %>%
+    e_toolbox_feature("saveAsImage") %>%
+    e_animation(duration = 1000) %>%
+    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+
+```
+
+### Top Contributors
+
+```{r}
+
+```
+
+
+```{js}
+
+```
