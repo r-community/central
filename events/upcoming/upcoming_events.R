@@ -12,8 +12,8 @@ total_countries <- length(unique(upcoming_event$venue_country_name))
 # R Events by Country
 events_by_country <- upcoming_event %>%
   group_by(venue_country_name) %>%
-  summarise(Events_freq = n())
-events_by_country <- events_by_country[order(events_by_country$Events_freq, decreasing = FALSE), ]
+  summarise(Events_frequency = n())
+events_by_country <- events_by_country[order(events_by_country$Events_frequency, decreasing = FALSE), ]
 events_by_country <- tail(events_by_country, 25)
 
 
@@ -27,14 +27,14 @@ regions <- c("Africa", "Latin America", "Asia", "Australia", "US/Canada", "Europ
 value1 <- c(event_by_region$Events_freq[1], event_by_region$Events_freq[2], event_by_region$Events_freq[3], 
             event_by_region$Events_freq[4]+event_by_region$Events_freq[7], event_by_region$Events_freq[5]+event_by_region$Events_freq[8], 
             event_by_region$Events_freq[6])
-region_df <- data.frame(group_region=regions, Events_freq=value1)
+region_df <- data.frame(group_region=regions, Events_frequency=value1)
 
 
 # Top R Events by attendance
 top_events <- upcoming_event %>%
   group_by(name) %>%
-  summarise(attendees = sum(yes_rsvp_count))
-top_events <- top_events[order(top_events$attendees, decreasing = TRUE), ]
+  summarise(Attendees = sum(yes_rsvp_count))
+top_events <- top_events[order(top_events$Attendees, decreasing = TRUE), ]
 
 
 # Event Type - Online vs In-person 
