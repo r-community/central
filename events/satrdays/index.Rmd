@@ -7,7 +7,7 @@ output:
     self_contained: false
     includes:
       after_body: "../../fragments/afterInit.html"
-    css: ["../../../fragments/custom.css", "css/custom.css"]
+    css: ["../../fragments/custom.css", "css/custom.css"]
 ---
 
 ```{r setup, include=FALSE}
