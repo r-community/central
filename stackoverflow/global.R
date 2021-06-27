@@ -9,17 +9,14 @@ stack_data %>% modify_if(is.factor, as.character) -> stack_data
 
 
 questions_count <- length(unique(stack_data$Id))
-
 answers_count <- sum(stack_data$AnswerCount)
-
 comment_count <- sum(stack_data$CommentCount)
-
 pgviews_count <- sum(stack_data$ViewCount)
-
 likes_count <- sum(stack_data$FavoriteCount, na.rm = T)
-
 users_count <- length(unique(stack_data$OwnerUserId))
-
+stack_summary <- data.frame(qcount = questions_count , acount = answers_count, 
+                            ccount = comment_count, pvcount = pgviews_count, 
+                            lcount = likes_count, ucount = users_count)
 
 stdf <- data.frame(Date = stack_data$CreationDate, QId = stack_data$Id, ACount = stack_data$AnswerCount, 
                    CCount = stack_data$CommentCount, UId = stack_data$OwnerUserId, VCount = stack_data$ViewCount)
@@ -79,3 +76,11 @@ year_top_ques
 
 
 
+stackOverflow_json <- jsonlite::toJSON(list(summary = stack_summary, overall_count = stdf, yearly_qaccount = yearly_count_qac, 
+                                            yearly_vcount = yearly_count_views, top20_tags = tag_df, 
+                                            top20_rec_q = recent_top_ques, yearly_top50ques = year_top_ques), 
+                                       auto_unbox = FALSE, pretty = TRUE)
+writeLines(stackOverflow_json, "stackOverflow_summary.json")
+
+
+json_file <- fromJSON("stackOverflow_summary.json")

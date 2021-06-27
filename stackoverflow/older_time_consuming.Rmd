@@ -1,0 +1,297 @@
+---
+title: "StackOverflow"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      after_body: "afterInit.html"
+      #beforeInit: "afterInit.html"
+      
+    css: css/custom.css
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(rvest)
+library(stringr)
+library(dplyr)
+library(data.table)
+library(purrr)
+library(lubridate)
+library(echarts4r)
+library(tidyverse)
+library(DT)
+options(DT.options = list(scrollY="250px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
+source("global.R")
+```
+
+Sidebar {.sidebar data-width=200}
+=====================================
+
+<div class="sidebar-pages">
+<a class="navlink" href="#home" data-toggle="tab" aria-expanded="false"><i class="fa fa-home"></i> Home</a>
+</div>
+
+Home
+=====================================
+
+Row
+-------------------------------------
+
+### Questions Asked
+
+```{r}
+
+valueBox(questions_count, icon = "fa-question-circle", color = "#435f9c")
+
+```
+
+### Answers Provided
+
+```{r}
+valueBox(answers_count, icon = "fa-check-square", color = "#0586c4")
+```
+
+### Comments
+
+```{r}
+valueBox(comment_count, icon = "fa-comments", color = "#435f9c")
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Timeline chart of Questions, Answers and Comments per month
+
+```{r}
+
+mycolor <- c("#4ca0c6","#34495E","#BDC3C7","#003636","#a9a9a9", "#91c8c8")
+
+stdf %>% 
+  filter(Year !=2008) %>%
+  group_by(Year) %>% 
+  e_charts(Month,timeline = TRUE) %>% 
+  e_area(QCount) %>%
+  e_area(ACount) %>%
+  e_area(CCount) %>%
+    e_title(text = "StackOverflow", 
+            subtext = "Timeline", 
+            sublink = "#",
+            left = "left", top = 4
+    ) %>%
+    e_y_axis(
+      splitArea = list(show = TRUE),
+      axisPointer = list(      show = FALSE, 
+                               lineStyle = list(
+                                 color = "#999999",
+                                 width = 0.75,
+                                 type = "dotted"
+                               ))
+    ) %>%
+    e_x_axis(splitArea = list(show = TRUE),
+             splitLine = list(show = TRUE),
+             axisLabel= list(rotate = 30,interval = 0)) %>%
+    e_toolbox_feature(feature = "magicType",
+                      type = list("area", "line", "bar")) %>%
+    e_toolbox_feature("restore") %>%
+    e_toolbox_feature(feature = "reset") %>%
+    e_toolbox_feature("dataView") %>%
+    e_toolbox_feature("saveAsImage") %>%
+    e_animation(duration = 1000) %>%
+    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row
+-------------------------------------
+
+### Page Views
+
+```{r}
+valueBox(pgviews_count, icon = "fa-eye", color = "#0586c4")
+```
+
+### Likes
+
+```{r}
+valueBox(likes_count, icon = "fa-thumbs-up", color = "#435f9c")
+```
+
+### Users
+
+```{r}
+valueBox(users_count, icon = "fa-users", color = "#0586c4")
+```
+
+Row {data-height=400}
+-----------------------------------------------------------------------
+
+### Yearly Count of Questions, Answers and Comments (2008 - 2021)
+
+```{r}
+mycolor <- c("#4ca0c6","#34495E","#BDC3C7","#003636","#a9a9a9", "#91c8c8")
+rownames(yearly_count_qac) <- yearly_count_qac$Year
+  yearly_count_qac %>% 
+    mutate(
+      Year = row.names(.)
+    ) %>%
+    e_charts(Year) %>% 
+    e_bar(serie = QCount) %>% 
+    e_bar(serie = ACount) %>%
+    e_bar(serie = CCount) %>%
+    e_title(text = "StackOverflow", 
+            subtext = "Statistics", 
+            sublink = "#",
+            left = "left", top = 4
+    ) %>%
+    e_y_axis(
+      splitArea = list(show = TRUE),
+      axisPointer = list(      show = FALSE, 
+                               lineStyle = list(
+                                 color = "#999999",
+                                 width = 0.75,
+                                 type = "dotted"
+                               ))
+    ) %>%
+    e_x_axis(splitArea = list(show = TRUE),
+             splitLine = list(show = TRUE),
+             axisLabel= list(rotate = 30,interval = 0)) %>%
+    e_toolbox_feature(feature = "magicType",
+                      type = list("area", "line", "bar")) %>%
+    e_toolbox_feature("restore") %>%
+    e_toolbox_feature(feature = "reset") %>%
+    e_toolbox_feature("dataView") %>%
+    e_toolbox_feature("saveAsImage") %>%
+    e_animation(duration = 1000) %>%
+    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row {data-height=600}
+-----------------------------------------------------------------------
+
+### Top 20 Tags
+
+```{r}
+datatable(tag_df, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"
+          ),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            scrollY = 300,
+            scroller = TRUE,
+            buttons = list(
+              "csv",
+              "excel"
+            )
+          ),
+          colnames = c(
+            "Tag Name" = "tag_vector",
+            "Frequency" = "Freq"
+          ))
+```
+
+### Yearly Count of Page Views (2008 - 2021)
+
+```{r}
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
+rownames(yearly_count_views) <- yearly_count_views$Year  
+  yearly_count_views %>%
+    mutate(
+      Year = row.names(.)
+    ) %>%
+    e_charts(Year) %>% 
+    e_bar(serie = VCount) %>%
+    e_title(text = "StackOverflow", 
+            subtext = "Page Views", 
+            sublink = "#",
+            left = "left", top = 4
+    ) %>%
+    e_y_axis(
+      splitArea = list(show = TRUE),
+      axisPointer = list(      show = FALSE, 
+                               lineStyle = list(
+                                 color = "#999999",
+                                 width = 0.75,
+                                 type = "dotted"
+                               ))
+    ) %>%
+    e_x_axis(splitArea = list(show = TRUE),
+             splitLine = list(show = TRUE),
+             axisLabel= list(rotate = 30,interval = 0)) %>%
+    e_toolbox_feature(feature = "magicType",
+                      type = list("area", "line", "bar")) %>%
+    e_toolbox_feature("restore") %>%
+    e_toolbox_feature(feature = "reset") %>%
+    e_toolbox_feature("dataView") %>%
+    e_toolbox_feature("saveAsImage") %>%
+    e_animation(duration = 1000) %>%
+    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+```
+
+Row {data-height=600}
+-----------------------------------------------------------------------
+
+### Top 50 Questions - Page Views past 30 days
+
+```{r}
+datatable(recent_top_ques, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"
+          ),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            scrollY = 300,
+            scroller = TRUE,
+            buttons = list(
+              "csv",
+              "excel"
+            )
+          ),
+          colnames = c(
+            "Question Id" = "Question_Id"
+          ))
+```
+
+Row {data-height=600}
+-----------------------------------------------------------------------
+
+### Top 50 Questions - Page Views per year
+
+```{r}
+datatable(year_top_ques, filter = "top",
+          extensions = c(
+            "Buttons",
+            "Scroller"
+          ),
+          rownames = FALSE,
+          style = "bootstrap",
+          class = "compact",
+          width = "auto",
+          options = list(
+            dom = "Blrtip",
+            deferRender = TRUE,
+            scrollY = 300,
+            scroller = TRUE,
+            buttons = list(
+              "csv",
+              "excel"
+            )
+          ),
+          colnames = c(
+            "Question Id" = "Question_Id"
+          ))
+```
