@@ -44,10 +44,12 @@ get_tweet_embed <- function(user, status_id, popularity) {
 ```{r setup, include=FALSE, cache=TRUE}
 rstats_tweets <- vroom("data/full_data.csv.gz", col_types = c(status_id = "c")) %>% 
   filter(is_retweet == FALSE) %>% 
-  filter(str_detect(user_id, "^\\d"))
+  filter(str_detect(user_id, "^\\d")) %>% 
+  filter(floor_date(created_at, "month") != as_date("2020-05-01"))
 
 tweets_timeline <- rstats_tweets %>% 
-  ts_data(by = "months")
+  ts_data(by = "months") %>% 
+  filter(time != as_datetime("2020-05-08"))
 
 likes_timeline <- rstats_tweets %>% 
   select(created_at, favorite_count) %>% 
@@ -67,10 +69,12 @@ n_likes <- rstats_tweets %>%
   sum(., na.rm = TRUE)
 
 rstats_retweets <- vroom("data/full_data.csv.gz", col_select = c(user_id, created_at, status_id, is_retweet)) %>% 
-  filter(is_retweet == TRUE)
+  filter(is_retweet == TRUE)  %>%
+  filter(floor_date(created_at, "month") != as_date("2020-05-01"))
 
 retweets_timeline <- rstats_retweets %>% 
-  ts_data(by = "months")
+  ts_data(by = "months") %>% 
+  filter(time != as_datetime("2020-05-08"))
 
 n_retweets <- rstats_retweets %>% 
   pull(status_id) %>% 
