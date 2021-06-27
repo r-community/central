@@ -111,9 +111,9 @@ Row {data-height=400}
 mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 events_by_country %>% 
-  arrange(desc(Events_freq)) %>%
+  arrange(desc(Events_frequency)) %>%
   e_charts(venue_country_name) %>%
-  e_bar(serie = Events_freq) %>% 
+  e_bar(serie = Events_frequency) %>% 
   e_title(text = "R Events Distribution Country Wise", 
           subtext = "Frequency of Events", 
           sublink = "#",
@@ -150,9 +150,9 @@ Row {data-height=400}
 mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 region_df %>% 
-  arrange(desc(Events_freq)) %>%
+  arrange(desc(Events_frequency)) %>%
   e_charts(group_region) %>%
-  e_bar(serie = Events_freq) %>% 
+  e_bar(serie = Events_frequency) %>% 
   e_title(text = "R Events Frequencies Region Wise", 
           subtext = "Frequency of Events", 
           sublink = "#",
@@ -202,7 +202,7 @@ datatable(top_events, filter = "top",
               "excel")),
           colnames = c(
             "Event Name" = "name",
-            "Frequency of Participations" = "attendees"
+            "Frequency of Participations" = "Attendees"
           )
           )
 ```

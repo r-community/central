@@ -18,11 +18,11 @@ all_eventsDT[, `:=`(
 all_eventsDT[, `:=`(
   round_year = lubridate::year(round_year))]
 alleventsdf <- data.table::setDF(all_eventsDT)
-event_group_year <- alleventsdf  %>% group_by(round_year) %>% summarise(Events_freq = n())
+event_group_year <- alleventsdf  %>% group_by(round_year) %>% summarise(Events_Count = n())
 
 
 # Attendance (Yes-RSVP) per year
-event_group_rsvp_year <- alleventsdf  %>% group_by(round_year) %>% summarise(attendees = sum(yes_rsvp_count))
+event_group_rsvp_year <- alleventsdf  %>% group_by(round_year) %>% summarise(Attendees = sum(yes_rsvp_count))
 
 
 #  Count of events per month.
@@ -30,13 +30,13 @@ all_events <- past_event
 all_events$month <- months(all_events$local_date,abbreviate = TRUE)
 all_events$month <- toupper(all_events$month)
 month <- c("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG",'SEP','OCT','NOV','DEC');
-tempevent <- all_events%>%group_by(month)%>%summarise(Events_freq = n())
+tempevent <- all_events%>%group_by(month)%>%summarise(Events_Count = n())
 months.df <- data.frame(
-  n_events = vector(mode = 'numeric', length = 12)
+  Events_Count = vector(mode = 'numeric', length = 12)
 )
 for(i in 1:12){
   cur.month <- month[i];
-  months.df$n_events[i] = as.numeric(tempevent[tempevent$month==cur.month,2])
+  months.df$Events_Count[i] = as.numeric(tempevent[tempevent$month==cur.month,2])
 }
 months.df$month = month
 
@@ -44,11 +44,11 @@ months.df$month = month
 # Attendance of events per month.
 tempevent_rsvp <- all_events%>%group_by(month)%>%summarise(attendees = sum(yes_rsvp_count))
 months.rsvpdf <- data.frame(
-  n_attendees = vector(mode = 'numeric', length = 12)
+  Attendees = vector(mode = 'numeric', length = 12)
 )
 for(i in 1:12){
   cur.month <- month[i];
-  months.rsvpdf$n_attendees[i] = as.numeric(tempevent_rsvp[tempevent_rsvp$month==cur.month,2])
+  months.rsvpdf$Attendees[i] = as.numeric(tempevent_rsvp[tempevent_rsvp$month==cur.month,2])
 }
 months.rsvpdf$month = month
 
@@ -67,7 +67,7 @@ regions <- c("Africa", "Latin America", "Asia", "Australia", "US/Canada", "Europ
 value1 <- c(event_by_region$Events_freq[1], event_by_region$Events_freq[2], event_by_region$Events_freq[3], 
             event_by_region$Events_freq[4]+event_by_region$Events_freq[7], event_by_region$Events_freq[5]+event_by_region$Events_freq[8], 
             event_by_region$Events_freq[6])
-region_df <- data.frame(group_region=regions, Events_freq=value1)
+region_df <- data.frame(group_region=regions, Events_Count=value1)
 
 
 # R Event Attendance Across regions by rsvp
@@ -77,7 +77,7 @@ attendee_event_by_region <- temp_df_region %>%
 value2 <- c(attendee_event_by_region$attendees[1], attendee_event_by_region$attendees[2], attendee_event_by_region$attendees[3], 
             attendee_event_by_region$attendees[4]+attendee_event_by_region$attendees[7], attendee_event_by_region$attendees[5]+attendee_event_by_region$attendees[8], 
             attendee_event_by_region$attendees[6])
-region_df_rsvp <- data.frame(group_region=regions, attendees=value2)
+region_df_rsvp <- data.frame(group_region=regions, Attendees=value2)
 
 # Top 40 destinations for R events
 top_dest_city <- past_event %>%
@@ -149,16 +149,16 @@ temp_df_country <- past_event
 temp_df_country$venue_country_name <- countrycode(temp_df_country$group_country, "iso2c", "country.name")
 td_by_country <- temp_df_country %>%
   group_by(venue_country_name) %>%
-  summarise(attendees = sum(yes_rsvp_count))
-td_by_country <- td_by_country[order(td_by_country$attendees, decreasing = FALSE), ]
+  summarise(Attendees = sum(yes_rsvp_count))
+td_by_country <- td_by_country[order(td_by_country$Attendees, decreasing = FALSE), ]
 top_dest_country <- tail(td_by_country, 20)
 
 
 # Events by Country
 events_by_country <- temp_df_country %>%
   group_by(venue_country_name) %>%
-  summarise(Events_freq = n())
-events_by_country <- events_by_country[order(events_by_country$Events_freq, decreasing = FALSE), ]
+  summarise(Events_Frequency = n())
+events_by_country <- events_by_country[order(events_by_country$Events_Frequency, decreasing = FALSE), ]
 events_by_country <- tail(events_by_country, 20)
 
 

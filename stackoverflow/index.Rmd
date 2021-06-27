@@ -22,7 +22,7 @@ library(echarts4r)
 library(tidyverse)
 library(DT)
 library(jsonlite)
-options(DT.options = list(scrollY="250px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
+options(DT.options = list(scrollY="200px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
 json_file <- fromJSON("stackOverflow_summary.json")
 ```
 
@@ -62,21 +62,25 @@ valueBox(json_file[["summary"]][["ccount"]], icon = "fa-comments", color = "#435
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Timeline chart of Questions, Answers and Comments per month
+### Yearly Count of Questions, Answers and Comments (2008 - 2021)
 
 ```{r}
-
 mycolor <- c("#4ca0c6","#34495E","#BDC3C7","#003636","#a9a9a9", "#91c8c8")
-stdf <- as.data.frame(json_file[["overall_count"]])
-stdf %>% 
-  filter(Year !=2008) %>%
-  group_by(Year) %>% 
-  e_charts(Month,timeline = TRUE) %>% 
-  e_area(QCount) %>%
-  e_area(ACount) %>%
-  e_area(CCount) %>%
+yearly_count_qac <- as.data.frame(json_file[["yearly_qaccount"]])
+rownames(yearly_count_qac) <- yearly_count_qac$Year
+colnames(yearly_count_qac)[2] <- "Question_Count"
+colnames(yearly_count_qac)[3] <- "Answer_Count"
+colnames(yearly_count_qac)[4] <- "Comment_Count"
+  yearly_count_qac %>% 
+    mutate(
+      Year = row.names(.)
+    ) %>%
+    e_charts(Year) %>% 
+    e_area(Question_Count) %>%
+    e_area(Answer_Count) %>%
+    e_area(Comment_Count) %>%
     e_title(text = "StackOverflow", 
-            subtext = "Timeline", 
+            subtext = "Statistics", 
             sublink = "#",
             left = "left", top = 4
     ) %>%
@@ -126,22 +130,23 @@ valueBox(json_file[["summary"]][["ucount"]], icon = "fa-users", color = "#0586c4
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Yearly Count of Questions, Answers and Comments (2008 - 2021)
+### Timeline chart of Questions, Answers and Comments per month
 
 ```{r}
 mycolor <- c("#4ca0c6","#34495E","#BDC3C7","#003636","#a9a9a9", "#91c8c8")
-yearly_count_qac <- as.data.frame(json_file[["yearly_qaccount"]])
-rownames(yearly_count_qac) <- yearly_count_qac$Year
-  yearly_count_qac %>% 
-    mutate(
-      Year = row.names(.)
-    ) %>%
-    e_charts(Year) %>% 
-    e_bar(serie = QCount) %>% 
-    e_bar(serie = ACount) %>%
-    e_bar(serie = CCount) %>%
+stdf <- as.data.frame(json_file[["overall_count"]])
+colnames(stdf)[3] <- "Question_Count"
+colnames(stdf)[4] <- "Answer_Count"
+colnames(stdf)[5] <- "Comment_Count"
+stdf %>% 
+  filter(Year !=2008) %>%
+  group_by(Year) %>% 
+  e_charts(Month,timeline = TRUE) %>% 
+  e_area(Question_Count) %>%
+  e_area(Answer_Count) %>%
+  e_area(Comment_Count) %>%
     e_title(text = "StackOverflow", 
-            subtext = "Statistics", 
+            subtext = "Timeline", 
             sublink = "#",
             left = "left", top = 4
     ) %>%
@@ -204,13 +209,14 @@ datatable(tag_df, filter = "top",
 ```{r}
 mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 yearly_count_views <- as.data.frame(json_file[["yearly_vcount"]])
-rownames(yearly_count_views) <- yearly_count_views$Year  
+rownames(yearly_count_views) <- yearly_count_views$Year 
+colnames(yearly_count_views)[2] <- "View_Count"
   yearly_count_views %>%
     mutate(
       Year = row.names(.)
     ) %>%
     e_charts(Year) %>% 
-    e_bar(serie = VCount) %>%
+    e_bar(serie = View_Count) %>%
     e_title(text = "StackOverflow", 
             subtext = "Page Views", 
             sublink = "#",
