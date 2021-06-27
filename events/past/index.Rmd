@@ -88,7 +88,7 @@ event_group_year %>%
     Year = row.names(.)
   ) %>%
   e_charts(Year) %>%
-  e_bar(serie = Events_freq) %>% 
+  e_bar(serie = Events_Count) %>% 
   e_title(text = "R Events Yearly Distribution", 
           subtext = "Frequency of Events", 
           sublink = "#",
@@ -127,7 +127,7 @@ event_group_rsvp_year %>%
     Year = row.names(.)
   ) %>%
   e_charts(Year) %>%
-  e_bar(serie = attendees) %>% 
+  e_bar(serie = Attendees) %>% 
   e_title(text = "R Events Yearly Attendance", 
           subtext = "RSVP Count", 
           sublink = "#",
@@ -165,7 +165,7 @@ mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 months.df %>% 
   e_charts(month) %>%
-  e_bar(serie = n_events) %>% 
+  e_bar(serie = Events_Count) %>% 
   e_title(text = "R Events Monthly Distribution", 
           subtext = "Frequency of Events", 
           sublink = "#",
@@ -200,7 +200,7 @@ mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 months.rsvpdf %>% 
   e_charts(month) %>%
-  e_bar(serie = n_attendees) %>% 
+  e_bar(serie = Attendees) %>% 
   e_title(text = "R Events Monthly Attendance", 
           subtext = "RSVP Count", 
           sublink = "#",
@@ -237,9 +237,9 @@ Row {data-height=500}
 mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 region_df %>% 
-  arrange(desc(Events_freq)) %>%
+  arrange(desc(Events_Count)) %>%
   e_charts(group_region) %>%
-  e_bar(serie = Events_freq) %>% 
+  e_bar(serie = Events_Count) %>% 
   e_title(text = "R Events Across Regions", 
           subtext = "Frequency of Events", 
           sublink = "#",
@@ -273,9 +273,9 @@ region_df %>%
 mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 region_df_rsvp %>% 
-  arrange(desc(attendees)) %>%
+  arrange(desc(Attendees)) %>%
   e_charts(group_region) %>%
-  e_bar(serie = attendees) %>% 
+  e_bar(serie = Attendees) %>% 
   e_title(text = "R Event Attendance", 
           subtext = "RSVP Count", 
           sublink = "#",
@@ -566,9 +566,9 @@ Row {data-height=400}
 mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 top_dest_country %>% 
-  arrange(desc(attendees)) %>%
+  arrange(desc(Attendees)) %>%
   e_charts(venue_country_name) %>%
-  e_bar(serie = attendees) %>% 
+  e_bar(serie = Attendees) %>% 
   e_title(text = "Top R Event Destinations", 
           subtext = "Attendees Count", 
           sublink = "#",
@@ -605,9 +605,9 @@ Row {data-height=400}
 mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
 
 events_by_country %>% 
-  arrange(desc(Events_freq)) %>%
+  arrange(desc(Events_Frequency)) %>%
   e_charts(venue_country_name) %>%
-  e_bar(serie = Events_freq) %>% 
+  e_bar(serie = Events_Frequency) %>% 
   e_title(text = "Top R Events Organizing Countries", 
           subtext = "Frequency of Events", 
           sublink = "#",
