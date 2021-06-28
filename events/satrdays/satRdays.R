@@ -1,4 +1,4 @@
-#satRdays events 
+#satRdays events
 
 satrday <- read.csv("Data/pastsatrdays.csv", encoding = "UTF-8")
 total_events <- length(satrday)

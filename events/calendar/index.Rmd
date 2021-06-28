@@ -11,13 +11,16 @@ output:
 
 ```{r setup, include=FALSE}
 library(htmltools)
+library(stringr)
 ```
 
 Sidebar {.sidebar data-width=200}
 =====================================
 
 ```{r, echo=FALSE, results='asis'}
-includeHTML('../../fragments/sidebar.html')
+sidebar <- includeHTML('../../fragments/sidebar.html')
+
+cat(str_replace_all(sidebar, '\\./', "./../"))
 ```
 
 Calendar
