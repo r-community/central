@@ -23,7 +23,9 @@ Sidebar {.sidebar data-width=200}
 =====================================
 
 ```{r, echo=FALSE, results='asis'}
-htmltools::includeHTML('../../fragments/sidebar.html')
+sidebar <- htmltools::includeHTML('../../fragments/sidebar.html')
+
+cat(stringr::str_replace_all(sidebar, '\\./', "./../"))
 ```
 
 
