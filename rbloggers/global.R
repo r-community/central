@@ -104,3 +104,16 @@ year_blogs <- function(year_date){
 }
 
 total_posts <- sum(yearly_blog_count)
+
+
+# Top Contributors
+#blogs_df <- readr::read_csv("https://raw.githubusercontent.com/MeetDarkPow/central/update_dashboard/rbloggers/allblogs_2010_to_2020.csv")
+blogs_df <- readr::read_rds(here::here("rbloggers/rbloggers_2010_to_2020.rds"))
+top_contributors <- blogs_df %>%
+  group_by(Author, Author_Hyperlink) %>%
+  summarise(Contribute_Count = n())
+top_contributors <- top_contributors[with(top_contributors, order(-Contribute_Count)), ]
+top_contributors <- data.frame(lapply(top_contributors, as.character), stringsAsFactors=FALSE)
+top_contributors <- subset (top_contributors, select = -Author_Hyperlink)
+top_contributors$Contribute_Count <- as.numeric(top_contributors$Contribute_Count)
+Encoding(top_contributors$Author) <- "latin1"

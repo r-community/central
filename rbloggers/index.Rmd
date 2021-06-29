@@ -15,7 +15,9 @@ library(flexdashboard)
 library(rvest)
 library(stringr)
 library(dplyr)
+library(htmltools)
 library(echarts4r)
+library(reactable)
 source("global.R")
 ```
 
@@ -35,7 +37,7 @@ Row
 ### Blog Posts
 
 ```{r}
-valueBox(total_posts, icon = "fa-comments", color = "white")
+valueBox(total_posts, icon = "fa-edit", color = "white")
 ```
 
 
@@ -67,7 +69,7 @@ Row {data-height=400}
 
 ```{r}
 
-mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#2780e3","#fc5185","#a9a9a9", "#91c8c8")
 
 Rbloggers_df %>% 
   filter(Year != 2005 & Year != 2006 & Year !=2007) %>%
@@ -90,7 +92,7 @@ Rbloggers_df %>%
     ) %>%
     e_x_axis(splitArea = list(show = TRUE),
              splitLine = list(show = TRUE),
-             axisLabel= list(rotate = 30,interval = 0)) %>%
+             axisLabel= list(rotate = 90,interval = 0)) %>%
     e_toolbox_feature(feature = "magicType",
                       type = list("area", "line", "bar")) %>%
     e_toolbox_feature("restore") %>%
@@ -98,33 +100,19 @@ Rbloggers_df %>%
     e_toolbox_feature("dataView") %>%
     e_toolbox_feature("saveAsImage") %>%
     e_animation(duration = 1000) %>%
-    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+    e_tooltip(trigger = "axis") %>% 
+    e_color(mycolor[2]) %>%
+    e_legend(show = FALSE)
 
 ```
 
-### 
-<div class="chart-title" style="margin-top:-10px">Blog Posts Per Year</div>
-<ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-				<li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gear"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Map 1</a>
-                        </li>
-                        <li><a href="#">Map 2</a>
-                        </li>
-                      </ul>
-                    </li>
-      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
+### Blog Posts Per Year
                     
 
 
 ```{r}
 
-mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#2780e3","#fc5185","#a9a9a9", "#91c8c8")
   
   yearly_df %>% e_charts(Year) %>% 
     e_bar(serie = Count) %>% 
@@ -144,7 +132,7 @@ mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
     ) %>%
     e_x_axis(splitArea = list(show = TRUE),
              splitLine = list(show = TRUE),
-             axisLabel= list(rotate = 30,interval = 0)) %>%
+             axisLabel= list(rotate = 90,interval = 0)) %>%
     e_toolbox_feature(feature = "magicType",
                       type = list("area", "line", "bar")) %>%
     e_toolbox_feature("restore") %>%
@@ -152,8 +140,10 @@ mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
     e_toolbox_feature("dataView") %>%
     e_toolbox_feature("saveAsImage") %>%
     e_animation(duration = 1000) %>%
-    e_tooltip(trigger = "axis") %>% e_color(mycolor)
-# creating a combined bar-plot using ggplot2
+    e_tooltip(trigger = "axis") %>% 
+    e_color(mycolor) %>%
+    e_legend(show = FALSE)
+
 ```
 
 Row {data-height=400}
@@ -172,7 +162,7 @@ monthly_blog_count <- tapply(Rbloggers_df$Blog_Count, x, FUN=sum)
 monthly_df <- data.frame(Month=names(monthly_blog_count), Count=monthly_blog_count)
 monthly_df$Month <- factor(monthly_df$Month, levels = unique(monthly_df$Month))
 
-mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#2780e3","#fc5185","#a9a9a9", "#91c8c8")
   
   monthly_df %>% e_charts(Month) %>% 
     e_bar(serie = Count) %>% 
@@ -192,9 +182,9 @@ mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
     ) %>%
     e_x_axis(splitArea = list(show = TRUE),
              splitLine = list(show = TRUE),
-             axisLabel= list(rotate = 30,interval = 0)) %>%
+             axisLabel= list(rotate = 90,interval = 0)) %>%
      e_mark_line(data = avg) %>% 
-    e_labels(show = TRUE) %>%
+    #e_labels(show = TRUE) %>%
     e_toolbox_feature(feature = "magicType",
                       type = list("area", "line", "bar")) %>%
     e_toolbox_feature("restore") %>%
@@ -202,14 +192,57 @@ mycolor <- c("#2780e3","#003636","#a9a9a9", "#91c8c8")
     e_toolbox_feature("dataView") %>%
     e_toolbox_feature("saveAsImage") %>%
     e_animation(duration = 1000) %>%
-    e_tooltip(trigger = "axis") %>% e_color(mycolor)
+    e_tooltip(trigger = "axis") %>% 
+    e_color(mycolor) %>%
+    e_legend(show = FALSE)
 
 ```
 
-### Top Contributors
+### Top Contributors | 2010 - 2020
 
 ```{r}
-
+top_contributors %>% 
+  head(100) %>%
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultSorted = "Contribute_Count",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      Author = colDef(
+        name = "Contributor Name",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        cell = function(value) {
+          text <- tolower(value)
+          text <- gsub("'", "", text)
+          text <- gsub(" ", "-", text)
+          url <- paste0("https://www.r-bloggers.com/author/",text,"/")
+          tags$a(href = url, target = "_blank", value)
+        }
+      ),
+      Contribute_Count = colDef(
+        name = "Blogs Count",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / max(top_contributors$Contribute_Count), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
+          )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
 ```
 
 

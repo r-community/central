@@ -63,6 +63,7 @@
   font-size: 60px;
   top: 20px;
   transition: all .3s linear;
+  color: #fc5185;
 }
 
 .value-box:hover .icon > i {
@@ -164,4 +165,27 @@
   top: -35px;
 	float: right;
 	min-width: 70px;
+}
+
+
+.bar-cell {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  font-family: "Fira Mono", Consolas, Monaco, monospace;
+  font-size: 13.5px;
+  white-space: pre;
+}
+
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 6px;
+  height: 14px;
+}
+
+.bar {
+  height: 100%;
+  width: 100%;
 }
