@@ -19,10 +19,12 @@ library(data.table)
 library(purrr)
 library(lubridate)
 library(echarts4r)
+library(reactable)
+library(htmltools)
 library(tidyverse)
 library(DT)
 library(jsonlite)
-options(DT.options = list(scrollY="250px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
+options(DT.options = list(scrollY="200px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
 json_file <- fromJSON("stackOverflow_summary.json")
 ```
 
@@ -62,21 +64,25 @@ valueBox(json_file[["summary"]][["ccount"]], icon = "fa-comments", color = "#435
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Timeline chart of Questions, Answers and Comments per month
+### Yearly Count of Questions, Answers and Comments (2008 - 2021)
 
 ```{r}
-
 mycolor <- c("#4ca0c6","#34495E","#BDC3C7","#003636","#a9a9a9", "#91c8c8")
-stdf <- as.data.frame(json_file[["overall_count"]])
-stdf %>% 
-  filter(Year !=2008) %>%
-  group_by(Year) %>% 
-  e_charts(Month,timeline = TRUE) %>% 
-  e_area(QCount) %>%
-  e_area(ACount) %>%
-  e_area(CCount) %>%
+yearly_count_qac <- as.data.frame(json_file[["yearly_qaccount"]])
+rownames(yearly_count_qac) <- yearly_count_qac$Year
+colnames(yearly_count_qac)[2] <- "Question_Count"
+colnames(yearly_count_qac)[3] <- "Answer_Count"
+colnames(yearly_count_qac)[4] <- "Comment_Count"
+  yearly_count_qac %>% 
+    mutate(
+      Year = row.names(.)
+    ) %>%
+    e_charts(Year) %>% 
+    e_area(Question_Count) %>%
+    e_area(Answer_Count) %>%
+    e_area(Comment_Count) %>%
     e_title(text = "StackOverflow", 
-            subtext = "Timeline", 
+            subtext = "Statistics", 
             sublink = "#",
             left = "left", top = 4
     ) %>%
@@ -126,22 +132,23 @@ valueBox(json_file[["summary"]][["ucount"]], icon = "fa-users", color = "#0586c4
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Yearly Count of Questions, Answers and Comments (2008 - 2021)
+### Timeline chart of Questions, Answers and Comments per month
 
 ```{r}
 mycolor <- c("#4ca0c6","#34495E","#BDC3C7","#003636","#a9a9a9", "#91c8c8")
-yearly_count_qac <- as.data.frame(json_file[["yearly_qaccount"]])
-rownames(yearly_count_qac) <- yearly_count_qac$Year
-  yearly_count_qac %>% 
-    mutate(
-      Year = row.names(.)
-    ) %>%
-    e_charts(Year) %>% 
-    e_bar(serie = QCount) %>% 
-    e_bar(serie = ACount) %>%
-    e_bar(serie = CCount) %>%
+stdf <- as.data.frame(json_file[["overall_count"]])
+colnames(stdf)[3] <- "Question_Count"
+colnames(stdf)[4] <- "Answer_Count"
+colnames(stdf)[5] <- "Comment_Count"
+stdf %>% 
+  filter(Year !=2008) %>%
+  group_by(Year) %>% 
+  e_charts(Month,timeline = TRUE) %>% 
+  e_area(Question_Count) %>%
+  e_area(Answer_Count) %>%
+  e_area(Comment_Count) %>%
     e_title(text = "StackOverflow", 
-            subtext = "Statistics", 
+            subtext = "Timeline", 
             sublink = "#",
             left = "left", top = 4
     ) %>%
@@ -204,13 +211,14 @@ datatable(tag_df, filter = "top",
 ```{r}
 mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 yearly_count_views <- as.data.frame(json_file[["yearly_vcount"]])
-rownames(yearly_count_views) <- yearly_count_views$Year  
+rownames(yearly_count_views) <- yearly_count_views$Year 
+colnames(yearly_count_views)[2] <- "View_Count"
   yearly_count_views %>%
     mutate(
       Year = row.names(.)
     ) %>%
     e_charts(Year) %>% 
-    e_bar(serie = VCount) %>%
+    e_bar(serie = View_Count) %>%
     e_title(text = "StackOverflow", 
             subtext = "Page Views", 
             sublink = "#",
@@ -238,64 +246,103 @@ rownames(yearly_count_views) <- yearly_count_views$Year
     e_tooltip(trigger = "axis") %>% e_color(mycolor)
 ```
 
-Row {data-height=600}
+<!-- Row {data-height=600} -->
+<!-- ----------------------------------------------------------------------- -->
+
+<!-- ### Top 50 Questions - Page Views past 30 days -->
+
+<!-- ```{r} -->
+<!-- recent_top_ques <- as.data.frame(json_file[["top20_rec_q"]]) -->
+<!-- recent_top_ques %>%  -->
+<!--   reactable( -->
+<!--     ., -->
+<!--     pagination = TRUE, -->
+<!--     showPageSizeOptions = TRUE, -->
+<!--     highlight = TRUE, -->
+<!--     defaultSorted = "Views", -->
+<!--     defaultColDef = colDef(headerClass = "header", align = "left"), -->
+<!--     columns = list( -->
+<!--       Question_Id = colDef( -->
+<!--         name = "Question ID", -->
+<!--         width = 200, -->
+<!--         defaultSortOrder = "desc", -->
+<!--         filterable = TRUE -->
+<!--       ), -->
+<!--       Title = colDef( -->
+<!--         name = "Question Title", -->
+<!--       ), -->
+<!--       Views = colDef( -->
+<!--         name = "Page Views", -->
+<!--         defaultSortOrder = "desc", -->
+<!--         cell = function(value) { -->
+<!--           width <- paste0(value * 100 / sum(recent_top_ques$Views), "%") -->
+<!--           value <- format(value, big.mark = ",") -->
+<!--           value <- format(value, width = 9, justify = "right") -->
+<!--           bar <- div( -->
+<!--             class = "bar-chart", -->
+<!--             style = list(marginRight = "6px"), -->
+<!--             div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF")) -->
+<!--           ) -->
+<!--           div(class = "bar-cell", span(class = "number", value), bar) -->
+<!--         } -->
+<!--       ) -->
+<!--       ), -->
+<!--     compact = TRUE, -->
+<!--     bordered = TRUE, -->
+<!--     class = "categories-tbl" -->
+<!--   ) -->
+<!-- ``` -->
+
+Row {data-height=550}
 -----------------------------------------------------------------------
 
-### Top 50 Questions - Page Views past 30 days
-
-```{r}
-recent_top_ques <- as.data.frame(json_file[["top20_rec_q"]])
-datatable(recent_top_ques, filter = "top",
-          extensions = c(
-            "Buttons",
-            "Scroller"
-          ),
-          rownames = FALSE,
-          style = "bootstrap",
-          class = "compact",
-          width = "auto",
-          options = list(
-            dom = "Blrtip",
-            deferRender = TRUE,
-            scrollY = 300,
-            scroller = TRUE,
-            buttons = list(
-              "csv",
-              "excel"
-            )
-          ),
-          colnames = c(
-            "Question Id" = "Question_Id"
-          ))
-```
-
-Row {data-height=600}
------------------------------------------------------------------------
-
-### Top 50 Questions - Page Views per year
+### Top 50 Questions Each Year (2008:2021) - Page Views per year
 
 ```{r}
 year_top_ques <- as.data.frame(json_file[["yearly_top50ques"]])
-datatable(year_top_ques, filter = "top",
-          extensions = c(
-            "Buttons",
-            "Scroller"
-          ),
-          rownames = FALSE,
-          style = "bootstrap",
-          class = "compact",
-          width = "auto",
-          options = list(
-            dom = "Blrtip",
-            deferRender = TRUE,
-            scrollY = 300,
-            scroller = TRUE,
-            buttons = list(
-              "csv",
-              "excel"
-            )
-          ),
-          colnames = c(
-            "Question Id" = "Question_Id"
-          ))
+year_top_ques %>% 
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultSorted = "Views",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      Question_Id = colDef(
+        name = "Question ID",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        cell = function(value) {
+          url <- paste0("https://stackoverflow.com/questions/",value,"/")
+          tags$a(href = url, target = "_blank", value)
+        }
+      ),
+      Title = colDef(
+        name = "Question Title",
+      ),
+      Date = colDef(
+        name = "Year",
+      ),
+      Views = colDef(
+        name = "Page Views",
+        defaultSortOrder = "desc",
+        # cell = function(value) {
+        #   width <- paste0(value * 100 / sum(recent_top_ques$Views), "%")
+        #   value <- format(value, big.mark = ",")
+        #   value <- format(value, width = 9, justify = "right")
+        #   bar <- div(
+        #     class = "bar-chart",
+        #     style = list(marginRight = "6px"),
+        #     div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
+        #   )
+        #   div(class = "bar-cell", span(class = "number", value), bar)
+        # }
+      )
+      ),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
 ```
