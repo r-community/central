@@ -328,17 +328,17 @@ year_top_ques %>%
       Views = colDef(
         name = "Page Views",
         defaultSortOrder = "desc",
-        # cell = function(value) {
-        #   width <- paste0(value * 100 / sum(recent_top_ques$Views), "%")
-        #   value <- format(value, big.mark = ",")
-        #   value <- format(value, width = 9, justify = "right")
-        #   bar <- div(
-        #     class = "bar-chart",
-        #     style = list(marginRight = "6px"),
-        #     div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
-        #   )
-        #   div(class = "bar-cell", span(class = "number", value), bar)
-        # }
+        cell = function(value) {
+          width <- paste0(value * 100 / max(year_top_ques$Views), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
+          )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
       )
       ),
     compact = TRUE,
