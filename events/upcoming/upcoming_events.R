@@ -5,7 +5,7 @@ upcoming_event$venue_country_name <- countrycode(upcoming_event$group_country, "
 # ValueBox data
 total_events <- length(upcoming_event$id)
 total_rsvp <- sum(upcoming_event$yes_rsvp_count)
-total_cities <- length(unique(upcoming_event$venue_city))
+total_cities <- length(unique(upcoming_event$group_city))
 total_countries <- length(unique(upcoming_event$venue_country_name))
 
 
@@ -32,7 +32,7 @@ region_df <- data.frame(group_region=regions, Events_frequency=value1)
 
 # Top R Events by attendance
 top_events <- upcoming_event %>%
-  group_by(name) %>%
+  group_by(name, link) %>%
   summarise(Attendees = sum(yes_rsvp_count))
 top_events <- top_events[order(top_events$Attendees, decreasing = TRUE), ]
 
@@ -47,7 +47,7 @@ event_type <- data.frame(EventType=c("In-person", "Online"), Count=event_type$Ev
 
 # Data-table
 upcoming_event <- upcoming_event %>%
-  arrange(local_date)
+  arrange(time)
 display_df <- data.frame(Event_name = upcoming_event$name, Date=upcoming_event$time, 
                          Country=upcoming_event$venue_country_name, Venue_Name=upcoming_event$venue_name, 
-                         RSVP_count=upcoming_event$yes_rsvp_count)
+                         RSVP_count=upcoming_event$yes_rsvp_count, Link=upcoming_event$link)
