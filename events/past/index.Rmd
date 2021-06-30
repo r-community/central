@@ -15,6 +15,8 @@ library(flexdashboard)
 library(dplyr)
 library(DT)
 library(countrycode)
+library(reactable)
+library(htmltools)
 library(lubridate)
 options(DT.options = list(scrollY="250px",scrollX="50px", pageLength = 10, autoWidth = TRUE))
 library(echarts4r)
@@ -41,7 +43,7 @@ Row
 
 ```{r}
 
-valueBox(total_events, icon = "fa-calendar", color = "#1F51FF")
+valueBox(total_events, icon = "fa-calendar", color = "#435f9c")
 
 ```
 
@@ -49,20 +51,20 @@ valueBox(total_events, icon = "fa-calendar", color = "#1F51FF")
 
 ```{r}
 
-valueBox(total_rsvp, icon = "fa-users", color = "#1F51FF")
+valueBox(total_rsvp, icon = "fa-users", color = "#0586c4")
 
 ```
 
 ### Events - Cities
 
 ```{r}
-valueBox(total_cities, icon = "fa-building", color = "#1F51FF")
+valueBox(total_cities, icon = "fa-building", color = "#435f9c")
 ```
 
 ### Events - Countries
 
 ```{r}
-valueBox(total_countries, icon = "fa-globe", color = "#1F51FF")
+valueBox(total_countries, icon = "fa-globe", color = "#0586c4")
 ```
 
 Row {data-height=600}
@@ -80,10 +82,10 @@ eventcountry %>% e_country_names(group_country) %>% # helper
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Count of R events per year
+### Count of R events <small> per Year </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#435f9c","#003636","#a9a9a9", "#91c8c8")
 rownames(event_group_year) <- event_group_year$round_year
 event_group_year %>% 
   mutate(
@@ -91,7 +93,7 @@ event_group_year %>%
   ) %>%
   e_charts(Year) %>%
   e_bar(serie = Events_Count) %>% 
-  e_title(text = "R Events Yearly Distribution", 
+  e_title(text = "Events Yearly Statistics", 
           subtext = "Frequency of Events", 
           sublink = "#",
           left = "left", top = 4
@@ -118,10 +120,10 @@ event_group_year %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 ```
 
-### Attendance in R Events per year
+### Attendance in R Events <small> per Year </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 rownames(event_group_rsvp_year) <- event_group_rsvp_year$round_year
 event_group_rsvp_year %>% 
@@ -130,7 +132,7 @@ event_group_rsvp_year %>%
   ) %>%
   e_charts(Year) %>%
   e_bar(serie = Attendees) %>% 
-  e_title(text = "R Events Yearly Attendance", 
+  e_title(text = "Yearly Attendance", 
           subtext = "RSVP Count", 
           sublink = "#",
           left = "left", top = 4
@@ -160,15 +162,15 @@ event_group_rsvp_year %>%
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Count of R events per month
+### Count of R events <small> per Month </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 months.df %>% 
   e_charts(month) %>%
   e_bar(serie = Events_Count) %>% 
-  e_title(text = "R Events Monthly Distribution", 
+  e_title(text = "Events Monthly Statistics", 
           subtext = "Frequency of Events", 
           sublink = "#",
           left = "left", top = 4
@@ -195,15 +197,15 @@ months.df %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 ```
 
-### Attendance in R Events per month
+### Attendance in R Events <small> per Month </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#435f9c","#003636","#a9a9a9", "#91c8c8")
 
 months.rsvpdf %>% 
   e_charts(month) %>%
   e_bar(serie = Attendees) %>% 
-  e_title(text = "R Events Monthly Attendance", 
+  e_title(text = "Monthly Attendance", 
           subtext = "RSVP Count", 
           sublink = "#",
           left = "left", top = 4
@@ -233,16 +235,16 @@ months.rsvpdf %>%
 Row {data-height=500}
 -----------------------------------------------------------------------
 
-### Number of R Events held across Regions of Globe
+### R Events Distribution - Region Wise <small> Across Globe </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 region_df %>% 
   arrange(desc(Events_Count)) %>%
   e_charts(group_region) %>%
   e_bar(serie = Events_Count) %>% 
-  e_title(text = "R Events Across Regions", 
+  e_title(text = "Events Across Regions", 
           subtext = "Frequency of Events", 
           sublink = "#",
           left = "left", top = 4
@@ -269,16 +271,16 @@ region_df %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 ```
 
-### Attendance in R Events across Regions
+### Attendance in R Events - Region Wise
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 region_df_rsvp %>% 
   arrange(desc(Attendees)) %>%
   e_charts(group_region) %>%
   e_bar(serie = Attendees) %>% 
-  e_title(text = "R Event Attendance", 
+  e_title(text = "Region Wise Attendance", 
           subtext = "RSVP Count", 
           sublink = "#",
           left = "left", top = 4
@@ -314,9 +316,9 @@ Row {data-height=800}
 top_dest_city <- top_dest_city %>%
   arrange(Events_freq)
 
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 top_dest_city %>%
-  e_charts(x = venue_city) %>%
+  e_charts(x = group_city) %>%
   e_bar(Events_freq, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
   e_title("Top Cities for R Events", "City") %>% 
@@ -346,7 +348,7 @@ top_dest_city %>%
 ### Timeline for Cumulative Growth of R events
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 cumm_event_count %>%
   e_charts(Event_date) %>%
   e_area(csum, name = "Cumulative Event Count", legend = FALSE) %>%
@@ -354,7 +356,7 @@ cumm_event_count %>%
   e_zoom(dataZoomIndex = 0,
          start = 0,
          end = 100) %>% 
-  e_title(text = "Growth of R Events across years", 
+  e_title(text = "Growth of R Events Across Years", 
           subtext = "Frequency of Events", 
           sublink = "#",
           left = "left", top = 4
@@ -387,9 +389,9 @@ Row {data-height=1000}
 ### Top Destinations for R events | <small> Event count per city per region </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#435f9c","#003636","#a9a9a9", "#91c8c8")
 plot1 <- tail(df1, 10) %>%
-  e_charts(x = venue_city) %>%
+  e_charts(x = group_city) %>%
   e_bar(Events_freq, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
   e_title(text = "Africa Region", 
@@ -417,7 +419,7 @@ plot1 <- tail(df1, 10) %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 
 plot2 <- tail(df2, 20) %>%
-  e_charts(x = venue_city) %>%
+  e_charts(x = group_city) %>%
   e_bar(Events_freq, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
   e_title(text = "Latin America Region", 
@@ -445,7 +447,7 @@ plot2 <- tail(df2, 20) %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 
 plot3 <- tail(df3, 20) %>%
-  e_charts(x = venue_city) %>%
+  e_charts(x = group_city) %>%
   e_bar(Events_freq, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
   e_title(text = "Asia Region", 
@@ -473,7 +475,7 @@ plot3 <- tail(df3, 20) %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 
 plot4 <- tail(df4, 10) %>%
-  e_charts(x = venue_city) %>%
+  e_charts(x = group_city) %>%
   e_bar(Events_freq, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
   e_title(text = "Australia Region", 
@@ -501,7 +503,7 @@ plot4 <- tail(df4, 10) %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 
 plot5 <- tail(df5, 20) %>%
-  e_charts(x = venue_city) %>%
+  e_charts(x = group_city) %>%
   e_bar(Events_freq, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
   e_title(text = "US/Canada Region", 
@@ -529,7 +531,7 @@ plot5 <- tail(df5, 20) %>%
   e_tooltip(trigger = "axis") %>% e_color(mycolor)
 
 plot6 <- tail(df6, 20) %>%
-  e_charts(x = venue_city) %>%
+  e_charts(x = group_city) %>%
   e_bar(Events_freq, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
   e_title(text = "Europe Region", 
@@ -565,7 +567,7 @@ Row {data-height=400}
 ### Top Destinations for R Events | <small> Users per Country
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#435f9c","#003636","#a9a9a9", "#91c8c8")
 
 top_dest_country %>% 
   arrange(desc(Attendees)) %>%
@@ -604,7 +606,7 @@ Row {data-height=400}
 ### Top R Events Destinations | <small> Events per Country </small> 
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 events_by_country %>% 
   arrange(desc(Events_Frequency)) %>%
@@ -643,19 +645,52 @@ Row {data-height=500}
 ### Data Table
 
 ```{r}
-datatable(display_df, filter = "top",
-          extensions = c(
-            "Buttons",
-            "Scroller"),
-          rownames = FALSE,
-          style = "bootstrap",
-          class = "compact",
-          width = "auto",
-          options = list(
-            dom = "Blrtip",
-            deferRender = TRUE,
-            buttons = list(
-              "csv",
-              "excel"))
+display_df %>% 
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    #defaultSorted = "Date",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      Event_name = colDef(
+        name = "Event Name",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        html = TRUE,
+        cell = function(value, index) {
+          sprintf('<a href="%s" target="_blank">%s</a>', display_df$Link[index], value)
+        }
+      ),
+      Link = colDef(
+        show = FALSE
+      ),
+      City = colDef(
+        filterable = TRUE
+      ),
+      Country = colDef(
+        filterable = TRUE
+      ),
+      RSVP_count = colDef(
+        name = "Attendees Count",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / max(display_df$RSVP_count), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
           )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )
+    ),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
 ```
