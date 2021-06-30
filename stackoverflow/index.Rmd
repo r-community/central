@@ -19,6 +19,8 @@ library(data.table)
 library(purrr)
 library(lubridate)
 library(echarts4r)
+library(reactable)
+library(htmltools)
 library(tidyverse)
 library(DT)
 library(jsonlite)
@@ -244,64 +246,103 @@ colnames(yearly_count_views)[2] <- "View_Count"
     e_tooltip(trigger = "axis") %>% e_color(mycolor)
 ```
 
-Row {data-height=600}
+<!-- Row {data-height=600} -->
+<!-- ----------------------------------------------------------------------- -->
+
+<!-- ### Top 50 Questions - Page Views past 30 days -->
+
+<!-- ```{r} -->
+<!-- recent_top_ques <- as.data.frame(json_file[["top20_rec_q"]]) -->
+<!-- recent_top_ques %>%  -->
+<!--   reactable( -->
+<!--     ., -->
+<!--     pagination = TRUE, -->
+<!--     showPageSizeOptions = TRUE, -->
+<!--     highlight = TRUE, -->
+<!--     defaultSorted = "Views", -->
+<!--     defaultColDef = colDef(headerClass = "header", align = "left"), -->
+<!--     columns = list( -->
+<!--       Question_Id = colDef( -->
+<!--         name = "Question ID", -->
+<!--         width = 200, -->
+<!--         defaultSortOrder = "desc", -->
+<!--         filterable = TRUE -->
+<!--       ), -->
+<!--       Title = colDef( -->
+<!--         name = "Question Title", -->
+<!--       ), -->
+<!--       Views = colDef( -->
+<!--         name = "Page Views", -->
+<!--         defaultSortOrder = "desc", -->
+<!--         cell = function(value) { -->
+<!--           width <- paste0(value * 100 / sum(recent_top_ques$Views), "%") -->
+<!--           value <- format(value, big.mark = ",") -->
+<!--           value <- format(value, width = 9, justify = "right") -->
+<!--           bar <- div( -->
+<!--             class = "bar-chart", -->
+<!--             style = list(marginRight = "6px"), -->
+<!--             div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF")) -->
+<!--           ) -->
+<!--           div(class = "bar-cell", span(class = "number", value), bar) -->
+<!--         } -->
+<!--       ) -->
+<!--       ), -->
+<!--     compact = TRUE, -->
+<!--     bordered = TRUE, -->
+<!--     class = "categories-tbl" -->
+<!--   ) -->
+<!-- ``` -->
+
+Row {data-height=550}
 -----------------------------------------------------------------------
 
-### Top 50 Questions - Page Views past 30 days
-
-```{r}
-recent_top_ques <- as.data.frame(json_file[["top20_rec_q"]])
-datatable(recent_top_ques, filter = "top",
-          extensions = c(
-            "Buttons",
-            "Scroller"
-          ),
-          rownames = FALSE,
-          style = "bootstrap",
-          class = "compact",
-          width = "auto",
-          options = list(
-            dom = "Blrtip",
-            deferRender = TRUE,
-            scrollY = 300,
-            scroller = TRUE,
-            buttons = list(
-              "csv",
-              "excel"
-            )
-          ),
-          colnames = c(
-            "Question Id" = "Question_Id"
-          ))
-```
-
-Row {data-height=600}
------------------------------------------------------------------------
-
-### Top 50 Questions - Page Views per year
+### Top 50 Questions Each Year (2008:2021) - Page Views per year
 
 ```{r}
 year_top_ques <- as.data.frame(json_file[["yearly_top50ques"]])
-datatable(year_top_ques, filter = "top",
-          extensions = c(
-            "Buttons",
-            "Scroller"
-          ),
-          rownames = FALSE,
-          style = "bootstrap",
-          class = "compact",
-          width = "auto",
-          options = list(
-            dom = "Blrtip",
-            deferRender = TRUE,
-            scrollY = 300,
-            scroller = TRUE,
-            buttons = list(
-              "csv",
-              "excel"
-            )
-          ),
-          colnames = c(
-            "Question Id" = "Question_Id"
-          ))
+year_top_ques %>% 
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultSorted = "Views",
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      Question_Id = colDef(
+        name = "Question ID",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        cell = function(value) {
+          url <- paste0("https://stackoverflow.com/questions/",value,"/")
+          tags$a(href = url, target = "_blank", value)
+        }
+      ),
+      Title = colDef(
+        name = "Question Title",
+      ),
+      Date = colDef(
+        name = "Year",
+      ),
+      Views = colDef(
+        name = "Page Views",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / max(year_top_ques$Views), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
+          )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )
+      ),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
 ```
