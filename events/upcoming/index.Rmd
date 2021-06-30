@@ -20,6 +20,8 @@ library(echarts4r)
 library(leaflet)
 library(sp)
 library(V8)
+library(reactable)
+library(htmltools)
 library(geojsonio)
 source("upcoming_events.R")
 ```
@@ -44,7 +46,7 @@ Row
 
 ```{r}
 
-valueBox(total_events, icon = "fa-calendar", color = "#1F51FF")
+valueBox(total_events, icon = "fa-calendar", color = "#435f9c")
 
 ```
 
@@ -52,20 +54,20 @@ valueBox(total_events, icon = "fa-calendar", color = "#1F51FF")
 
 ```{r}
 
-valueBox(total_rsvp, icon = "fa-users", color = "#1F51FF")
+valueBox(total_rsvp, icon = "fa-users", color = "#0586c4")
 
 ```
 
 ### Events - Cities
 
 ```{r}
-valueBox(total_cities, icon = "fa-building", color = "#1F51FF")
+valueBox(total_cities, icon = "fa-building", color = "#435f9c")
 ```
 
 ### Events - Countries
 
 ```{r}
-valueBox(total_countries, icon = "fa-globe", color = "#1F51FF")
+valueBox(total_countries, icon = "fa-globe", color = "#0586c4")
 ```
 
 Row {data-height=800}
@@ -107,16 +109,16 @@ leaflet(upcoming_event,
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Upcoming R Events across Countries
+### Upcoming R Events | <small> Country Wise
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 events_by_country %>% 
   arrange(desc(Events_frequency)) %>%
   e_charts(venue_country_name) %>%
   e_bar(serie = Events_frequency) %>% 
-  e_title(text = "R Events Distribution Country Wise", 
+  e_title(text = "Events Distribution", 
           subtext = "Frequency of Events", 
           sublink = "#",
           left = "left", top = 4
@@ -146,10 +148,10 @@ events_by_country %>%
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Upcoming R Events across Regions
+### Upcoming R Events | <small> Region Wise </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 region_df %>% 
   arrange(desc(Events_frequency)) %>%
@@ -188,37 +190,59 @@ Row {data-height=590}
 ### Top R events by attendance
 
 ```{r}
-datatable(top_events, filter = "top",
-          extensions = c(
-            "Buttons",
-            "Scroller"),
-          rownames = FALSE,
-          style = "bootstrap",
-          class = "compact",
-          width = "auto",
-          options = list(
-            dom = "Blrtip",
-            deferRender = TRUE,
-            buttons = list(
-              "csv",
-              "excel")),
-          colnames = c(
-            "Event Name" = "name",
-            "Frequency of Participations" = "Attendees"
+top_events %>% 
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      name = colDef(
+        name = "Event Name",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        html = TRUE,
+        cell = function(value, index) {
+          sprintf('<a href="%s" target="_blank">%s</a>', top_events$link[index], value)
+        }
+      ),
+      link = colDef(
+        show = FALSE
+      ),
+      Attendees = colDef(
+        name = "Attendees Count",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / max(top_events$Attendees), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
           )
-          )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )
+    ),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
 ```
 
 ### Types of Events 
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
 
 event_type %>% 
   arrange(desc(Count)) %>%
   e_charts(EventType) %>%
   e_bar(serie = Count) %>% 
-  e_title(text = "Online Vs In-person Events", 
+  e_title(text = "Online Vs In-Person Events", 
           subtext = "Frequency of Events", 
           sublink = "#",
           left = "left", top = 4
@@ -251,19 +275,52 @@ Row {data-height=550}
 ### Data-table
 
 ```{r}
-datatable(display_df, filter = "top",
-          extensions = c(
-            "Buttons",
-            "Scroller"),
-          rownames = FALSE,
-          style = "bootstrap",
-          class = "compact",
-          width = "auto",
-          options = list(
-            dom = "Blrtip",
-            deferRender = TRUE,
-            buttons = list(
-              "csv",
-              "excel"))
+display_df %>% 
+  reactable(
+    .,
+    pagination = TRUE,
+    showPageSizeOptions = TRUE,
+    highlight = TRUE,
+    defaultColDef = colDef(headerClass = "header", align = "left"),
+    columns = list(
+      Event_name = colDef(
+        name = "Event Name",
+        width = 200,
+        defaultSortOrder = "desc",
+        filterable = TRUE,
+        html = TRUE,
+        cell = function(value, index) {
+          sprintf('<a href="%s" target="_blank">%s</a>', display_df$Link[index], value)
+        }
+      ),
+      Link = colDef(
+        show = FALSE
+      ),
+      Venue_Name = colDef(
+        filterable = TRUE,
+        name = "Venue"
+      ),
+      Country = colDef(
+        filterable = TRUE
+      ),
+      RSVP_count = colDef(
+        name = "Attendees Count",
+        defaultSortOrder = "desc",
+        cell = function(value) {
+          width <- paste0(value * 100 / max(display_df$RSVP_count), "%")
+          value <- format(value, big.mark = ",")
+          value <- format(value, width = 9, justify = "right")
+          bar <- div(
+            class = "bar-chart",
+            style = list(marginRight = "6px"),
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
           )
+          div(class = "bar-cell", span(class = "number", value), bar)
+        }
+      )
+    ),
+    compact = TRUE,
+    bordered = TRUE,
+    class = "categories-tbl"
+  )
 ```
