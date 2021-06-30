@@ -173,7 +173,7 @@ valueBox(n_likes, icon = "fa-heart")
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Timeline of Tweets Per Month
+### Tweets Per Month
 
 ```{r}
 tweets_timeline %>%
@@ -225,7 +225,7 @@ tweets_timeline %>%
   e_color(mycolor)
 ```
 
-### Timeline of Retweets per Month
+### Retweets per Month
 
 ```{r}
 retweets_timeline %>%
@@ -280,7 +280,7 @@ retweets_timeline %>%
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Timeline of Favorites per Month
+### Favorites per Month
 
 ```{r}
 likes_timeline %>%
