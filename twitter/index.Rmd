@@ -215,34 +215,24 @@ Row
 
 ```{r}
 week_lvs <- c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+myear_lvs <- unique(by_day_metrics$myear)
 
 by_day_metrics %>%
-  mutate(weekday = factor(weekday, levels = week_lvs, ordered = FALSE)) %>%
-  group_by(time = floor_date(time, "month"), weekday) %>%
+  mutate(weekday = factor(weekday, levels = week_lvs, ordered = FALSE),
+         myear = factor(myear, levels = myear_lvs, ordered = FALSE)) %>%
+  group_by(myear, weekday) %>%
   summarise(
     tweets = sum(tweets),
     likes = sum(likes),
     retweets = sum(retweets),
   ) %>%
   ungroup() %>%
-  group_by(time) %>%
-  e_charts(weekday, timeline = TRUE,) %>%
+  group_by(myear) %>%
+  e_charts(weekday, timeline = TRUE) %>%
   e_area(tweets, name = "Number of Tweets", stack = "grp") %>%
   e_area(likes, name = "Number of Likes", stack = "grp") %>%
   e_area(retweets, name = "Number of Retweets", stack = "grp") %>%
   e_tooltip(trigger = "axis") %>%
-  e_timeline_opts(axis_type = "category",
-                  label = list(
-                    formatter = htmlwidgets::JS(
-                      "function(value){
-        let date = new Date(value);
-        date.setDate(date.getDate() + 30)
-        let options = { year: 'numeric', month: 'short'}
-        let label = date.toLocaleDateString('en-US', options=options);
-        return label;
-      }"
-                    )
-                  )) %>%
   e_y_axis(
     splitArea = list(show = TRUE),
     axisPointer = list(
