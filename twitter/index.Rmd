@@ -42,6 +42,9 @@ get_tweet_embed <- function(user, status_id, popularity) {
 
 
 ```{r setup, include=FALSE, cache=TRUE}
+
+try(Sys.setlocale("LC_TIME", "C"), silent = TRUE)
+
 rstats_tweets <- vroom("data/full_data.csv.gz", col_types = c(status_id = "c")) %>% 
   filter(is_retweet == FALSE) %>% 
   filter(str_detect(user_id, "^\\d")) %>% 
@@ -51,12 +54,36 @@ tweets_timeline <- rstats_tweets %>%
   ts_data(by = "months") %>% 
   filter(time != as_datetime("2020-05-08"))
 
+tweets_by_day <- rstats_tweets %>% 
+  ts_data(by = "days") %>%
+  filter(time != as_datetime("2020-05-08")) %>% 
+  mutate(weekday = wday(time, label = TRUE, abbr = TRUE),
+         myear = format(time, format = "%b %Y"),
+         week = format(time, format = "%U")) %>% 
+  rename(tweets = n)
+
 likes_timeline <- rstats_tweets %>% 
   select(created_at, favorite_count) %>% 
   group_by(floor_date(created_at, "month")) %>% 
   summarise(n = sum(favorite_count, na.rm = TRUE)) %>% 
   ungroup() %>% 
   setNames(c("time", "n")) %>% 
+  filter(!is.na(time))
+
+likes_by_day <- rstats_tweets %>% 
+  select(created_at, favorite_count) %>% 
+  group_by(floor_date(created_at, "day")) %>% 
+  summarise(n = sum(favorite_count, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  setNames(c("time", "likes")) %>% 
+  filter(!is.na(time))
+
+replies_by_day <- rstats_tweets %>% 
+  select(created_at, reply_count) %>% 
+  group_by(floor_date(created_at, "day")) %>% 
+  summarise(n = sum(reply_count, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  setNames(c("time", "replies")) %>% 
   filter(!is.na(time))
 
 n_tweets <- rstats_tweets %>% 
@@ -75,6 +102,11 @@ rstats_retweets <- vroom("data/full_data.csv.gz", col_select = c(user_id, create
 retweets_timeline <- rstats_retweets %>% 
   ts_data(by = "months") %>% 
   filter(time != as_datetime("2020-05-08"))
+
+retweets_by_day <- rstats_retweets %>% 
+  ts_data(by = "days") %>% 
+  filter(time != as_datetime("2020-05-08")) %>% 
+  rename(retweets = n)
 
 n_retweets <- rstats_retweets %>% 
   pull(status_id) %>% 
@@ -103,6 +135,12 @@ mycolor <- c("#2780e3", "#003636", "#a9a9a9", "#91c8c8")
 top_tweets <- rstats_tweets %>%
   mutate(popularity = favorite_count + (retweet_count * 2)) %>% 
   slice_max(popularity, n = 10)
+
+by_day_metrics <- tweets_by_day %>% 
+  left_join(retweets_by_day, by = "time") %>% 
+  left_join(likes_by_day, by = "time") %>% 
+  left_join(replies_by_day, by = "time") %>% 
+  tidyr::replace_na(replace = list(likes = 0))
 ```
 
 ```{r text_proc, include=FALSE, cache=TRUE}
@@ -170,6 +208,67 @@ valueBox(n_users, icon = "fa-user")
 valueBox(n_likes, icon = "fa-heart")
 ```
 
+Row
+-----------------------------------------------------------------------
+
+### Timeline of Tweets | <small> Jun 2020 - Jun 2021 </small>
+
+```{r}
+week_lvs <- c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+
+by_day_metrics %>%
+  mutate(weekday = factor(weekday, levels = week_lvs, ordered = FALSE)) %>%
+  group_by(time = floor_date(time, "month"), weekday) %>%
+  summarise(
+    tweets = sum(tweets),
+    likes = sum(likes),
+    retweets = sum(retweets),
+  ) %>%
+  ungroup() %>%
+  group_by(time) %>%
+  e_charts(weekday, timeline = TRUE,) %>%
+  e_area(tweets, name = "Number of Tweets", stack = "grp") %>%
+  e_area(likes, name = "Number of Likes", stack = "grp") %>%
+  e_area(retweets, name = "Number of Retweets", stack = "grp") %>%
+  e_tooltip(trigger = "axis") %>%
+  e_timeline_opts(axis_type = "category",
+                  label = list(
+                    formatter = htmlwidgets::JS(
+                      "function(value){
+        let date = new Date(value);
+        date.setDate(date.getDate() + 30)
+        let options = { year: 'numeric', month: 'short'}
+        let label = date.toLocaleDateString('en-US', options=options);
+        return label;
+      }"
+                    )
+                  )) %>%
+  e_y_axis(
+    splitArea = list(show = TRUE),
+    axisPointer = list(
+      show = FALSE,
+      lineStyle = list(
+        color = "#999999",
+        width = 0.75,
+        type = "dotted"
+      )
+    )
+  ) %>%
+  e_x_axis(
+    splitArea = list(show = TRUE),
+    splitLine = list(show = TRUE),
+    axisLabel = list(rotate = 30, interval = 0)
+  ) %>%
+  e_toolbox_feature(feature = "magicType",
+                    type = list("area", "line", "bar")) %>%
+  e_toolbox_feature("restore") %>%
+  e_toolbox_feature(feature = "reset") %>%
+  e_toolbox_feature("saveAsImage") %>%
+  e_animation(duration = 1000) %>%
+  e_color(mycolor)
+```
+
+
 Row {data-height=400}
 -----------------------------------------------------------------------
 
@@ -181,7 +280,6 @@ tweets_timeline %>%
   e_bar(n, legend = FALSE) %>%
   e_title(
     text = "Tweets",
-    subtext = "Timeline",
     sublink = "#",
     left = "left",
     top = 4
@@ -233,7 +331,6 @@ retweets_timeline %>%
   e_bar(n, legend = FALSE) %>%
   e_title(
     text = "Retweets",
-    subtext = "Timeline",
     sublink = "#",
     left = "left",
     top = 4
@@ -288,7 +385,6 @@ likes_timeline %>%
   e_bar(n, legend = FALSE) %>%
   e_title(
     text = "Favorites",
-    subtext = "Timeline",
     sublink = "#",
     left = "left",
     top = 4
