@@ -8,6 +8,7 @@ past_event <- past_event %>%
 total_events <- length(past_event$id)
 total_rsvp <- sum(past_event$yes_rsvp_count)
 total_cities <- length(unique(past_event$group_city))
+past_event$venue_country_name <- countrycode(past_event$group_country, "iso2c", "country.name")
 total_countries <- length(unique(past_event$venue_country_name))
 
 # Count of events per year
@@ -163,7 +164,6 @@ events_by_country <- tail(events_by_country, 20)
 
 
 # Data-table
-past_event$venue_country_name <- countrycode(past_event$group_country, "iso2c", "country.name")
 past_event <- past_event %>%
   arrange(desc(local_date))
 display_df <- data.frame(Event_name = past_event$name, Date=past_event$created, City=past_event$group_city, 
