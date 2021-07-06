@@ -165,11 +165,11 @@ Row {data-height=400}
 ### Count of R events <small> per Month </small>
 
 ```{r}
-mycolor <- c("#0586c4","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#fc5185","#003636","#a9a9a9", "#91c8c8")
 
 months.df %>% 
   e_charts(month) %>%
-  e_bar(serie = Events_Count) %>% 
+  e_area(Events_Count) %>% 
   e_title(text = "Events Monthly Statistics", 
           subtext = "Frequency of Events", 
           sublink = "#",
@@ -200,11 +200,11 @@ months.df %>%
 ### Attendance in R Events <small> per Month </small>
 
 ```{r}
-mycolor <- c("#435f9c","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#fc5185","#003636","#a9a9a9", "#91c8c8")
 
 months.rsvpdf %>% 
   e_charts(month) %>%
-  e_bar(serie = Attendees) %>% 
+  e_area(Attendees) %>% 
   e_title(text = "Monthly Attendance", 
           subtext = "RSVP Count", 
           sublink = "#",
