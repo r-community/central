@@ -39,7 +39,7 @@ Row
 
 ```{r}
 
-valueBox(total_events, icon = "fa-calendar", color = "darkblue")
+valueBox(total_events, icon = "fa-calendar", color = "#435f9c")
 
 ```
 
@@ -47,35 +47,41 @@ valueBox(total_events, icon = "fa-calendar", color = "darkblue")
 
 ```{r}
 
-valueBox(number_of_speakers, icon = "fa-users", color = "darkblue")
+valueBox(number_of_speakers, icon = "fa-users", color = "#0586c4")
 
 ```
 
 ### Sponsors Gained
 
 ```{r}
-valueBox(number_of_sponsors, icon = "fa-hand-holding-usd", color = "darkblue")
+
+valueBox(number_of_sponsors, icon = "fa-hand-holding-usd", color = "#435f9c")
+
 ```
 
 ### Events - Cities
 
 ```{r}
-valueBox(length(satrday_city$City), icon = "fa-building", color = "darkblue")
+
+valueBox(length(satrday_city$City), icon = "fa-building", color = "#0586c4")
+
 ```
 
 ### Events - Countries
 
 ```{r}
-valueBox(length(satrday_country$Country), icon = "fa-globe", color = "darkblue")
+
+valueBox(length(satrday_country$Country), icon = "fa-globe", color = "#435f9c")
+
 ```
 
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Timeline of Events Per Year
+### Timeline of Events | <small> Per Year </small>
 
 ```{r}
-mycolor <- c("#00008B","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#4ca0c6 ","#003636","#a9a9a9", "#91c8c8")
 rownames(satrday_year) <- satrday_year$Year
 satrday_year %>% 
   mutate(
@@ -113,16 +119,16 @@ satrday_year %>%
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Continent-wise Events Distribution
+### Events Distribution | <small> From 2016-2020 </small>
 
 ```{r}
 satrday_continent <- satrday_continent[with(satrday_continent, order(count)), ]
-mycolor <- c("#00008B","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#34495E","#003636","#a9a9a9", "#91c8c8")
 satrday_continent %>%
   e_charts(x = Continent) %>%
   e_bar(count, legend = FALSE, name = "Events Count") %>% 
   e_labels(position = "right") %>% 
-  e_title("satRdays Events from 2016-2020", "Continents") %>% 
+  e_title("Continent Wise Events", "Continents") %>% 
   e_y_axis(
     splitArea = list(show = TRUE),
     axisPointer = list(      show = FALSE, 
@@ -149,15 +155,15 @@ satrday_continent %>%
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Quarterwise Events Distribution
+### Events Distribution | <small> From 2016-2020 </small>
 
 ```{r}
-mycolor <- c("#00008B","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#BDC3C7","#003636","#a9a9a9", "#91c8c8")
 
 satrday_quarter %>%
   e_charts(Quarter) %>%
   e_line(serie = count) %>%
-  e_title(text = "Quarter-wise satRdays Events from 2016-2020", 
+  e_title(text = "Quarter Wise Events", 
           subtext = "Q1: Jan-Mar || Q2: Apr-Jun || Q3: Jul-Sep || Q4: Oct-Dec", 
           sublink = "#",
           left = "left", top = 4) %>%
