@@ -42,41 +42,41 @@ CRAN Statistics
 Row
 -------------------------------------
 
-### Total CRAN packages
+### Total CRAN Packages
 
 ```{r}
 
-valueBox(total_pkgs, icon = "fa-project-diagram", color = "#1F51FF")
+valueBox(total_pkgs, icon = "fa-project-diagram", color = "#435f9c")
 
 ```
 
-### Total count of authors
+### Total Authors
 
 ```{r}
 
-valueBox(total_authors, icon = "fa-user-edit", color = "#1F51FF")
+valueBox(total_authors, icon = "fa-user-edit", color = "#0586c4")
 
 ```
 
-### Total Package Downloads 
+### Package Downloads - Millions 
 
 ```{r}
-valueBox(total_dwnld, icon = "fa-download", color = "#1F51FF")
+valueBox(round(total_dwnld / 1e6, 1), icon = "fa-download", color = "#435f9c")
 ```
 
-### Number of CRAN Task Views
+### CRAN Task Views
 
 ```{r}
-valueBox(total_cran_taskviews, icon = "fa-tasks", color = "#1F51FF")
+valueBox(total_cran_taskviews, icon = "fa-tasks", color = "#0586c4")
 ```
 
 Row {data-height=500}
 -----------------------------------------------------------------------
 
-### Yearly chart of total downloads
+### CRAN Packages Timeline | <small> Downloads per Year </small>
 
 ```{r}
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#4ca0c6","#003636","#a9a9a9", "#91c8c8")
 
 rownames(yearly_dwnld) <- yearly_dwnld$year
 yearly_dwnld %>% 
@@ -85,7 +85,7 @@ yearly_dwnld %>%
   ) %>%
   e_charts(Year) %>%
   e_bar(serie = count) %>% 
-  e_title(text = "CRAN Packages Yearly Downloads", 
+  e_title(text = "Yearly Downloads", 
           subtext = "Frequency of Downloads", 
           sublink = "#",
           left = "left", top = 4
@@ -117,7 +117,7 @@ yearly_dwnld %>%
 ```{r}
 d %>% 
   head(100) %>%
-  e_color_range(freq, color, colors = "#1F51FF") %>% 
+  e_color_range(freq, color, colors = "#34495E") %>% 
   e_charts() %>% 
   e_cloud(word, freq, color, shape = "circle")
 ```
@@ -125,11 +125,11 @@ d %>%
 Row {data-height=500}
 -----------------------------------------------------------------------
 
-### Most popular packages downloaded | <small> Last Month </small>
+### Most Popular Package Downloads | <small> Last Month </small>
 ```{r}
 mp_pkg_month <- cran_top_downloads(when = "last-month", count = 20)
 
-mycolor <- c("#1F51FF","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#435f9c","#003636","#a9a9a9", "#91c8c8")
 mp_pkg_month <- mp_pkg_month %>%
   arrange(count)
 mp_pkg_month %>%
@@ -182,13 +182,13 @@ keyword_df %>%
         name = "Word Count",
         defaultSortOrder = "desc",
         cell = function(value) {
-          width <- paste0(value * 100 / sum(keyword_df$freq), "%")
+          width <- paste0(value * 100 / max(keyword_df$freq), "%")
           value <- format(value, big.mark = ",")
           value <- format(value, width = 9, justify = "right")
           bar <- div(
             class = "bar-chart",
             style = list(marginRight = "6px"),
-            div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
           )
           div(class = "bar-cell", span(class = "number", value), bar)
         }
@@ -202,7 +202,7 @@ keyword_df %>%
 Row {data-height=500}
 -----------------------------------------------------------------------
 
-### Licenses Types
+### Top Popular Licenses Types
 
 ```{r}
 license_df %>%
@@ -224,13 +224,13 @@ license_df %>%
         name = "Frequency of Packages",
         defaultSortOrder = "desc",
         cell = function(value) {
-          width <- paste0(value * 100 / sum(license_df$Frequency), "%")
+          width <- paste0(value * 100 / max(license_df$Frequency), "%")
           value <- format(value, big.mark = ",")
           value <- format(value, width = 9, justify = "right")
           bar <- div(
             class = "bar-chart",
             style = list(marginRight = "6px"),
-            div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
           )
           div(class = "bar-cell", span(class = "number", value), bar)
         }
@@ -267,13 +267,13 @@ taskview_df %>%
         name = "Number of Packages",
         defaultSortOrder = "desc",
         cell = function(value) {
-          width <- paste0(value * 100 / sum(taskview_df$NumberOfPackages), "%")
+          width <- paste0(value * 100 / max(taskview_df$NumberOfPackages), "%")
           value <- format(value, big.mark = ",")
           value <- format(value, width = 9, justify = "right")
           bar <- div(
             class = "bar-chart",
             style = list(marginRight = "6px"),
-            div(class = "bar", style = list(width = width, backgroundColor = "#1F51FF"))
+            div(class = "bar", style = list(width = width, backgroundColor = "#fc5185"))
           )
           div(class = "bar-cell", span(class = "number", value), bar)
         }
