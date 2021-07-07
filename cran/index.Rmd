@@ -58,10 +58,10 @@ valueBox(total_authors, icon = "fa-user-edit", color = "#0586c4")
 
 ```
 
-### Package Downloads - Millions 
+### Package Downloads
 
 ```{r}
-valueBox(round(total_dwnld / 1e6, 1), icon = "fa-download", color = "#435f9c")
+valueBox(total_dwnld , icon = "fa-download", color = "#435f9c")
 ```
 
 ### CRAN Task Views
@@ -76,7 +76,7 @@ Row {data-height=500}
 ### CRAN Packages Timeline | <small> Downloads per Year </small>
 
 ```{r}
-mycolor <- c("#4ca0c6","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#80bbd6","#003636","#a9a9a9", "#91c8c8")
 
 rownames(yearly_dwnld) <- yearly_dwnld$year
 yearly_dwnld %>% 
@@ -117,7 +117,7 @@ yearly_dwnld %>%
 ```{r}
 d %>% 
   head(100) %>%
-  e_color_range(freq, color, colors = "#34495E") %>% 
+  e_color_range(freq, color, colors = "#435f9c") %>% 
   e_charts() %>% 
   e_cloud(word, freq, color, shape = "circle")
 ```
@@ -126,16 +126,17 @@ Row {data-height=500}
 -----------------------------------------------------------------------
 
 ### Most Popular Package Downloads | <small> Last Month </small>
+
 ```{r}
 mp_pkg_month <- cran_top_downloads(when = "last-month", count = 20)
 
-mycolor <- c("#435f9c","#003636","#a9a9a9", "#91c8c8")
+mycolor <- c("#80bbd6","#003636","#a9a9a9", "#91c8c8")
 mp_pkg_month <- mp_pkg_month %>%
   arrange(count)
 mp_pkg_month %>%
   e_charts(x = package) %>%
   e_bar(count, legend = FALSE, name = "Download Count") %>% 
-  e_labels(position = "right") %>% 
+  #e_labels(position = "right") %>% 
   e_title("Top 20 CRAN Package Downloads - Last Month", "Package") %>% 
   e_y_axis(
     splitArea = list(show = TRUE),
@@ -148,7 +149,7 @@ mp_pkg_month %>%
   ) %>%
   e_x_axis(splitArea = list(show = TRUE),
            splitLine = list(show = TRUE),
-           axisLabel= list(rotate = 30,interval = 0)) %>%
+           axisLabel= list(rotate = 0,interval = 0)) %>%
   e_flip_coords() %>% 
   e_toolbox_feature(feature = "magicType",
                     type = list("area", "line", "bar")) %>%
