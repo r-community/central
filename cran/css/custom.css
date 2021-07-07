@@ -53,21 +53,21 @@
 .value-box {
   border-radius: .25em;
   box-shadow: 4px 4px 4px rgba(0,0,0,.05);
-  height: 140px;
+  height: 100px;
   margin-bottom: 0.75em;
   margin-left: 0.65em;
   border: 1px solid #53a4ff;
 }
 
 .value-box .icon i.fa {
-  font-size: 60px;
+  font-size: 40px;
   top: 20px;
   transition: all .3s linear;
   color: #FFFFFF;
 }
 
 .value-box:hover .icon > i {
-	font-size: 75px;
+	font-size: 55px;
 	position: absolute;
 	right: 15px;
 	top: 15px;
@@ -76,12 +76,12 @@
 
 
 .value-box .inner .value {
-	font-size: 40px;
+	font-size: 20px;
 	transition: all .3s linear;
 }
 
 .value-box:hover .inner .value {
-	font-size: 50px;
+	font-size: 30px;
 }
 
 .value-box:hover {

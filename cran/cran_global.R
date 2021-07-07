@@ -94,12 +94,3 @@ for(i in 1:length(taskview_list)){
 }
 taskview_df <- data.frame(TaskViews = taskview_name, NumberOfPackages = taskview_pkg_count)
 
-
-
-
-
-
-
-
-
-
