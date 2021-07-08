@@ -1,5 +1,5 @@
 ---
-title: "R-Google Summer of Code | Dashboard"
+title: "R Community Explorer | R-Google Summer of Code"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows

@@ -1,5 +1,5 @@
 ---
-title: "RStudio Community"
+title: "R Community Explorer | RStudio Community"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows

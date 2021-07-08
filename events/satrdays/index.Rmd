@@ -1,5 +1,5 @@
 ---
-title: "SatRdays Dashboard"
+title: "R Community Explorer | SatRdays Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows

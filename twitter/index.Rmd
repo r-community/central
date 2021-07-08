@@ -1,5 +1,5 @@
 ---
-title: "#rstats"
+title: "R Community Explorer | #rstats"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows

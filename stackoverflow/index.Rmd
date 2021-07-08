@@ -1,5 +1,5 @@
 ---
-title: "StackOverflow"
+title: "R Community Explorer | StackOverflow"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows

@@ -1,5 +1,5 @@
 ---
-title: "R Calendar"
+title: "R Community Explorer | R Calendar"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
