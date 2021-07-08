@@ -5,7 +5,7 @@ output:
     orientation: rows
     self_contained: false
     includes:
-      after_body: "../../fragments/afterInit.html"
+      after_body: ["../../fragments/footer.html", "../../fragments/afterInit.html"]
     css: ["../../fragments/custom.css", "custom.css"]
 ---
 
