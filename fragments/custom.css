@@ -202,6 +202,7 @@ i.fa {
 
 .page-footer {
   padding: 30px;
+  padding-left: 20rem;
 }
 
 .mx-3 {
@@ -210,4 +211,10 @@ i.fa {
 
 .mr-3 {
   margin-right: 0.8rem;
+}
+
+.full-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
