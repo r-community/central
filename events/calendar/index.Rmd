@@ -5,6 +5,7 @@ output:
     orientation: rows
     self_contained: false
     includes:
+      in_header: "../../fragments/ganalytics.html"
       after_body: ["../../fragments/footer.html", "../../fragments/afterInit.html"]
     css: ["../../fragments/custom.css", "custom.css"]
 ---
