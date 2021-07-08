@@ -128,9 +128,13 @@
   text-decoration: none;
 }
 
+#navbar-button {
+  display: none !important;
+}
+
 .navbar-toggle {
-	display: block;
-	background-color: #2d73c0;
+  display: none;
+  background-color: #2d73c0;
 }
 
 .section.level3.chart-wrapper {
@@ -180,4 +184,30 @@ i.fa {
 
 .events-section {
   margin-left: 1em;
+}
+
+/* footer */
+
+
+.footer-sponsors > a > .img-fluid {
+  width: 6em;
+  height: 4em;
+  padding-right: 15px;
+}
+
+.cover-img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.page-footer {
+  padding: 30px;
+}
+
+.mx-3 {
+  margin: 0 0.8rem;
+}
+
+.mr-3 {
+  margin-right: 0.8rem;
 }
