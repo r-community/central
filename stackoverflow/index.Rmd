@@ -6,7 +6,7 @@ output:
     vertical_layout: scroll
     self_contained: false
     includes:
-      after_body: "../fragments/afterInit.html"
+      after_body: ["../fragments/footer.html", "../fragments/afterInit.html"]
     css: ["../fragments/custom.css", "css/custom.css"]
 ---
 
