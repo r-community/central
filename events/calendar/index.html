@@ -8,9 +8,9 @@
 
 
 
-<title>R Calendar</title>
+<title>R Community Explorer | R Calendar</title>
 
-<meta property="og:title" content="R Calendar" />
+<meta property="og:title" content="R Community Explorer | R Calendar" />
 
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
@@ -794,6 +794,15 @@ html, body {
 }
 }
 </style>
+	  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-170188611-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-170188611-1');
+</script>
 
 
 <link rel="stylesheet" href="../../fragments/custom.css" type="text/css" />
@@ -817,7 +826,7 @@ html, body {
   
 </span>
 <span class="navbar-brand">
-  R Calendar
+  R Community Explorer | R Calendar
   <span class="navbar-author">
         </span>
 </span>
@@ -2664,6 +2673,18 @@ $(document).ready(function () {
 });
 </script>
 
+<footer class="page-footer font-small bg-primary">
+  <div class="full-footer">
+  <div class="footer-sponsors text-center py-1"> Dashboard Sponsored by
+    <a href="https://www.cynkra.com/" target="_blank"><img src="https://user2021.r-project.org/img/artwork/cynkra.png" class="img-fluid img-rounded img-thumbnail mx-3 cover-img" alt="Cynkra"></a>
+    <a href="https://www.rstudio.com/" target="_blank"><img src="https://user2021.r-project.org/img/artwork/rstudio-flat.svg" class="img-fluid img-rounded img-thumbnail mr-3" alt="RStudio"></a>
+    <a href="https://summerofcode.withgoogle.com/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/GSoC-icon.svg/1200px-GSoC-icon.svg.png" class="img-fluid img-rounded img-thumbnail cover-img" alt="GSoC"></a>
+  </div>
+  <div>
+    <a href="https://github.com/r-community/central" target="_blank"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+  </div>
+  </div>
+</footer>
 
 <script>
 $(window).on('load', function (e) {

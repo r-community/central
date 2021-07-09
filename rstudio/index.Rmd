@@ -1,5 +1,5 @@
 ---
-title: "RStudio Community"
+title: "R Community Explorer | RStudio Community"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -7,7 +7,8 @@ output:
     source_code: embed
     self_contained: false
     includes:
-      after_body: "../fragments/afterInit.html"
+      in_header: "../fragments/ganalytics.html"
+      after_body: ["../fragments/footer.html", "../fragments/afterInit.html"]
     css: ["../fragments/custom.css", "css/custom.css"]
 ---
 
