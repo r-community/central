@@ -13,3 +13,4 @@ We hope that using this suite of dashboards:
 
 # Contributors
 1. Ben Ubah
+2. Meet Bhatnagar
