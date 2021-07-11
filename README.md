@@ -11,3 +11,5 @@ We hope that using this suite of dashboards:
 - R enthusiasts/evangelists can be sure (based on verifiable data) when R is really increasing in popularity or declining and we all don't depend on biased rankings
 - With leaderboards, encourage social and technical participation across different spaces within the R ecosystem.
 
+# Contributors
+1. Ben Ubah
