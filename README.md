@@ -1,4 +1,4 @@
-# central
+# r-community.org
 r-community.org is thought to be a central place to find data and trends around the global R ecosystem.
 
 # Why this website?
