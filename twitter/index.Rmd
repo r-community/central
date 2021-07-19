@@ -203,7 +203,7 @@ valueBox(n_retweets, icon = "fa-retweet")
 valueBox(n_users, icon = "fa-user")
 ```
 
-### Favorites
+### Likes
 
 ```{r}
 valueBox(n_likes, icon = "fa-heart")
@@ -368,14 +368,14 @@ retweets_timeline %>%
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Favorites per Month
+### Likes per Month
 
 ```{r}
 likes_timeline %>%
   e_charts(time) %>%
   e_bar(n, legend = FALSE) %>%
   e_title(
-    text = "Favorites",
+    text = "Likes",
     sublink = "#",
     left = "left",
     top = 4
@@ -409,7 +409,7 @@ likes_timeline %>%
       "
     function(params) {
       let date = params[0].value[0]
-      let num = `${params[0].value[1]} Favorites`
+      let num = `${params[0].value[1]} Likes`
       return(`${date}</br><b>${num}</b>`);
     }"
     )
@@ -481,7 +481,7 @@ Row
 
 ### 10 Most Popular Tweets {.tweet-wall}
 
-Popularity = `Number of Favorites + Number of RT * 2`
+Popularity = `Number of Likes + Number of RT * 2`
 
 ```{r}
 top_tweets_html <- pmap_chr(list(top_tweets$screen_name, top_tweets$status_id, top_tweets$popularity), get_tweet_embed)
