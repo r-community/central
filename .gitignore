@@ -60,5 +60,3 @@ docs/
 # translation temp files
 po/*~
 
-# Twitter data
-twitter/data/
