@@ -23,4 +23,5 @@ Imports:
     rtweet,
     htmltools,
     tidytext,
+    formattable,
     echarts4r
