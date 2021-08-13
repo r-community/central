@@ -2,7 +2,7 @@ name: Update twitter dashboard
 
 on:
   schedule:
-    - cron: "00 2 * * *"
+    - cron: "00 12 * * *"
   workflow_dispatch:
 
 jobs:
