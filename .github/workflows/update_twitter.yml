@@ -1,0 +1,59 @@
+name: Update twitter dashboard
+
+on:
+  schedule:
+    - cron: "00 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  update_twitter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - name: Move dashboard dependencies
+        run: |
+          cp twitter/DESCRIPTION .
+
+      - name: Install curl
+        run: |
+          sudo apt install libcurl4-openssl-dev
+
+      - name: Install pak and query dependencies
+        run: |
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
+        shell: Rscript {0}
+
+      - name: Restore R package cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ env.R_LIBS_USER }}/*
+            !${{ env.R_LIBS_USER }}/pak
+          key: ubuntu-18.04-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
+          restore-keys: ubuntu-18.04-${{ steps.install-r.outputs.installed-r-version }}-1-
+
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          pak::local_system_requirements(execute = TRUE)
+        shell: Rscript {0}
+
+      - name: Install project dependencies
+        run: |
+          pak::local_install_dev_deps(upgrade = TRUE, ask = FALSE)
+        shell: Rscript {0}
+
+      - name: Render dashboard
+        run: |
+          cd twitter/ && Rscript -e "rmarkdown::render('./index.Rmd')"
+
+      - name: Update dashboard
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add ./twitter/index.html
+          git commit -m "chore: Update twitter dashboard" || echo "Failed on commit dashboard"
+          git push || echo "Failed on push dashboard"

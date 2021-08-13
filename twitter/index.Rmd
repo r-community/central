@@ -13,7 +13,6 @@ output:
 
 ```{r libs, include=FALSE}
 library(flexdashboard)
-library(htmltools)
 library(rtweet)
 library(dplyr)
 library(vroom)
@@ -23,33 +22,20 @@ library(tidytext)
 library(lubridate)
 library(echarts4r)
 
-get_tweet_embed <- function(user, status_id, popularity) {
-  url <-
-    str_glue(
-      "https://publish.twitter.com/oembed?url=https://twitter.com/{user}/status/{status_id}&partner=&hide_thread=false"
-    )
-  
-  response <- httr::GET(url) %>%
-    httr::content()
-  
-  return(toString(tagList(
-    div(h4(
-      paste("Popularity:", popularity), class = "text-center"
-    ), style = "display: inline-block;border: 1px solid rgba(0, 0, 0, 0.2);border-radius: 1em;",
-    HTML(response$html))
-  )[[1]]))
-}
+source("global.R")
+
+data_file_url <- "https://github.com/r-community/twitterdata/raw/main/data/full_data.csv.gz"
+
+try(Sys.setlocale("LC_TIME", "C"), silent = TRUE)
+
+rstats_tweets <-
+  readData(data_file_url) %>%
+  filter(str_detect(user_id, "^\\d")) %>%
+  filter(floor_date(created_at, "month") != as_date("2020-05-01"))
 ```
 
 
 ```{r setup, include=FALSE, cache=TRUE}
-
-try(Sys.setlocale("LC_TIME", "C"), silent = TRUE)
-
-rstats_tweets <- vroom("data/full_data.csv.gz", col_types = c(status_id = "c")) %>% 
-  filter(is_retweet == FALSE) %>% 
-  filter(str_detect(user_id, "^\\d")) %>% 
-  filter(floor_date(created_at, "month") != as_date("2020-05-01"))
 
 tweets_timeline <- rstats_tweets %>% 
   ts_data(by = "months") %>% 
@@ -96,30 +82,30 @@ n_likes <- rstats_tweets %>%
   pull(favorite_count) %>% 
   sum(., na.rm = TRUE)
 
-rstats_retweets <- vroom("data/full_data.csv.gz", col_select = c(user_id, created_at, status_id, is_retweet)) %>% 
-  filter(is_retweet == TRUE)  %>%
-  filter(floor_date(created_at, "month") != as_date("2020-05-01"))
+retweets_timeline <- rstats_tweets %>% 
+  select(created_at, retweet_count) %>% 
+  group_by(floor_date(created_at, "month")) %>% 
+  summarise(n = sum(retweet_count, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  setNames(c("time", "n")) %>% 
+  filter(!is.na(time))
 
-retweets_timeline <- rstats_retweets %>% 
-  ts_data(by = "months") %>% 
-  filter(time != as_datetime("2020-05-08"))
+retweets_by_day <- rstats_tweets %>% 
+  select(created_at, retweet_count) %>% 
+  group_by(floor_date(created_at, "day")) %>% 
+  summarise(n = sum(retweet_count, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  setNames(c("time", "retweets")) %>% 
+  filter(!is.na(time))
 
-retweets_by_day <- rstats_retweets %>% 
-  ts_data(by = "days") %>% 
-  filter(time != as_datetime("2020-05-08")) %>% 
-  rename(retweets = n)
+n_retweets <- rstats_tweets %>% 
+  pull(retweet_count) %>% 
+  sum(., na.rm = TRUE)
 
-n_retweets <- rstats_retweets %>% 
-  pull(status_id) %>% 
+n_users <- rstats_tweets %>% 
+  pull(user_id) %>% 
   unique() %>% 
   length()
-
-users_1 <- rstats_tweets %>% 
-  pull(user_id)
-users_2 <- rstats_retweets %>% 
-  pull(user_id)
-
-n_users <- length(unique(c(users_1, users_2)))
 
 active_users <- rstats_tweets %>%
   count(user_id, screen_name) %>%
@@ -141,7 +127,7 @@ by_day_metrics <- tweets_by_day %>%
   left_join(retweets_by_day, by = "time") %>% 
   left_join(likes_by_day, by = "time") %>% 
   left_join(replies_by_day, by = "time") %>% 
-  tidyr::replace_na(replace = list(likes = 0))
+  tidyr::replace_na(replace = list(likes = 0, retweets = 0))
 ```
 
 ```{r text_proc, include=FALSE, cache=TRUE}
@@ -231,8 +217,8 @@ by_day_metrics %>%
   group_by(myear) %>%
   e_charts(weekday, timeline = TRUE) %>%
   e_area(tweets, name = "Number of Tweets", stack = "grp") %>%
-  e_area(likes, name = "Number of Likes", stack = "grp") %>%
   e_area(retweets, name = "Number of Retweets", stack = "grp") %>%
+  e_area(likes, name = "Number of Likes", stack = "grp") %>%
   e_tooltip(trigger = "axis") %>%
   e_y_axis(
     splitArea = list(show = TRUE),
@@ -303,11 +289,9 @@ tweets_timeline %>%
     formatter = htmlwidgets::JS(
       "
     function(params) {
-      let date = new Date(params[0].value[0])
-      let options = { year: 'numeric', month: 'short'}
-      let title = `<strong>${date.toLocaleDateString('en-US', options=options)}</strong>`
-      let num = `${params[0].value[1]} tweets`
-      return(`${title}</br>${num}`);
+      let date = params[0].value[0]
+      let num = `${params[0].value[1]} Tweets`
+      return(`${date}</br><b>${num}</b>`);
     }"
     )
   ) %>%
@@ -354,11 +338,9 @@ retweets_timeline %>%
     formatter = htmlwidgets::JS(
       "
     function(params) {
-      let date = new Date(params[0].value[0])
-      let options = { year: 'numeric', month: 'short'}
-      let title = `<strong>${date.toLocaleDateString('en-US', options=options)}</strong>`
-      let num = `${params[0].value[1]} retweets`
-      return(`${title}</br>${num}`);
+      let date = params[0].value[0]
+      let num = `${params[0].value[1]} Retweets`
+      return(`${date}</br><b>${num}</b>`);
     }"
     )
   ) %>%
@@ -486,6 +468,6 @@ Popularity = `Number of Likes + Number of RT * 2`
 ```{r}
 top_tweets_html <- pmap_chr(list(top_tweets$screen_name, top_tweets$status_id, top_tweets$popularity), get_tweet_embed)
 
-shiny::HTML(str_glue("{top_tweets_html}"))
+HTML(str_glue("{top_tweets_html}"))
 ```
 
