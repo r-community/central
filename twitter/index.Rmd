@@ -131,6 +131,9 @@ by_day_metrics <- tweets_by_day %>%
 ```
 
 ```{r text_proc, include=FALSE, cache=TRUE}
+Encoding(rstats_tweets$text) <- "UTF-8"
+rstats_tweets$text <- iconv(rstats_tweets$text, "UTF-8", "UTF-8", sub = '')
+
 top_words <- rstats_tweets %>% 
   unnest_tweets(word, text) %>% 
   anti_join(stop_words) %>% 
