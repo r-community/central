@@ -1,0 +1,86 @@
+.section.level3.chart-wrapper {
+  box-shadow: none !important;
+}
+
+/* Backup style for tweets */
+
+.tweet-wall > .chart-stage {
+  max-width: 100%;
+}
+
+blockquote.twitter-tweet {
+  padding: 0.8em;
+  margin: 0.5em;
+  border-radius: 1em;
+  border-left: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.twitter-tweet {
+  margin-bottom: 0 !important;
+}
+
+/* Tweet Box styles*/
+
+.tweet-box {
+  border: none;
+  background: none;
+}
+
+.tweet-box > .chart-title {
+  text-align: center;
+  font-size: 1.5em;
+  border: none;
+}
+
+.tweet-box > .chart-stage {
+  display: flex;
+  justify-content: center;
+}
+
+/* Tweet Box styles end */
+
+.datatable-container {
+  max-width: 99.8% !important;
+}
+
+table.dataTable {
+  width: 100% !important;
+}
+
+.chart-stage .echarts4r {
+  max-height: 25em !important;
+}
+
+.flex-control {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* The Masonry Brick */
+.tweet-wall > .chart-stage > .twitter-tweet {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+  .tweet-wall > .chart-stage {
+    column-count: 4;
+  }
+}
+
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .tweet-wall > .chart-stage {
+    column-count: 3;
+  }
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+  .tweet-wall > .chart-stage {
+    column-count: 2;
+  }
+}
+/* Styles for the tweet wall end */

@@ -1,0 +1,196 @@
+---
+title: "R Conferences on Twitter"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    self_contained: false
+    includes:
+      in_header: "../fragments/ganalytics.html"
+      after_body: ["../fragments/footer.html", "../fragments/afterInit.html"]
+    css: ["../fragments/custom.css", "css/custom.css"]
+---
+
+```{r load_packages, include=FALSE}
+devtools::load_all()
+library(flexdashboard)
+library(lubridate)
+library(rtweet)
+library(vroom)
+library(dplyr)
+library(DT)
+```
+
+```{r load_data, include=FALSE, cache=TRUE}
+data_url <- "https://github.com/jvfe/rconferenceData/raw/main/data/tweets.csv.gz"
+rstats_tweets <- readData(data_url)
+```
+
+```{r process_data, include=FALSE, cache=TRUE}
+timeline <- make_by_day_metrics(rstats_tweets)
+
+n_tweets <- get_unique_value(rstats_tweets, text)
+
+n_retweets <- rstats_tweets %>%
+  pull(retweet_count) %>%
+  sum()
+
+n_users <- get_unique_value(rstats_tweets, user_id)
+
+n_likes <- rstats_tweets %>%
+  pull(favorite_count) %>%
+  sum()
+
+tweets_today <- rstats_tweets %>%
+  filter(lubridate::date(created_at) == lubridate::today())
+
+tweets_month <- rstats_tweets %>%
+  filter(date(created_at) %within% interval(floor_date(today(), "month"), today()))
+
+if (nrow(tweets_today) == 0) {
+  tweets_today <- rstats_tweets %>%
+    filter(lubridate::date(created_at) == max(lubridate::date(created_at)))
+}
+
+top_tweets <- rstats_tweets %>%
+  filter(is_retweet == FALSE) %>% 
+  mutate(popularity = favorite_count + (retweet_count * 2)) %>% 
+  slice_max(popularity, n = 20, with_ties = FALSE)
+```
+
+Sidebar {.sidebar data-width=200}
+==================
+
+```{r, echo=FALSE, results='asis'}
+htmltools::includeHTML('../fragments/sidebar.html')
+```
+
+Home {data-icon="ion-home"}
+====
+
+Row
+-------------------------------------
+
+### Tweets
+
+```{r}
+valueBox(n_tweets, icon = "fa-comments")
+```
+
+### Retweets
+
+```{r}
+valueBox(n_retweets, icon = "fa-retweet")
+```
+
+### Users
+
+```{r}
+valueBox(n_users, icon = "fa-user")
+```
+
+### Likes
+
+```{r}
+valueBox(n_likes, icon = "fa-heart")
+```
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Tweet volume
+
+```{r tweet_volume}
+plot_tweet_volume(timeline)
+```
+
+### Tweets by Hour of Day
+
+```{r tweets_by_hour}
+plot_tweet_by_hour(rstats_tweets)
+```
+
+Row
+-----------------------------------------------------------------------
+
+### 💗 Most Liked Tweet Today {.tweet-box}
+
+```{r most_liked}
+most_liked_url <- tweets_today %>%
+  slice_max(favorite_count, with_ties = FALSE)
+
+get_tweet_embed(most_liked_url$screen_name, most_liked_url$status_id)
+```
+
+### ✨ Most Retweeted Tweet Today {.tweet-box}
+
+```{r most_rt}
+most_retweeted <- tweets_today %>%
+  slice_max(retweet_count, with_ties = FALSE)
+
+get_tweet_embed(most_retweeted$screen_name, most_retweeted$status_id)
+```
+
+### 🎉 Most Recent {.tweet-box}
+
+```{r most_recent}
+most_recent <- tweets_today %>%
+  slice_max(created_at, with_ties = FALSE)
+
+get_tweet_embed(most_recent$screen_name, most_recent$status_id)
+```
+
+Row
+-----------------------------------------------------------------------
+
+### 20 Most Popular Tweets {.tweet-wall}
+
+```{r}
+top_tweets_html <- purrr::pmap_chr(list(top_tweets$screen_name, top_tweets$status_id), get_tweet_embed)
+htmltools::HTML(stringr::str_glue("{top_tweets_html}"))
+```
+
+Row {data-width=100}
+----------------------------------------------------------
+
+### Tweets this month {.datatable-container}
+
+```{r datatable}
+tweets_month %>%
+  select(
+    status_url,
+    created_at,
+    screen_name,
+    text,
+    retweet_count,
+    favorite_count,
+    mentions_screen_name
+  ) %>%
+  mutate(
+    status_url = stringr::str_glue("<a href=\"{status_url}\" target=\"_blank\">On Twitter</a>")
+  ) %>%
+  datatable(
+    .,
+    extensions = "Buttons",
+    rownames = FALSE,
+    escape = FALSE,
+    colnames = c("Timestamp", "User", "Tweet", "RT", "Fav", "Mentioned"),
+    filter = 'top',
+    options = list(
+      columnDefs = list(list(
+        targets = 0, searchable = FALSE
+      )),
+      lengthMenu = c(5, 10, 25, 50, 100),
+      pageLength = 10,
+      scrollY = 600,
+      scroller = TRUE,
+      dom = '<"flex-control"lBf>rtip',
+      buttons = list('copy', list(
+        extend = 'collection',
+        buttons = c('csv', 'excel'),
+        text = 'Download'
+      ))
+    ),
+    class = "top-tbl"
+  )
+```
