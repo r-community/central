@@ -89,7 +89,7 @@ month_blogs <- function(year, month){
   Month_Blog_Information
 }
 
-# Note that year wise function is only valid from year 2009 till 2020
+# Note that year wise function is only valid from year 2009 till 2021
 # Inorder to get the year before 2009 - use `month_blogs` function which will individually find monthly blogs
 # For present year use `month_blogs` function too, as the year is not completed yet
 
