@@ -133,7 +133,7 @@ valueBox(json_file[["summary"]][["ucount"]], icon = "fa-users", color = "#0586c4
 Row {data-height=400}
 -----------------------------------------------------------------------
 
-### Timeline chart of Questions, Answers and Comments per month
+### Timeline chart of Questions, Answers and Comments Per Month
 
 ```{r}
 mycolor <- c("#4ca0c6","#34495E","#BDC3C7","#003636","#a9a9a9", "#91c8c8")
