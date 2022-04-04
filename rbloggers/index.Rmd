@@ -149,7 +149,7 @@ mycolor <- c("#2780e3","#fc5185","#a9a9a9", "#91c8c8")
 
 Row {data-height=400}
 -----------------------------------------------------------------------
-### Monthly Count of Blog Posts 2005 - 2020
+### Monthly Count of Blog Posts | 2005 - 2021
 
 ```{r}
 avg <- list(
