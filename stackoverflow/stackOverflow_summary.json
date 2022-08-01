@@ -1,12 +1,12 @@
 {
   "summary": [
     {
-      "qcount": 405004,
-      "acount": 518262,
-      "ccount": 783264,
-      "pvcount": 725025148,
-      "lcount": 220988,
-      "ucount": 123075
+      "qcount": 435068,
+      "acount": 551983,
+      "ccount": 829363,
+      "pvcount": 728031558,
+      "lcount": 224314,
+      "ucount": 131277
     }
   ],
   "overall_count": [
@@ -1336,56 +1336,110 @@
     {
       "Year": 2021,
       "Month": "Jan",
-      "QCount": 5030,
-      "ACount": 5096,
-      "CCount": 6742,
-      "UCount": 3373,
-      "VCount": 248745
+      "QCount": 4746,
+      "ACount": 5152,
+      "CCount": 6612,
+      "UCount": 3186,
+      "VCount": 519097
     },
     {
       "Year": 2021,
       "Month": "Feb",
-      "QCount": 5012,
-      "ACount": 5120,
-      "CCount": 6542,
-      "UCount": 3422,
-      "VCount": 239253
+      "QCount": 5030,
+      "ACount": 5235,
+      "CCount": 6581,
+      "UCount": 3424,
+      "VCount": 508269
     },
     {
       "Year": 2021,
       "Month": "Mar",
-      "QCount": 6025,
-      "ACount": 5914,
-      "CCount": 8189,
-      "UCount": 3941,
-      "VCount": 242365
+      "QCount": 6075,
+      "ACount": 6031,
+      "CCount": 8283,
+      "UCount": 3957,
+      "VCount": 523642
     },
     {
       "Year": 2021,
       "Month": "Apr",
-      "QCount": 5559,
-      "ACount": 5717,
-      "CCount": 8018,
-      "UCount": 3710,
-      "VCount": 196510
+      "QCount": 5605,
+      "ACount": 5854,
+      "CCount": 8079,
+      "UCount": 3721,
+      "VCount": 438126
     },
     {
       "Year": 2021,
       "Month": "May",
-      "QCount": 5564,
-      "ACount": 5708,
-      "CCount": 8381,
-      "UCount": 3610,
-      "VCount": 178904
+      "QCount": 5392,
+      "ACount": 5839,
+      "CCount": 7969,
+      "UCount": 3491,
+      "VCount": 392203
     },
     {
       "Year": 2021,
       "Month": "Jun",
-      "QCount": 1293,
-      "ACount": 1318,
-      "CCount": 1785,
-      "UCount": 1007,
-      "VCount": 35932
+      "QCount": 4774,
+      "ACount": 5229,
+      "CCount": 6629,
+      "UCount": 3140,
+      "VCount": 319812
+    },
+    {
+      "Year": 2021,
+      "Month": "Jul",
+      "QCount": 4676,
+      "ACount": 5094,
+      "CCount": 6970,
+      "UCount": 3025,
+      "VCount": 363020
+    },
+    {
+      "Year": 2021,
+      "Month": "Aug",
+      "QCount": 4573,
+      "ACount": 4933,
+      "CCount": 6768,
+      "UCount": 3029,
+      "VCount": 265179
+    },
+    {
+      "Year": 2021,
+      "Month": "Sep",
+      "QCount": 4330,
+      "ACount": 4997,
+      "CCount": 6897,
+      "UCount": 2960,
+      "VCount": 233935
+    },
+    {
+      "Year": 2021,
+      "Month": "Oct",
+      "QCount": 4754,
+      "ACount": 5242,
+      "CCount": 7335,
+      "UCount": 3107,
+      "VCount": 238188
+    },
+    {
+      "Year": 2021,
+      "Month": "Nov",
+      "QCount": 4643,
+      "ACount": 4623,
+      "CCount": 7218,
+      "UCount": 3130,
+      "VCount": 186485
+    },
+    {
+      "Year": 2021,
+      "Month": "Dec",
+      "QCount": 3949,
+      "ACount": 4365,
+      "CCount": 6415,
+      "UCount": 2709,
+      "VCount": 160163
     }
   ],
   "yearly_qaccount": [
@@ -1469,9 +1523,9 @@
     },
     {
       "Year": 2021,
-      "QCount": 28483,
-      "ACount": 28873,
-      "CCount": 39657
+      "QCount": 58547,
+      "ACount": 62594,
+      "CCount": 85756
     }
   ],
   "yearly_vcount": [
@@ -1529,395 +1583,395 @@
     },
     {
       "Year": 2021,
-      "VCount": 1141709
+      "VCount": 4148119
     }
   ],
   "top20_tags": [
     {
       "tag_vector": "r",
-      "Freq": 404972
+      "Freq": 435037
     },
     {
       "tag_vector": "ggplot2",
-      "Freq": 41225
+      "Freq": 44943
     },
     {
       "tag_vector": "dataframe",
-      "Freq": 27663
+      "Freq": 30027
     },
     {
       "tag_vector": "dplyr",
-      "Freq": 24606
+      "Freq": 27872
     },
     {
       "tag_vector": "shiny",
-      "Freq": 20778
+      "Freq": 23161
     },
     {
       "tag_vector": "plot",
-      "Freq": 13754
+      "Freq": 14416
     },
     {
       "tag_vector": "data.table",
-      "Freq": 11623
+      "Freq": 12157
     },
     {
       "tag_vector": "loops",
-      "Freq": 7607
+      "Freq": 8224
     },
     {
       "tag_vector": "matrix",
-      "Freq": 7577
+      "Freq": 7957
     },
     {
       "tag_vector": "function",
-      "Freq": 7173
+      "Freq": 7804
     },
     {
       "tag_vector": "for-loop",
-      "Freq": 6913
-    },
-    {
-      "tag_vector": "list",
-      "Freq": 6543
-    },
-    {
-      "tag_vector": "r-markdown",
-      "Freq": 6472
-    },
-    {
-      "tag_vector": "regex",
-      "Freq": 6441
+      "Freq": 7485
     },
     {
       "tag_vector": "tidyverse",
-      "Freq": 6031
+      "Freq": 7278
+    },
+    {
+      "tag_vector": "r-markdown",
+      "Freq": 7136
+    },
+    {
+      "tag_vector": "list",
+      "Freq": 6963
+    },
+    {
+      "tag_vector": "regex",
+      "Freq": 6749
     },
     {
       "tag_vector": "rstudio",
-      "Freq": 5676
+      "Freq": 5921
     },
     {
       "tag_vector": "time-series",
-      "Freq": 5324
+      "Freq": 5663
     },
     {
       "tag_vector": "statistics",
-      "Freq": 5060
+      "Freq": 5362
     },
     {
       "tag_vector": "python",
-      "Freq": 4939
+      "Freq": 5297
     },
     {
       "tag_vector": "date",
-      "Freq": 4485
+      "Freq": 4799
     },
     {
-      "tag_vector": "subset",
-      "Freq": 4418
+      "tag_vector": "string",
+      "Freq": 4724
     }
   ],
   "top20_rec_q": [
     {
-      "Question_Id": 67799890,
-      "Title": "%>% .$column_name equivalent for R base pipe |>",
-      "Date": "2021-06-02 06:19:57",
-      "Views": 587
+      "Question_Id": 70483804,
+      "Title": "Unexpected result comparing strings with `==`",
+      "Date": "2021-12-26 02:01:00",
+      "Views": 1187
     },
     {
-      "Question_Id": 67760424,
-      "Title": "Concatenate column names in one column conditional on using mutate, across and case_when",
-      "Date": "2021-05-30 11:05:54",
-      "Views": 459
+      "Question_Id": 70433678,
+      "Title": "Split a string between a word and a number",
+      "Date": "2021-12-21 10:07:10",
+      "Views": 733
     },
     {
-      "Question_Id": 67865159,
-      "Title": "R - How to convert decimal to MM:SS.XXX",
-      "Date": "2021-06-07 02:00:46",
-      "Views": 430
+      "Question_Id": 70436830,
+      "Title": "Transforming a one-hot encoded variable to one column",
+      "Date": "2021-12-21 14:12:18",
+      "Views": 688
     },
     {
-      "Question_Id": 67759139,
-      "Title": "biomaRt getBM not working due to getNodeSet {XML} error",
-      "Date": "2021-05-30 08:19:10",
-      "Views": 385
+      "Question_Id": 70471859,
+      "Title": "Difference between NA_real_ and NaN",
+      "Date": "2021-12-24 10:20:42",
+      "Views": 460
     },
     {
-      "Question_Id": 67868289,
-      "Title": "Does the Bizarro pipe ->.; have disadvantages making it not recommended for use?",
-      "Date": "2021-06-07 08:28:10",
-      "Views": 207
+      "Question_Id": 70429317,
+      "Title": "blogdown::serve_site() fails to produce template site",
+      "Date": "2021-12-21 00:06:07",
+      "Views": 388
     },
     {
-      "Question_Id": 67747669,
-      "Title": "Solutions to a system of inequalities in R",
-      "Date": "2021-05-29 04:13:03",
-      "Views": 159
+      "Question_Id": 70527987,
+      "Title": "Solving Logic Puzzles Using R",
+      "Date": "2021-12-30 06:03:32",
+      "Views": 328
     },
     {
-      "Question_Id": 67764577,
-      "Title": "(R) Error in Xi - Xj : non-numeric argument to binary operator",
-      "Date": "2021-05-30 18:30:58",
-      "Views": 155
+      "Question_Id": 70429294,
+      "Title": "Using cowplot in R to make a ggplot chart occupy two consecutive rows",
+      "Date": "2021-12-21 00:02:15",
+      "Views": 301
     },
     {
-      "Question_Id": 67754409,
-      "Title": "Error in executing functions in C using R API",
-      "Date": "2021-05-29 18:01:38",
+      "Question_Id": 70511777,
+      "Title": "Is it possible to combine a ggplot legend and table",
+      "Date": "2021-12-28 19:43:29",
+      "Views": 271
+    },
+    {
+      "Question_Id": 70489697,
+      "Title": "Dataframe from a character vector where variable name and its data were stored jointly",
+      "Date": "2021-12-26 20:39:41",
+      "Views": 252
+    },
+    {
+      "Question_Id": 70462412,
+      "Title": "Transform Identity Matrix",
+      "Date": "2021-12-23 12:53:51",
+      "Views": 240
+    },
+    {
+      "Question_Id": 70495334,
+      "Title": "How to create a new data table based on pairwise combinations of a subset of column names?",
+      "Date": "2021-12-27 12:11:48",
+      "Views": 235
+    },
+    {
+      "Question_Id": 70483731,
+      "Title": "Simulating Random Draws From a \"Hat\"",
+      "Date": "2021-12-26 01:36:09",
+      "Views": 225
+    },
+    {
+      "Question_Id": 70439843,
+      "Title": "How to perform bootstrapping for estimation and inference of quantile regression using multiply imputed data in R?",
+      "Date": "2021-12-21 18:07:25",
+      "Views": 172
+    },
+    {
+      "Question_Id": 70453557,
+      "Title": "CARET xgbtree warning: `ntree_limit` is deprecated, use `iteration_range` instead",
+      "Date": "2021-12-22 18:23:24",
+      "Views": 171
+    },
+    {
+      "Question_Id": 70490599,
+      "Title": "Why does lm() with the subset argument give a different answer than subsetting in advance?",
+      "Date": "2021-12-26 23:43:53",
+      "Views": 164
+    },
+    {
+      "Question_Id": 70508404,
+      "Title": "How can I display multiple.xpt files in R shiny and filter them based on their columns?",
+      "Date": "2021-12-28 14:25:57",
+      "Views": 142
+    },
+    {
+      "Question_Id": 70509181,
+      "Title": "pass a function a vector or undefined number of arguments",
+      "Date": "2021-12-28 15:32:40",
+      "Views": 135
+    },
+    {
+      "Question_Id": 70461834,
+      "Title": "How to convert a Kaggle R notebook to pdf or html?",
+      "Date": "2021-12-23 11:56:15",
+      "Views": 131
+    },
+    {
+      "Question_Id": 70477594,
+      "Title": "R: Creating a Function to Randomly Replace Data from a Data Frame",
+      "Date": "2021-12-25 02:05:33",
+      "Views": 127
+    },
+    {
+      "Question_Id": 70476065,
+      "Title": "Is it possible to have `dput` return source code that would run outside of the enclosing environment?",
+      "Date": "2021-12-24 19:35:07",
+      "Views": 126
+    },
+    {
+      "Question_Id": 70410044,
+      "Title": "Does log4r also possible security vulnerabilities like that if log4j",
+      "Date": "2021-12-19 08:54:08",
       "Views": 117
     },
     {
-      "Question_Id": 67828335,
-      "Title": "R - how to create new dataset based on existing dataset",
-      "Date": "2021-06-03 20:33:49",
-      "Views": 116
+      "Question_Id": 70460012,
+      "Title": "How to convert nested for-loops to lapply for code optimization in R",
+      "Date": "2021-12-23 09:21:59",
+      "Views": 115
     },
     {
-      "Question_Id": 67744653,
-      "Title": "Better reproductibility of rPackages (pin version of packages) in nix in comparison to guix",
-      "Date": "2021-05-28 19:41:14",
-      "Views": 110
+      "Question_Id": 70498125,
+      "Title": "More efficient function and for loop",
+      "Date": "2021-12-27 16:40:27",
+      "Views": 112
     },
     {
-      "Question_Id": 67755653,
-      "Title": "R function to plot inequalities with shading",
-      "Date": "2021-05-29 20:54:40",
-      "Views": 107
+      "Question_Id": 70467836,
+      "Title": "Find the most common digit in a vector of integers",
+      "Date": "2021-12-23 22:04:21",
+      "Views": 109
     },
     {
-      "Question_Id": 67718889,
-      "Title": "Draw a circle and lattice points with ggplot",
-      "Date": "2021-05-27 08:56:04",
-      "Views": 106
+      "Question_Id": 70450469,
+      "Title": "How to parse dates from a string without writing a regular expression?",
+      "Date": "2021-12-22 14:19:22",
+      "Views": 105
     },
     {
-      "Question_Id": 67754119,
-      "Title": "R - Remove rows from dataframe that contain only zeros in numeric columns, base R and pipe-friendly methods?",
-      "Date": "2021-05-29 17:28:02",
-      "Views": 100
+      "Question_Id": 70442283,
+      "Title": "Coalesce pairs of variables within a dataframe based on a regular expression",
+      "Date": "2021-12-21 22:32:58",
+      "Views": 104
     },
     {
-      "Question_Id": 67737499,
-      "Title": "Accuracy results differ of console and Rmarkdown",
-      "Date": "2021-05-28 10:48:10",
-      "Views": 99
+      "Question_Id": 70518843,
+      "Title": "From a list of numeric values, create a list of indices",
+      "Date": "2021-12-29 11:34:21",
+      "Views": 103
     },
     {
-      "Question_Id": 67784322,
-      "Title": "R replace multiple variables in a string using a lookup table",
-      "Date": "2021-06-01 07:17:52",
+      "Question_Id": 70504566,
+      "Title": "R: Selecting Rows Based on Conditions Stored in a Data Frame",
+      "Date": "2021-12-28 08:35:49",
+      "Views": 101
+    },
+    {
+      "Question_Id": 70508667,
+      "Title": "Is there a better way to write this R if statement",
+      "Date": "2021-12-28 14:47:32",
       "Views": 96
     },
     {
-      "Question_Id": 67845053,
-      "Title": "R: Creating \"survminer\" plots with only \"ggplot2\"",
-      "Date": "2021-06-04 23:39:27",
+      "Question_Id": 70432440,
+      "Title": "Generate double entry table with different data",
+      "Date": "2021-12-21 08:23:42",
+      "Views": 95
+    },
+    {
+      "Question_Id": 70452064,
+      "Title": "How to determine whether two sets of variables have a shared value in R?",
+      "Date": "2021-12-22 16:16:38",
+      "Views": 95
+    },
+    {
+      "Question_Id": 70412305,
+      "Title": "DiagrammeR and MathJax do not correctly render a graph in a rmarkdown document",
+      "Date": "2021-12-19 14:27:47",
+      "Views": 94
+    },
+    {
+      "Question_Id": 70469808,
+      "Title": "Create a new vector with an existing vector",
+      "Date": "2021-12-24 05:20:59",
       "Views": 93
     },
     {
-      "Question_Id": 67762461,
-      "Title": "Out of memory on R using linux but not on Windows",
-      "Date": "2021-05-30 14:44:46",
+      "Question_Id": 70495597,
+      "Title": "Improving performance of algorithm for random walk",
+      "Date": "2021-12-27 12:38:22",
+      "Views": 93
+    },
+    {
+      "Question_Id": 70523113,
+      "Title": "Bayesian optimization for hyperparameter tuning using mlr3",
+      "Date": "2021-12-29 17:51:25",
+      "Views": 93
+    },
+    {
+      "Question_Id": 70480730,
+      "Title": "kableExtra::kable problem when knit to pdf with footnote hline and booktabs = TRUE",
+      "Date": "2021-12-25 14:39:51",
       "Views": 92
     },
     {
-      "Question_Id": 67752474,
-      "Title": "Fastest way to pad a dataframe with uneven columns",
-      "Date": "2021-05-29 14:25:43",
-      "Views": 90
-    },
-    {
-      "Question_Id": 67757336,
-      "Title": "Similar function to R's logsum function (mlogit package) for Survival package",
-      "Date": "2021-05-30 03:07:28",
-      "Views": 90
-    },
-    {
-      "Question_Id": 67837810,
-      "Title": "How to spread a single column into wide format with 0 and 1 as values defined conditionally?",
-      "Date": "2021-06-04 13:09:16",
-      "Views": 90
-    },
-    {
-      "Question_Id": 67845985,
-      "Title": "Binding elements of nested list in Rcpp",
-      "Date": "2021-06-05 03:27:01",
-      "Views": 90
-    },
-    {
-      "Question_Id": 67792685,
-      "Title": "Main path analysis in citation network using igraph in R",
-      "Date": "2021-06-01 16:30:17",
+      "Question_Id": 70454916,
+      "Title": "`dplyr::select` without reordering columns",
+      "Date": "2021-12-22 20:47:07",
       "Views": 89
     },
     {
-      "Question_Id": 67855810,
-      "Title": "Create new dataframe by dividing all possibles columns combination from another table",
-      "Date": "2021-06-06 04:31:38",
-      "Views": 89
+      "Question_Id": 70483021,
+      "Title": "How to remove overlapping sequences from two datatables?",
+      "Date": "2021-12-25 22:06:50",
+      "Views": 88
     },
     {
-      "Question_Id": 67757703,
-      "Title": "R: Plot Polynomials in R",
-      "Date": "2021-05-30 04:35:04",
+      "Question_Id": 70457818,
+      "Title": "Creating labels by group mean",
+      "Date": "2021-12-23 04:58:27",
       "Views": 87
     },
     {
-      "Question_Id": 67763901,
-      "Title": "Footer Position in Shiny",
-      "Date": "2021-05-30 17:16:49",
+      "Question_Id": 70444606,
+      "Title": "Can we find all classes within base R?",
+      "Date": "2021-12-22 05:26:55",
       "Views": 86
     },
     {
-      "Question_Id": 67765646,
-      "Title": "Create new dataframe based on sequential row values",
-      "Date": "2021-05-30 20:41:24",
+      "Question_Id": 70512132,
+      "Title": "Listing ALL combinations of Factors",
+      "Date": "2021-12-28 20:20:40",
+      "Views": 86
+    },
+    {
+      "Question_Id": 70427280,
+      "Title": "how to capture logic from case_when in dplyr",
+      "Date": "2021-12-20 19:56:03",
       "Views": 85
     },
     {
-      "Question_Id": 67782004,
-      "Title": "Move previous next buttons in R's slickR carousel",
-      "Date": "2021-06-01 02:25:23",
+      "Question_Id": 70443108,
+      "Title": "No module named 'pandas-profiling' error in Rstudio",
+      "Date": "2021-12-22 00:43:03",
+      "Views": 85
+    },
+    {
+      "Question_Id": 70461328,
+      "Title": "Conditional Statement for arima.sim() Function: Error in Task 1 Failed - \"Inconsistent Specification of 'ma' Order",
+      "Date": "2021-12-23 11:11:45",
+      "Views": 85
+    },
+    {
+      "Question_Id": 70501619,
+      "Title": "VSC R debug console not reacting to input from user",
+      "Date": "2021-12-28 00:15:14",
+      "Views": 84
+    },
+    {
+      "Question_Id": 70465515,
+      "Title": "difference between .data and cur_data()",
+      "Date": "2021-12-23 17:28:43",
       "Views": 82
     },
     {
-      "Question_Id": 67734836,
-      "Title": "Evaluate Multiple Lines in Dplyr",
-      "Date": "2021-05-28 07:46:32",
-      "Views": 81
+      "Question_Id": 70466051,
+      "Title": "R download a large file from google drive",
+      "Date": "2021-12-23 18:23:42",
+      "Views": 80
     },
     {
-      "Question_Id": 67755308,
-      "Title": "Using R, for each year, I need to sum the sales in different years between same two dates",
-      "Date": "2021-05-29 19:56:43",
-      "Views": 81
+      "Question_Id": 70499379,
+      "Title": "replace values with NA in several columns",
+      "Date": "2021-12-27 18:56:24",
+      "Views": 80
     },
     {
-      "Question_Id": 67850299,
-      "Title": "R fill missing values with the sum of other values using tidyverse",
-      "Date": "2021-06-05 13:54:22",
+      "Question_Id": 70453975,
+      "Title": "use levene_test in map() function from purrr?",
+      "Date": "2021-12-22 19:03:42",
       "Views": 79
     },
     {
-      "Question_Id": 67861799,
-      "Title": "Remove all columns or rows with only zeros out of a data frame",
-      "Date": "2021-06-06 17:19:59",
+      "Question_Id": 70474480,
+      "Title": "Is there a way to draw random subgroups from all groups in a nested dataset in R?",
+      "Date": "2021-12-24 15:40:01",
       "Views": 79
-    },
-    {
-      "Question_Id": 67785699,
-      "Title": "How to reduce compilation time by using for loop",
-      "Date": "2021-06-01 08:52:31",
-      "Views": 78
-    },
-    {
-      "Question_Id": 67754519,
-      "Title": "convert integer to date?",
-      "Date": "2021-05-29 18:15:39",
-      "Views": 77
-    },
-    {
-      "Question_Id": 67715278,
-      "Title": "Number Guessing Game for 0A0B in R",
-      "Date": "2021-05-27 03:27:05",
-      "Views": 76
-    },
-    {
-      "Question_Id": 67725439,
-      "Title": "Switching to different DataTable page when input change in Shiny?",
-      "Date": "2021-05-27 15:33:28",
-      "Views": 76
-    },
-    {
-      "Question_Id": 67824520,
-      "Title": "How can I count, how many Items have been in one session together?",
-      "Date": "2021-06-03 15:36:50",
-      "Views": 76
-    },
-    {
-      "Question_Id": 67797464,
-      "Title": "Plotting GAM in R: Setting custom x-axis limits?",
-      "Date": "2021-06-02 00:22:15",
-      "Views": 74
-    },
-    {
-      "Question_Id": 67847391,
-      "Title": "From where to get the Official Indian Governmental Map of India in R?",
-      "Date": "2021-06-05 07:32:06",
-      "Views": 74
-    },
-    {
-      "Question_Id": 67754711,
-      "Title": "Obtain indicator of whether there are new id combinations in R",
-      "Date": "2021-05-29 18:40:35",
-      "Views": 73
-    },
-    {
-      "Question_Id": 67764294,
-      "Title": "Conditional aggregation based on groups in a data frame R",
-      "Date": "2021-05-30 18:00:03",
-      "Views": 73
-    },
-    {
-      "Question_Id": 67776135,
-      "Title": "R- Calculate rolling mean from values match a column across multiple columns",
-      "Date": "2021-05-31 14:58:54",
-      "Views": 73
-    },
-    {
-      "Question_Id": 67791617,
-      "Title": "Create a matrix of zeros and ones from R",
-      "Date": "2021-06-01 15:18:34",
-      "Views": 73
-    },
-    {
-      "Question_Id": 67754589,
-      "Title": "how to combine different data into one row?",
-      "Date": "2021-05-29 18:23:14",
-      "Views": 72
-    },
-    {
-      "Question_Id": 67758456,
-      "Title": "Merging the column names based on the values to create another column",
-      "Date": "2021-05-30 06:40:54",
-      "Views": 72
-    },
-    {
-      "Question_Id": 67851462,
-      "Title": "tidyverse: append rows of totals in summary output",
-      "Date": "2021-06-05 16:06:58",
-      "Views": 72
-    },
-    {
-      "Question_Id": 67865985,
-      "Title": "Creating a dataframe of unequal length list in R",
-      "Date": "2021-06-07 04:33:26",
-      "Views": 72
-    },
-    {
-      "Question_Id": 67745187,
-      "Title": "How do I get R to run again on my Mac Pro",
-      "Date": "2021-05-28 20:37:21",
-      "Views": 71
-    },
-    {
-      "Question_Id": 67764752,
-      "Title": "Automate a series of actions done on a single .csv file to all .csv files within the same directory in R",
-      "Date": "2021-05-30 18:53:15",
-      "Views": 71
-    },
-    {
-      "Question_Id": 67755154,
-      "Title": "Using a vector to index a data.frame in R",
-      "Date": "2021-05-29 19:37:40",
-      "Views": 70
-    },
-    {
-      "Question_Id": 67761660,
-      "Title": "is it possible to assign multiple column/values using SET with data.table in R?",
-      "Date": "2021-05-30 13:22:57",
-      "Views": 70
     }
   ],
   "yearly_top50ques": [
@@ -5570,304 +5624,304 @@
       "Views": 4340
     },
     {
+      "Question_Id": 68416435,
+      "Title": "Rcpp package doesn't include Rcpp_precious_remove",
+      "Date": 2021,
+      "Views": 62978
+    },
+    {
       "Question_Id": 66305776,
       "Title": "Got knit issue with R",
       "Date": 2021,
-      "Views": 8109
-    },
-    {
-      "Question_Id": 66637122,
-      "Title": "Troubleshooting 'Tool(s) not installed or not in PATH: ghostcript' warning in RStudio",
-      "Date": 2021,
-      "Views": 3930
+      "Views": 10290
     },
     {
       "Question_Id": 66177938,
       "Title": "'relevel' only works with (unordered) factors",
       "Date": 2021,
-      "Views": 2419
+      "Views": 9046
     },
     {
       "Question_Id": 66782751,
       "Title": "namespace 'rlang' 0.4.5 is being loaded, but >= 0.4.10 is required",
       "Date": 2021,
-      "Views": 2229
+      "Views": 8946
     },
     {
-      "Question_Id": 67087299,
-      "Title": "Error: package or namespace load failed for XLConnect",
+      "Question_Id": 68101279,
+      "Title": "Warning in xtfrm.data.frame(x) : cannot xtfrm data frames: error while ordering a dataframe numerically in R",
       "Date": 2021,
-      "Views": 1935
+      "Views": 8174
     },
     {
-      "Question_Id": 66011929,
-      "Title": "Package rgl in R not loading in Mac OS",
+      "Question_Id": 66637122,
+      "Title": "Troubleshooting 'Tool(s) not installed or not in PATH: ghostcript' warning in RStudio",
       "Date": 2021,
-      "Views": 1831
-    },
-    {
-      "Question_Id": 66408961,
-      "Title": "Debugging problem when knitting from r markdown to pdf",
-      "Date": 2021,
-      "Views": 1276
-    },
-    {
-      "Question_Id": 65766870,
-      "Title": "there is no package called ‘fansi’",
-      "Date": 2021,
-      "Views": 1189
-    },
-    {
-      "Question_Id": 65781457,
-      "Title": "xcrun invalid active developer path error in macOS",
-      "Date": 2021,
-      "Views": 1132
-    },
-    {
-      "Question_Id": 66109112,
-      "Title": "Rmarkdown not rendering .Rmd to pdf, pandoc error 2",
-      "Date": 2021,
-      "Views": 1124
-    },
-    {
-      "Question_Id": 65823681,
-      "Title": "Setting Up Visual Studio code to work with R - \"win32 can't use R\"",
-      "Date": 2021,
-      "Views": 1045
-    },
-    {
-      "Question_Id": 65704306,
-      "Title": "Docker/Rocker - unable to locate package python3.8",
-      "Date": 2021,
-      "Views": 967
-    },
-    {
-      "Question_Id": 65829423,
-      "Title": "R error \"object 'required_pkgs' not found whilst loading namespace 'timetk'\"",
-      "Date": 2021,
-      "Views": 938
-    },
-    {
-      "Question_Id": 65531945,
-      "Title": "Change x-axis labels for ggsurvplot",
-      "Date": 2021,
-      "Views": 832
+      "Views": 5800
     },
     {
       "Question_Id": 66923903,
       "Title": "Why can't I install the DMwR package?",
       "Date": 2021,
-      "Views": 832
+      "Views": 5774
     },
     {
-      "Question_Id": 65761268,
-      "Title": "Error: Assigned data `value` must be compatible with existing data",
+      "Question_Id": 65879503,
+      "Title": "How to print the head (first 10 rows) with only select variables in R",
       "Date": 2021,
-      "Views": 819
-    },
-    {
-      "Question_Id": 66415958,
-      "Title": "Error in h(simpleError(msg, call)) in Ridge/Lasso Regression",
-      "Date": 2021,
-      "Views": 818
-    },
-    {
-      "Question_Id": 65554255,
-      "Title": "Error while plotting with ggsave and other save functions",
-      "Date": 2021,
-      "Views": 801
-    },
-    {
-      "Question_Id": 65593947,
-      "Title": "Ggplot error : haven_labelled/vctrs_vctr/double",
-      "Date": 2021,
-      "Views": 794
-    },
-    {
-      "Question_Id": 67081496,
-      "Title": "Canonical tidyverse method to update some values of a vector from a look-up table",
-      "Date": 2021,
-      "Views": 769
-    },
-    {
-      "Question_Id": 66285654,
-      "Title": "Error running pdflatex from RStudio - can't compile pdfs since updating",
-      "Date": 2021,
-      "Views": 765
-    },
-    {
-      "Question_Id": 65659346,
-      "Title": "How to place a Binance order through R",
-      "Date": 2021,
-      "Views": 728
-    },
-    {
-      "Question_Id": 66681250,
-      "Title": "Function dashboardPagePlus() is not compatible with latest shinydashboardPlus version",
-      "Date": 2021,
-      "Views": 699
-    },
-    {
-      "Question_Id": 66643721,
-      "Title": "Can no longer run RSelenium Chrome Driver",
-      "Date": 2021,
-      "Views": 693
-    },
-    {
-      "Question_Id": 66902791,
-      "Title": "zsh: command not found: R on terminal using Big Sur Mac",
-      "Date": 2021,
-      "Views": 670
-    },
-    {
-      "Question_Id": 65966293,
-      "Title": "There were 50 or more warnings (use warnings() to see the first 50)",
-      "Date": 2021,
-      "Views": 655
-    },
-    {
-      "Question_Id": 66674391,
-      "Title": "Why does as(spdf, \"owin\") throw an error 'spatstat.options' is not an exported object from 'namespace:spatstat'",
-      "Date": 2021,
-      "Views": 654
-    },
-    {
-      "Question_Id": 66161597,
-      "Title": "Switch displayed traces via plotly dropdown menu",
-      "Date": 2021,
-      "Views": 637
-    },
-    {
-      "Question_Id": 66033571,
-      "Title": "How to address Error: Problem with `filter()` input `..1` with between function error?",
-      "Date": 2021,
-      "Views": 620
-    },
-    {
-      "Question_Id": 67638836,
-      "Title": "R crashing while displaying ggplot after update (process memory read out of range)",
-      "Date": 2021,
-      "Views": 617
-    },
-    {
-      "Question_Id": 65987522,
-      "Title": "How to remove the warning: Rcpp/DataFrame.h:136:18: warning unused variable 'data'?",
-      "Date": 2021,
-      "Views": 607
-    },
-    {
-      "Question_Id": 67359505,
-      "Title": "R Shiny: Can't access reactive value outside of reactive consumer",
-      "Date": 2021,
-      "Views": 604
-    },
-    {
-      "Question_Id": 66190376,
-      "Title": "Unable to install cachem package for R",
-      "Date": 2021,
-      "Views": 592
-    },
-    {
-      "Question_Id": 67799890,
-      "Title": "%>% .$column_name equivalent for R base pipe |>",
-      "Date": 2021,
-      "Views": 587
+      "Views": 5703
     },
     {
       "Question_Id": 66622469,
       "Title": "Error in x[floor(d)] + x[ceiling(d)] : non-numeric argument to binary operator",
       "Date": 2021,
-      "Views": 584
+      "Views": 5481
     },
     {
-      "Question_Id": 66593590,
-      "Title": "Error in as_mapper(.f, ...) : argument \".f\" is missing, with no default, with the function map",
+      "Question_Id": 67812413,
+      "Title": "\"Error in UseMethod(\"mutate\") : no applicable method for 'mutate' applied to an object of class \"function\" when trying to seperate columns",
       "Date": 2021,
-      "Views": 581
+      "Views": 5381
     },
     {
-      "Question_Id": 65732885,
-      "Title": "Error: Aesthetics must be either length 1 or the same as the data (9): size",
+      "Question_Id": 67359505,
+      "Title": "R Shiny: Can't access reactive value outside of reactive consumer",
       "Date": 2021,
-      "Views": 575
+      "Views": 5206
     },
     {
-      "Question_Id": 65853618,
-      "Title": "installation of package ‘devtools’ had non-zero exit status - R packge or R studio",
+      "Question_Id": 68556202,
+      "Title": "dplyr semi_join Error: `x` and `y` must share the same src, set `copy` = TRUE (may be slow)",
       "Date": 2021,
-      "Views": 567
+      "Views": 5153
     },
     {
-      "Question_Id": 66582173,
-      "Title": "Is there a RAM efficient way to calculate the median over a complement set?",
+      "Question_Id": 65694397,
+      "Title": "Add main title multiple plots ggarange",
       "Date": 2021,
-      "Views": 566
+      "Views": 5146
     },
     {
-      "Question_Id": 66873028,
-      "Title": "remove vector-elements from vector",
+      "Question_Id": 66011929,
+      "Title": "Package rgl in R not loading in Mac OS",
       "Date": 2021,
-      "Views": 551
+      "Views": 5089
     },
     {
-      "Question_Id": 66340653,
-      "Title": "Lengthen data frame with duplicate names",
+      "Question_Id": 69067890,
+      "Title": "Error: package or namespace load failed for ‘gt’: object ‘faststack’ is not exported by 'namespace:fastmap'",
       "Date": 2021,
-      "Views": 538
+      "Views": 4874
     },
     {
-      "Question_Id": 65745148,
-      "Title": "Is there a difference between gamma hurdle (two-part) models and zero-inflated gamma models?",
+      "Question_Id": 67087299,
+      "Title": "Error: package or namespace load failed for XLConnect",
       "Date": 2021,
-      "Views": 535
-    },
-    {
-      "Question_Id": 66190837,
-      "Title": "Booktabs table does not show in pdf or doc",
-      "Date": 2021,
-      "Views": 535
+      "Views": 4744
     },
     {
       "Question_Id": 65836279,
       "Title": "How to print an asterisk ('*') in R Markdown",
       "Date": 2021,
-      "Views": 533
+      "Views": 4703
     },
     {
-      "Question_Id": 65718024,
-      "Title": "Setting class(x) to \"environment\" sets attribute to NULL; result will no longer be an S4 object",
+      "Question_Id": 68478179,
+      "Title": "How to resolve spherical geometry failures when joining spatial data",
       "Date": 2021,
-      "Views": 529
+      "Views": 4585
     },
     {
-      "Question_Id": 66799143,
-      "Title": "namespace 'rlang' 0.4.9 is being loaded, but >= 0.4.10 is required",
+      "Question_Id": 66065099,
+      "Title": "How to update GitHub authentification token on Rstudio to match the new policy?",
       "Date": 2021,
-      "Views": 522
+      "Views": 4320
     },
     {
-      "Question_Id": 66443986,
-      "Title": "RStudio Sweave error -> exit code -1073740791",
+      "Question_Id": 66732985,
+      "Title": "PCA in R: Error in svd(x, nu=0, nv=k) : Infinite or missing values in 'x'",
       "Date": 2021,
-      "Views": 513
+      "Views": 4051
     },
     {
-      "Question_Id": 66030942,
-      "Title": "TidyText Clustering",
+      "Question_Id": 65761268,
+      "Title": "Error: Assigned data `value` must be compatible with existing data",
       "Date": 2021,
-      "Views": 506
+      "Views": 4009
     },
     {
-      "Question_Id": 66129000,
-      "Title": "R: \"tie\" two graphs together",
+      "Question_Id": 65823681,
+      "Title": "Setting Up Visual Studio code to work with R - \"win32 can't use R\"",
       "Date": 2021,
-      "Views": 492
+      "Views": 4007
     },
     {
-      "Question_Id": 67265710,
-      "Title": "Error using dplyr : object ‘data_frame’ is not exported by 'namespace:vctrs'",
+      "Question_Id": 66415958,
+      "Title": "Error in h(simpleError(msg, call)) in Ridge/Lasso Regression",
       "Date": 2021,
-      "Views": 492
+      "Views": 3647
+    },
+    {
+      "Question_Id": 66340653,
+      "Title": "Lengthen data frame with duplicate names",
+      "Date": 2021,
+      "Views": 3488
+    },
+    {
+      "Question_Id": 65554255,
+      "Title": "Error while plotting with ggsave and other save functions",
+      "Date": 2021,
+      "Views": 3425
+    },
+    {
+      "Question_Id": 66347447,
+      "Title": "How to convert .rds files to .csv in R without losing special characters?",
+      "Date": 2021,
+      "Views": 3399
+    },
+    {
+      "Question_Id": 65531945,
+      "Title": "Change x-axis labels for ggsurvplot",
+      "Date": 2021,
+      "Views": 3176
+    },
+    {
+      "Question_Id": 65966293,
+      "Title": "There were 50 or more warnings (use warnings() to see the first 50)",
+      "Date": 2021,
+      "Views": 3149
+    },
+    {
+      "Question_Id": 68263165,
+      "Title": "Installing R on OSX Big Sur (EDIT: and Apple M1) for use with Rcpp and openMP",
+      "Date": 2021,
+      "Views": 3117
+    },
+    {
+      "Question_Id": 67376630,
+      "Title": "Problems with positioning of ggplot labels with ggarrange",
+      "Date": 2021,
+      "Views": 3052
+    },
+    {
+      "Question_Id": 67377297,
+      "Title": "How can I override using `.groups` argument to add the Date Variable to my Summary function?",
+      "Date": 2021,
+      "Views": 3048
+    },
+    {
+      "Question_Id": 68003633,
+      "Title": "Error: Can't add ggsave to a ggplot object",
+      "Date": 2021,
+      "Views": 2833
+    },
+    {
+      "Question_Id": 66902791,
+      "Title": "zsh: command not found: R on terminal using Big Sur Mac",
+      "Date": 2021,
+      "Views": 2831
+    },
+    {
+      "Question_Id": 66533039,
+      "Title": "Difference map() vs. map_dfr() in R",
+      "Date": 2021,
+      "Views": 2826
+    },
+    {
+      "Question_Id": 67817540,
+      "Title": "Error: Must extract column with a single valid subscript. x Subscript `var` has size 268 but must be size 1. Code and dataframe include",
+      "Date": 2021,
+      "Views": 2774
+    },
+    {
+      "Question_Id": 67638836,
+      "Title": "R crashing while displaying ggplot after update (process memory read out of range)",
+      "Date": 2021,
+      "Views": 2737
+    },
+    {
+      "Question_Id": 67124618,
+      "Title": "R Error: \"Error: Can't combine `..1` <character> and `..2` <double>.\"",
+      "Date": 2021,
+      "Views": 2677
+    },
+    {
+      "Question_Id": 65593947,
+      "Title": "Ggplot error : haven_labelled/vctrs_vctr/double",
+      "Date": 2021,
+      "Views": 2629
+    },
+    {
+      "Question_Id": 65781457,
+      "Title": "xcrun invalid active developer path error in macOS",
+      "Date": 2021,
+      "Views": 2628
+    },
+    {
+      "Question_Id": 68159757,
+      "Title": "GGVENN: how to fix the warning message - guides(<scale> = FALSE)` is deprecated",
+      "Date": 2021,
+      "Views": 2552
+    },
+    {
+      "Question_Id": 66542083,
+      "Title": "Error when running any R code in R markdown",
+      "Date": 2021,
+      "Views": 2500
+    },
+    {
+      "Question_Id": 67181008,
+      "Title": "How to draw a 45-degree line through a point in ggplot2",
+      "Date": 2021,
+      "Views": 2487
+    },
+    {
+      "Question_Id": 66033571,
+      "Title": "How to address Error: Problem with `filter()` input `..1` with between function error?",
+      "Date": 2021,
+      "Views": 2461
+    },
+    {
+      "Question_Id": 66593590,
+      "Title": "Error in as_mapper(.f, ...) : argument \".f\" is missing, with no default, with the function map",
+      "Date": 2021,
+      "Views": 2445
+    },
+    {
+      "Question_Id": 66305985,
+      "Title": "Rstudio pdflatex.exe did not succeed",
+      "Date": 2021,
+      "Views": 2431
+    },
+    {
+      "Question_Id": 66135673,
+      "Title": "Plotting multiple lines (based on grouping) with geom_line",
+      "Date": 2021,
+      "Views": 2283
+    },
+    {
+      "Question_Id": 68356001,
+      "Title": "Error: A continuous variable can not be mapped to shape",
+      "Date": 2021,
+      "Views": 2273
+    },
+    {
+      "Question_Id": 67085791,
+      "Title": "package to do SMOTE in R",
+      "Date": 2021,
+      "Views": 2264
+    },
+    {
+      "Question_Id": 67879592,
+      "Title": "RStudio is damaged and cant be opened for MacOS High Sierra (version 10.13.6)",
+      "Date": 2021,
+      "Views": 2178
+    },
+    {
+      "Question_Id": 66031887,
+      "Title": "Error: Case 1 (`.`) must be a two-sided formula, not a `data.frame` object",
+      "Date": 2021,
+      "Views": 2133
     }
   ]
 }
